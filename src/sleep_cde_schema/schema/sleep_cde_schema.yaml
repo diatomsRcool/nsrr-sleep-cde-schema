@@ -1,0 +1,333 @@
+id: https://w3id.org/sleep-cde
+name: sleep-cde-schema
+title: Sleep Common Data Elements Schema
+description: >-
+  A LinkML schema for representing sleep study data including sleep sessions,
+  stages, metrics, and related clinical information.
+license: MIT
+default_prefix: sleep
+default_range: string
+
+prefixes:
+  sleep: https://w3id.org/sleep-cde/
+  linkml: https://w3id.org/linkml/
+  biolink: https://w3id.org/biolink/vocab/
+  schema: http://schema.org/
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+
+imports:
+  - linkml:types
+
+classes:
+
+  Person:
+    description: An individual participant in a sleep study
+    slots:
+      - id
+      - age
+      - sex
+      - bmi
+    slot_usage:
+      id:
+        identifier: true
+        required: true
+
+  SleepSession:
+    description: A single sleep recording session or sleep study
+    slots:
+      - id
+      - subject
+      - session_date
+      - session_start_time
+      - session_end_time
+      - total_recording_time
+      - total_sleep_time
+      - sleep_onset_latency
+      - wake_after_sleep_onset
+      - sleep_efficiency
+      - number_of_awakenings
+      - sleep_stages
+      - sleep_quality_rating
+      - study_type
+      - recording_location
+    slot_usage:
+      id:
+        identifier: true
+        required: true
+      subject:
+        required: true
+        range: Person
+
+  SleepStage:
+    description: A discrete sleep stage period during a sleep session
+    slots:
+      - id
+      - session_id
+      - stage_type
+      - start_time
+      - duration
+      - stage_number
+    slot_usage:
+      id:
+        identifier: true
+      stage_type:
+        required: true
+
+  SleepMetrics:
+    description: Computed or measured sleep quality metrics
+    slots:
+      - id
+      - session_id
+      - apnea_hypopnea_index
+      - oxygen_desaturation_index
+      - minimum_oxygen_saturation
+      - periodic_limb_movement_index
+      - rem_latency
+      - nrem_duration
+      - rem_duration
+      - stage_n1_duration
+      - stage_n2_duration
+      - stage_n3_duration
+
+slots:
+
+  id:
+    identifier: true
+    range: string
+    description: Unique identifier
+
+  subject:
+    description: Reference to the person/participant
+    range: Person
+
+  session_id:
+    description: Reference to the sleep session
+    range: SleepSession
+
+  age:
+    description: Age in years
+    range: integer
+    minimum_value: 0
+    maximum_value: 120
+
+  sex:
+    description: Biological sex
+    range: SexEnum
+
+  bmi:
+    description: Body mass index (kg/m²)
+    range: float
+    minimum_value: 10
+    maximum_value: 100
+
+  session_date:
+    description: Date of the sleep session
+    range: date
+
+  session_start_time:
+    description: Start time of the recording
+    range: datetime
+
+  session_end_time:
+    description: End time of the recording
+    range: datetime
+
+  total_recording_time:
+    description: Total recording time in minutes
+    range: float
+    unit:
+      ucum_code: min
+
+  total_sleep_time:
+    description: Total sleep time in minutes (excludes wake time)
+    range: float
+    unit:
+      ucum_code: min
+
+  sleep_onset_latency:
+    description: Time to fall asleep from lights out (minutes)
+    range: float
+    unit:
+      ucum_code: min
+
+  wake_after_sleep_onset:
+    description: Wake time after initial sleep onset (minutes)
+    range: float
+    unit:
+      ucum_code: min
+
+  sleep_efficiency:
+    description: Percentage of time in bed spent asleep
+    range: float
+    minimum_value: 0
+    maximum_value: 100
+    unit:
+      ucum_code: "%"
+
+  number_of_awakenings:
+    description: Count of awakening episodes
+    range: integer
+    minimum_value: 0
+
+  sleep_stages:
+    description: Collection of sleep stage periods
+    multivalued: true
+    range: SleepStage
+
+  sleep_quality_rating:
+    description: Subjective sleep quality rating
+    range: QualityRatingEnum
+
+  study_type:
+    description: Type of sleep study conducted
+    range: StudyTypeEnum
+
+  recording_location:
+    description: Location where sleep was recorded
+    range: LocationEnum
+
+  stage_type:
+    description: Type of sleep stage
+    range: SleepStageEnum
+
+  start_time:
+    description: Start time of the stage
+    range: datetime
+
+  duration:
+    description: Duration in minutes
+    range: float
+    unit:
+      ucum_code: min
+
+  stage_number:
+    description: Sequential stage number within session
+    range: integer
+
+  apnea_hypopnea_index:
+    description: Number of apnea/hypopnea events per hour
+    range: float
+    unit:
+      ucum_code: "{events}/h"
+
+  oxygen_desaturation_index:
+    description: Number of oxygen desaturation events per hour
+    range: float
+    unit:
+      ucum_code: "{events}/h"
+
+  minimum_oxygen_saturation:
+    description: Lowest oxygen saturation percentage
+    range: float
+    minimum_value: 0
+    maximum_value: 100
+    unit:
+      ucum_code: "%"
+
+  periodic_limb_movement_index:
+    description: Number of periodic limb movements per hour
+    range: float
+    unit:
+      ucum_code: "{events}/h"
+
+  rem_latency:
+    description: Time from sleep onset to first REM period (minutes)
+    range: float
+    unit:
+      ucum_code: min
+
+  nrem_duration:
+    description: Total NREM sleep duration (minutes)
+    range: float
+    unit:
+      ucum_code: min
+
+  rem_duration:
+    description: Total REM sleep duration (minutes)
+    range: float
+    unit:
+      ucum_code: min
+
+  stage_n1_duration:
+    description: Total N1 stage duration (minutes)
+    range: float
+    unit:
+      ucum_code: min
+
+  stage_n2_duration:
+    description: Total N2 stage duration (minutes)
+    range: float
+    unit:
+      ucum_code: min
+
+  stage_n3_duration:
+    description: Total N3 stage duration (minutes)
+    range: float
+    unit:
+      ucum_code: min
+
+enums:
+
+  SexEnum:
+    permissible_values:
+      MALE:
+        description: Male
+      FEMALE:
+        description: Female
+      OTHER:
+        description: Other
+      UNKNOWN:
+        description: Unknown or not reported
+
+  SleepStageEnum:
+    description: Sleep stages based on AASM scoring
+    permissible_values:
+      WAKE:
+        description: Wake stage
+      N1:
+        description: NREM stage 1 (light sleep)
+      N2:
+        description: NREM stage 2 (light sleep)
+      N3:
+        description: NREM stage 3 (deep/slow-wave sleep)
+      REM:
+        description: Rapid eye movement sleep
+      UNKNOWN:
+        description: Unscored or unknown stage
+
+  QualityRatingEnum:
+    permissible_values:
+      VERY_POOR:
+        description: Very poor sleep quality
+      POOR:
+        description: Poor sleep quality
+      FAIR:
+        description: Fair sleep quality
+      GOOD:
+        description: Good sleep quality
+      EXCELLENT:
+        description: Excellent sleep quality
+
+  StudyTypeEnum:
+    permissible_values:
+      POLYSOMNOGRAPHY:
+        description: Full polysomnography (PSG)
+      HOME_SLEEP_APNEA_TEST:
+        description: Home sleep apnea testing
+      ACTIGRAPHY:
+        description: Actigraphy monitoring
+      MULTIPLE_SLEEP_LATENCY_TEST:
+        description: Multiple sleep latency test (MSLT)
+      MAINTENANCE_OF_WAKEFULNESS_TEST:
+        description: Maintenance of wakefulness test (MWT)
+
+  LocationEnum:
+    permissible_values:
+      SLEEP_LAB:
+        description: Clinical sleep laboratory
+      HOME:
+        description: Patient's home
+      HOSPITAL:
+        description: Hospital setting
+      OTHER:
+        description: Other location
