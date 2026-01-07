@@ -142,3 +142,12 @@ dmypy.json
 .idea
 # Local vscode editor config
 .vscode
+
+# Claude Code settings
+.claude/
+
+# Generated datamodel files
+src/sleep_cde_schema/datamodel/*.py
+
+# Working documentation
+sleep_datasets_variable_extraction.md

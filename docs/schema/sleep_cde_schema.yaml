@@ -1,0 +1,949 @@
+name: sleep-cde-schema
+description: A LinkML schema for representing sleep study data including sleep sessions,
+  stages, metrics, and related clinical information.
+title: Sleep Common Data Elements Schema
+id: https://w3id.org/sleep-cde
+imports:
+- linkml:types
+license: MIT
+prefixes:
+  sleep:
+    prefix_prefix: sleep
+    prefix_reference: https://w3id.org/sleep-cde/
+  linkml:
+    prefix_prefix: linkml
+    prefix_reference: https://w3id.org/linkml/
+  biolink:
+    prefix_prefix: biolink
+    prefix_reference: https://w3id.org/biolink/vocab/
+  schema:
+    prefix_prefix: schema
+    prefix_reference: http://schema.org/
+  NCIT:
+    prefix_prefix: NCIT
+    prefix_reference: http://purl.obolibrary.org/obo/NCIT_
+default_prefix: sleep
+default_range: string
+types:
+  string:
+    name: string
+    definition_uri: https://w3id.org/linkml/String
+    description: A character string
+    notes:
+    - In RDF serializations, a slot with range of string is treated as a literal or
+      type xsd:string.   If you are authoring schemas in LinkML YAML, the type is
+      referenced with the lower case "string".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    exact_mappings:
+    - schema:Text
+    base: str
+    uri: xsd:string
+  integer:
+    name: integer
+    definition_uri: https://w3id.org/linkml/Integer
+    description: An integer
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "integer".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    exact_mappings:
+    - schema:Integer
+    base: int
+    uri: xsd:integer
+  boolean:
+    name: boolean
+    definition_uri: https://w3id.org/linkml/Boolean
+    description: A binary (true or false) value
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "boolean".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    exact_mappings:
+    - schema:Boolean
+    base: Bool
+    uri: xsd:boolean
+    repr: bool
+  float:
+    name: float
+    definition_uri: https://w3id.org/linkml/Float
+    description: A real number that conforms to the xsd:float specification
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "float".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    exact_mappings:
+    - schema:Float
+    base: float
+    uri: xsd:float
+  double:
+    name: double
+    definition_uri: https://w3id.org/linkml/Double
+    description: A real number that conforms to the xsd:double specification
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "double".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    close_mappings:
+    - schema:Float
+    base: float
+    uri: xsd:double
+  decimal:
+    name: decimal
+    definition_uri: https://w3id.org/linkml/Decimal
+    description: A real number with arbitrary precision that conforms to the xsd:decimal
+      specification
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "decimal".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    broad_mappings:
+    - schema:Number
+    base: Decimal
+    uri: xsd:decimal
+  time:
+    name: time
+    definition_uri: https://w3id.org/linkml/Time
+    description: A time object represents a (local) time of day, independent of any
+      particular day
+    notes:
+    - URI is dateTime because OWL reasoners do not work with straight date or time
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "time".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    exact_mappings:
+    - schema:Time
+    base: XSDTime
+    uri: xsd:time
+    repr: str
+  date:
+    name: date
+    definition_uri: https://w3id.org/linkml/Date
+    description: a date (year, month and day) in an idealized calendar
+    notes:
+    - URI is dateTime because OWL reasoners don't work with straight date or time
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "date".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    exact_mappings:
+    - schema:Date
+    base: XSDDate
+    uri: xsd:date
+    repr: str
+  datetime:
+    name: datetime
+    definition_uri: https://w3id.org/linkml/Datetime
+    description: The combination of a date and time
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "datetime".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    exact_mappings:
+    - schema:DateTime
+    base: XSDDateTime
+    uri: xsd:dateTime
+    repr: str
+  date_or_datetime:
+    name: date_or_datetime
+    definition_uri: https://w3id.org/linkml/DateOrDatetime
+    description: Either a date or a datetime
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "date_or_datetime".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: str
+    uri: linkml:DateOrDatetime
+    repr: str
+  uriorcurie:
+    name: uriorcurie
+    definition_uri: https://w3id.org/linkml/Uriorcurie
+    description: a URI or a CURIE
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "uriorcurie".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: URIorCURIE
+    uri: xsd:anyURI
+    repr: str
+  curie:
+    name: curie
+    definition_uri: https://w3id.org/linkml/Curie
+    conforms_to: https://www.w3.org/TR/curie/
+    description: a compact URI
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "curie".
+    comments:
+    - in RDF serializations this MUST be expanded to a URI
+    - in non-RDF serializations MAY be serialized as the compact representation
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: Curie
+    uri: xsd:string
+    repr: str
+  uri:
+    name: uri
+    definition_uri: https://w3id.org/linkml/Uri
+    conforms_to: https://www.ietf.org/rfc/rfc3987.txt
+    description: a complete URI
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "uri".
+    comments:
+    - in RDF serializations a slot with range of uri is treated as a literal or type
+      xsd:anyURI unless it is an identifier or a reference to an identifier, in which
+      case it is translated directly to a node
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    close_mappings:
+    - schema:URL
+    base: URI
+    uri: xsd:anyURI
+    repr: str
+  ncname:
+    name: ncname
+    definition_uri: https://w3id.org/linkml/Ncname
+    description: Prefix part of CURIE
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "ncname".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: NCName
+    uri: xsd:string
+    repr: str
+  objectidentifier:
+    name: objectidentifier
+    definition_uri: https://w3id.org/linkml/Objectidentifier
+    description: A URI or CURIE that represents an object in the model.
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "objectidentifier".
+    comments:
+    - Used for inheritance and type checking
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: ElementIdentifier
+    uri: shex:iri
+    repr: str
+  nodeidentifier:
+    name: nodeidentifier
+    definition_uri: https://w3id.org/linkml/Nodeidentifier
+    description: A URI, CURIE or BNODE that represents a node in a model.
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "nodeidentifier".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: NodeIdentifier
+    uri: shex:nonLiteral
+    repr: str
+  jsonpointer:
+    name: jsonpointer
+    definition_uri: https://w3id.org/linkml/Jsonpointer
+    conforms_to: https://datatracker.ietf.org/doc/html/rfc6901
+    description: A string encoding a JSON Pointer. The value of the string MUST conform
+      to JSON Point syntax and SHOULD dereference to a valid object within the current
+      instance document when encoded in tree form.
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "jsonpointer".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: str
+    uri: xsd:string
+    repr: str
+  jsonpath:
+    name: jsonpath
+    definition_uri: https://w3id.org/linkml/Jsonpath
+    conforms_to: https://www.ietf.org/archive/id/draft-goessner-dispatch-jsonpath-00.html
+    description: A string encoding a JSON Path. The value of the string MUST conform
+      to JSON Point syntax and SHOULD dereference to zero or more valid objects within
+      the current instance document when encoded in tree form.
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "jsonpath".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: str
+    uri: xsd:string
+    repr: str
+  sparqlpath:
+    name: sparqlpath
+    definition_uri: https://w3id.org/linkml/Sparqlpath
+    conforms_to: https://www.w3.org/TR/sparql11-query/#propertypaths
+    description: A string encoding a SPARQL Property Path. The value of the string
+      MUST conform to SPARQL syntax and SHOULD dereference to zero or more valid objects
+      within the current instance document when encoded as RDF.
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "sparqlpath".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: str
+    uri: xsd:string
+    repr: str
+enums:
+  SexEnum:
+    name: SexEnum
+    definition_uri: https://w3id.org/sleep-cde/SexEnum
+    from_schema: https://w3id.org/sleep-cde
+    permissible_values:
+      MALE:
+        text: MALE
+        description: Male
+      FEMALE:
+        text: FEMALE
+        description: Female
+      OTHER:
+        text: OTHER
+        description: Other
+      UNKNOWN:
+        text: UNKNOWN
+        description: Unknown or not reported
+  SleepStageEnum:
+    name: SleepStageEnum
+    definition_uri: https://w3id.org/sleep-cde/SleepStageEnum
+    description: Sleep stages based on AASM scoring
+    from_schema: https://w3id.org/sleep-cde
+    permissible_values:
+      WAKE:
+        text: WAKE
+        description: Wake stage
+      N1:
+        text: N1
+        description: NREM stage 1 (light sleep)
+      N2:
+        text: N2
+        description: NREM stage 2 (light sleep)
+      N3:
+        text: N3
+        description: NREM stage 3 (deep/slow-wave sleep)
+      REM:
+        text: REM
+        description: Rapid eye movement sleep
+      UNKNOWN:
+        text: UNKNOWN
+        description: Unscored or unknown stage
+  QualityRatingEnum:
+    name: QualityRatingEnum
+    definition_uri: https://w3id.org/sleep-cde/QualityRatingEnum
+    from_schema: https://w3id.org/sleep-cde
+    permissible_values:
+      VERY_POOR:
+        text: VERY_POOR
+        description: Very poor sleep quality
+      POOR:
+        text: POOR
+        description: Poor sleep quality
+      FAIR:
+        text: FAIR
+        description: Fair sleep quality
+      GOOD:
+        text: GOOD
+        description: Good sleep quality
+      EXCELLENT:
+        text: EXCELLENT
+        description: Excellent sleep quality
+  StudyTypeEnum:
+    name: StudyTypeEnum
+    definition_uri: https://w3id.org/sleep-cde/StudyTypeEnum
+    from_schema: https://w3id.org/sleep-cde
+    permissible_values:
+      POLYSOMNOGRAPHY:
+        text: POLYSOMNOGRAPHY
+        description: Full polysomnography (PSG)
+      HOME_SLEEP_APNEA_TEST:
+        text: HOME_SLEEP_APNEA_TEST
+        description: Home sleep apnea testing
+      ACTIGRAPHY:
+        text: ACTIGRAPHY
+        description: Actigraphy monitoring
+      MULTIPLE_SLEEP_LATENCY_TEST:
+        text: MULTIPLE_SLEEP_LATENCY_TEST
+        description: Multiple sleep latency test (MSLT)
+      MAINTENANCE_OF_WAKEFULNESS_TEST:
+        text: MAINTENANCE_OF_WAKEFULNESS_TEST
+        description: Maintenance of wakefulness test (MWT)
+  LocationEnum:
+    name: LocationEnum
+    definition_uri: https://w3id.org/sleep-cde/LocationEnum
+    from_schema: https://w3id.org/sleep-cde
+    permissible_values:
+      SLEEP_LAB:
+        text: SLEEP_LAB
+        description: Clinical sleep laboratory
+      HOME:
+        text: HOME
+        description: Patient's home
+      HOSPITAL:
+        text: HOSPITAL
+        description: Hospital setting
+      OTHER:
+        text: OTHER
+        description: Other location
+slots:
+  id:
+    name: id
+    definition_uri: https://w3id.org/sleep-cde/id
+    description: Unique identifier
+    from_schema: https://w3id.org/sleep-cde
+    slot_uri: sleep:id
+    identifier: true
+    owner: SleepMetrics
+    domain_of:
+    - Person
+    - SleepSession
+    - SleepStage
+    - SleepMetrics
+    range: string
+    required: true
+  subject:
+    name: subject
+    definition_uri: https://w3id.org/sleep-cde/subject
+    description: Reference to the person/participant
+    from_schema: https://w3id.org/sleep-cde
+    slot_uri: sleep:subject
+    owner: SleepSession
+    domain_of:
+    - SleepSession
+    range: Person
+  session_id:
+    name: session_id
+    definition_uri: https://w3id.org/sleep-cde/session_id
+    description: Reference to the sleep session
+    from_schema: https://w3id.org/sleep-cde
+    slot_uri: sleep:session_id
+    owner: SleepMetrics
+    domain_of:
+    - SleepStage
+    - SleepMetrics
+    range: SleepSession
+  age:
+    name: age
+    definition_uri: https://w3id.org/sleep-cde/age
+    description: Age in years
+    from_schema: https://w3id.org/sleep-cde
+    slot_uri: sleep:age
+    owner: Person
+    domain_of:
+    - Person
+    range: integer
+    minimum_value: 0
+    maximum_value: 120
+  sex:
+    name: sex
+    definition_uri: https://w3id.org/sleep-cde/sex
+    description: Biological sex
+    from_schema: https://w3id.org/sleep-cde
+    slot_uri: sleep:sex
+    owner: Person
+    domain_of:
+    - Person
+    range: SexEnum
+  bmi:
+    name: bmi
+    definition_uri: https://w3id.org/sleep-cde/bmi
+    description: "Body mass index (kg/m\xB2)"
+    from_schema: https://w3id.org/sleep-cde
+    slot_uri: sleep:bmi
+    owner: Person
+    domain_of:
+    - Person
+    range: float
+    minimum_value: 10
+    maximum_value: 100
+  session_date:
+    name: session_date
+    definition_uri: https://w3id.org/sleep-cde/session_date
+    description: Date of the sleep session
+    from_schema: https://w3id.org/sleep-cde
+    slot_uri: sleep:session_date
+    owner: SleepSession
+    domain_of:
+    - SleepSession
+    range: date
+  session_start_time:
+    name: session_start_time
+    definition_uri: https://w3id.org/sleep-cde/session_start_time
+    description: Start time of the recording
+    from_schema: https://w3id.org/sleep-cde
+    slot_uri: sleep:session_start_time
+    owner: SleepSession
+    domain_of:
+    - SleepSession
+    range: datetime
+  session_end_time:
+    name: session_end_time
+    definition_uri: https://w3id.org/sleep-cde/session_end_time
+    description: End time of the recording
+    from_schema: https://w3id.org/sleep-cde
+    slot_uri: sleep:session_end_time
+    owner: SleepSession
+    domain_of:
+    - SleepSession
+    range: datetime
+  total_recording_time:
+    name: total_recording_time
+    definition_uri: https://w3id.org/sleep-cde/total_recording_time
+    description: Total recording time in minutes
+    from_schema: https://w3id.org/sleep-cde
+    slot_uri: sleep:total_recording_time
+    owner: SleepSession
+    domain_of:
+    - SleepSession
+    range: float
+    unit:
+      ucum_code: min
+  total_sleep_time:
+    name: total_sleep_time
+    definition_uri: https://w3id.org/sleep-cde/total_sleep_time
+    description: Total sleep time in minutes (excludes wake time)
+    from_schema: https://w3id.org/sleep-cde
+    slot_uri: sleep:total_sleep_time
+    owner: SleepSession
+    domain_of:
+    - SleepSession
+    range: float
+    unit:
+      ucum_code: min
+  sleep_onset_latency:
+    name: sleep_onset_latency
+    definition_uri: https://w3id.org/sleep-cde/sleep_onset_latency
+    description: Time to fall asleep from lights out (minutes)
+    from_schema: https://w3id.org/sleep-cde
+    slot_uri: sleep:sleep_onset_latency
+    owner: SleepSession
+    domain_of:
+    - SleepSession
+    range: float
+    unit:
+      ucum_code: min
+  wake_after_sleep_onset:
+    name: wake_after_sleep_onset
+    definition_uri: https://w3id.org/sleep-cde/wake_after_sleep_onset
+    description: Wake time after initial sleep onset (minutes)
+    from_schema: https://w3id.org/sleep-cde
+    slot_uri: sleep:wake_after_sleep_onset
+    owner: SleepSession
+    domain_of:
+    - SleepSession
+    range: float
+    unit:
+      ucum_code: min
+  sleep_efficiency:
+    name: sleep_efficiency
+    definition_uri: https://w3id.org/sleep-cde/sleep_efficiency
+    description: Percentage of time in bed spent asleep
+    from_schema: https://w3id.org/sleep-cde
+    slot_uri: sleep:sleep_efficiency
+    owner: SleepSession
+    domain_of:
+    - SleepSession
+    range: float
+    minimum_value: 0
+    maximum_value: 100
+    unit:
+      ucum_code: '%'
+  number_of_awakenings:
+    name: number_of_awakenings
+    definition_uri: https://w3id.org/sleep-cde/number_of_awakenings
+    description: Count of awakening episodes
+    from_schema: https://w3id.org/sleep-cde
+    slot_uri: sleep:number_of_awakenings
+    owner: SleepSession
+    domain_of:
+    - SleepSession
+    range: integer
+    minimum_value: 0
+  sleep_stages:
+    name: sleep_stages
+    definition_uri: https://w3id.org/sleep-cde/sleep_stages
+    description: Collection of sleep stage periods
+    from_schema: https://w3id.org/sleep-cde
+    slot_uri: sleep:sleep_stages
+    owner: SleepSession
+    domain_of:
+    - SleepSession
+    range: SleepStage
+    multivalued: true
+  sleep_quality_rating:
+    name: sleep_quality_rating
+    definition_uri: https://w3id.org/sleep-cde/sleep_quality_rating
+    description: Subjective sleep quality rating
+    from_schema: https://w3id.org/sleep-cde
+    slot_uri: sleep:sleep_quality_rating
+    owner: SleepSession
+    domain_of:
+    - SleepSession
+    range: QualityRatingEnum
+  study_type:
+    name: study_type
+    definition_uri: https://w3id.org/sleep-cde/study_type
+    description: Type of sleep study conducted
+    from_schema: https://w3id.org/sleep-cde
+    slot_uri: sleep:study_type
+    owner: SleepSession
+    domain_of:
+    - SleepSession
+    range: StudyTypeEnum
+  recording_location:
+    name: recording_location
+    definition_uri: https://w3id.org/sleep-cde/recording_location
+    description: Location where sleep was recorded
+    from_schema: https://w3id.org/sleep-cde
+    slot_uri: sleep:recording_location
+    owner: SleepSession
+    domain_of:
+    - SleepSession
+    range: LocationEnum
+  stage_type:
+    name: stage_type
+    definition_uri: https://w3id.org/sleep-cde/stage_type
+    description: Type of sleep stage
+    from_schema: https://w3id.org/sleep-cde
+    slot_uri: sleep:stage_type
+    owner: SleepStage
+    domain_of:
+    - SleepStage
+    range: SleepStageEnum
+  start_time:
+    name: start_time
+    definition_uri: https://w3id.org/sleep-cde/start_time
+    description: Start time of the stage
+    from_schema: https://w3id.org/sleep-cde
+    slot_uri: sleep:start_time
+    owner: SleepStage
+    domain_of:
+    - SleepStage
+    range: datetime
+  duration:
+    name: duration
+    definition_uri: https://w3id.org/sleep-cde/duration
+    description: Duration in minutes
+    from_schema: https://w3id.org/sleep-cde
+    slot_uri: sleep:duration
+    owner: SleepStage
+    domain_of:
+    - SleepStage
+    range: float
+    unit:
+      ucum_code: min
+  stage_number:
+    name: stage_number
+    definition_uri: https://w3id.org/sleep-cde/stage_number
+    description: Sequential stage number within session
+    from_schema: https://w3id.org/sleep-cde
+    slot_uri: sleep:stage_number
+    owner: SleepStage
+    domain_of:
+    - SleepStage
+    range: integer
+  apnea_hypopnea_index:
+    name: apnea_hypopnea_index
+    definition_uri: https://w3id.org/sleep-cde/apnea_hypopnea_index
+    description: Number of apnea/hypopnea events per hour
+    from_schema: https://w3id.org/sleep-cde
+    slot_uri: sleep:apnea_hypopnea_index
+    owner: SleepMetrics
+    domain_of:
+    - SleepMetrics
+    range: float
+    unit:
+      ucum_code: '{events}/h'
+  oxygen_desaturation_index:
+    name: oxygen_desaturation_index
+    definition_uri: https://w3id.org/sleep-cde/oxygen_desaturation_index
+    description: Number of oxygen desaturation events per hour
+    from_schema: https://w3id.org/sleep-cde
+    slot_uri: sleep:oxygen_desaturation_index
+    owner: SleepMetrics
+    domain_of:
+    - SleepMetrics
+    range: float
+    unit:
+      ucum_code: '{events}/h'
+  minimum_oxygen_saturation:
+    name: minimum_oxygen_saturation
+    definition_uri: https://w3id.org/sleep-cde/minimum_oxygen_saturation
+    description: Lowest oxygen saturation percentage
+    from_schema: https://w3id.org/sleep-cde
+    slot_uri: sleep:minimum_oxygen_saturation
+    owner: SleepMetrics
+    domain_of:
+    - SleepMetrics
+    range: float
+    minimum_value: 0
+    maximum_value: 100
+    unit:
+      ucum_code: '%'
+  periodic_limb_movement_index:
+    name: periodic_limb_movement_index
+    definition_uri: https://w3id.org/sleep-cde/periodic_limb_movement_index
+    description: Number of periodic limb movements per hour
+    from_schema: https://w3id.org/sleep-cde
+    slot_uri: sleep:periodic_limb_movement_index
+    owner: SleepMetrics
+    domain_of:
+    - SleepMetrics
+    range: float
+    unit:
+      ucum_code: '{events}/h'
+  rem_latency:
+    name: rem_latency
+    definition_uri: https://w3id.org/sleep-cde/rem_latency
+    description: Time from sleep onset to first REM period (minutes)
+    from_schema: https://w3id.org/sleep-cde
+    slot_uri: sleep:rem_latency
+    owner: SleepMetrics
+    domain_of:
+    - SleepMetrics
+    range: float
+    unit:
+      ucum_code: min
+  nrem_duration:
+    name: nrem_duration
+    definition_uri: https://w3id.org/sleep-cde/nrem_duration
+    description: Total NREM sleep duration (minutes)
+    from_schema: https://w3id.org/sleep-cde
+    slot_uri: sleep:nrem_duration
+    owner: SleepMetrics
+    domain_of:
+    - SleepMetrics
+    range: float
+    unit:
+      ucum_code: min
+  rem_duration:
+    name: rem_duration
+    definition_uri: https://w3id.org/sleep-cde/rem_duration
+    description: Total REM sleep duration (minutes)
+    from_schema: https://w3id.org/sleep-cde
+    slot_uri: sleep:rem_duration
+    owner: SleepMetrics
+    domain_of:
+    - SleepMetrics
+    range: float
+    unit:
+      ucum_code: min
+  stage_n1_duration:
+    name: stage_n1_duration
+    definition_uri: https://w3id.org/sleep-cde/stage_n1_duration
+    description: Total N1 stage duration (minutes)
+    from_schema: https://w3id.org/sleep-cde
+    slot_uri: sleep:stage_n1_duration
+    owner: SleepMetrics
+    domain_of:
+    - SleepMetrics
+    range: float
+    unit:
+      ucum_code: min
+  stage_n2_duration:
+    name: stage_n2_duration
+    definition_uri: https://w3id.org/sleep-cde/stage_n2_duration
+    description: Total N2 stage duration (minutes)
+    from_schema: https://w3id.org/sleep-cde
+    slot_uri: sleep:stage_n2_duration
+    owner: SleepMetrics
+    domain_of:
+    - SleepMetrics
+    range: float
+    unit:
+      ucum_code: min
+  stage_n3_duration:
+    name: stage_n3_duration
+    definition_uri: https://w3id.org/sleep-cde/stage_n3_duration
+    description: Total N3 stage duration (minutes)
+    from_schema: https://w3id.org/sleep-cde
+    slot_uri: sleep:stage_n3_duration
+    owner: SleepMetrics
+    domain_of:
+    - SleepMetrics
+    range: float
+    unit:
+      ucum_code: min
+  Person_id:
+    name: Person_id
+    definition_uri: https://w3id.org/sleep-cde/id
+    description: Unique identifier
+    from_schema: https://w3id.org/sleep-cde
+    is_a: id
+    domain: Person
+    slot_uri: sleep:id
+    identifier: true
+    alias: id
+    owner: Person
+    domain_of:
+    - Person
+    is_usage_slot: true
+    usage_slot_name: id
+    range: string
+    required: true
+  SleepSession_id:
+    name: SleepSession_id
+    definition_uri: https://w3id.org/sleep-cde/id
+    description: Unique identifier
+    from_schema: https://w3id.org/sleep-cde
+    is_a: id
+    domain: SleepSession
+    slot_uri: sleep:id
+    identifier: true
+    alias: id
+    owner: SleepSession
+    domain_of:
+    - SleepSession
+    is_usage_slot: true
+    usage_slot_name: id
+    range: string
+    required: true
+  SleepSession_subject:
+    name: SleepSession_subject
+    definition_uri: https://w3id.org/sleep-cde/subject
+    description: Reference to the person/participant
+    from_schema: https://w3id.org/sleep-cde
+    is_a: subject
+    domain: SleepSession
+    slot_uri: sleep:subject
+    alias: subject
+    owner: SleepSession
+    domain_of:
+    - SleepSession
+    is_usage_slot: true
+    usage_slot_name: subject
+    range: Person
+    required: true
+  SleepStage_id:
+    name: SleepStage_id
+    definition_uri: https://w3id.org/sleep-cde/id
+    description: Unique identifier
+    from_schema: https://w3id.org/sleep-cde
+    is_a: id
+    domain: SleepStage
+    slot_uri: sleep:id
+    identifier: true
+    alias: id
+    owner: SleepStage
+    domain_of:
+    - SleepStage
+    is_usage_slot: true
+    usage_slot_name: id
+    range: string
+    required: true
+  SleepStage_stage_type:
+    name: SleepStage_stage_type
+    definition_uri: https://w3id.org/sleep-cde/stage_type
+    description: Type of sleep stage
+    from_schema: https://w3id.org/sleep-cde
+    is_a: stage_type
+    domain: SleepStage
+    slot_uri: sleep:stage_type
+    alias: stage_type
+    owner: SleepStage
+    domain_of:
+    - SleepStage
+    is_usage_slot: true
+    usage_slot_name: stage_type
+    range: SleepStageEnum
+    required: true
+classes:
+  Person:
+    name: Person
+    definition_uri: https://w3id.org/sleep-cde/Person
+    description: An individual participant in a sleep study
+    from_schema: https://w3id.org/sleep-cde
+    slots:
+    - Person_id
+    - age
+    - sex
+    - bmi
+    slot_usage:
+      id:
+        name: id
+        identifier: true
+        required: true
+    class_uri: sleep:Person
+  SleepSession:
+    name: SleepSession
+    definition_uri: https://w3id.org/sleep-cde/SleepSession
+    description: A single sleep recording session or sleep study
+    from_schema: https://w3id.org/sleep-cde
+    slots:
+    - SleepSession_id
+    - SleepSession_subject
+    - session_date
+    - session_start_time
+    - session_end_time
+    - total_recording_time
+    - total_sleep_time
+    - sleep_onset_latency
+    - wake_after_sleep_onset
+    - sleep_efficiency
+    - number_of_awakenings
+    - sleep_stages
+    - sleep_quality_rating
+    - study_type
+    - recording_location
+    slot_usage:
+      id:
+        name: id
+        identifier: true
+        required: true
+      subject:
+        name: subject
+        range: Person
+        required: true
+    class_uri: sleep:SleepSession
+  SleepStage:
+    name: SleepStage
+    definition_uri: https://w3id.org/sleep-cde/SleepStage
+    description: A discrete sleep stage period during a sleep session
+    from_schema: https://w3id.org/sleep-cde
+    slots:
+    - SleepStage_id
+    - session_id
+    - SleepStage_stage_type
+    - start_time
+    - duration
+    - stage_number
+    slot_usage:
+      id:
+        name: id
+        identifier: true
+      stage_type:
+        name: stage_type
+        required: true
+    class_uri: sleep:SleepStage
+  SleepMetrics:
+    name: SleepMetrics
+    definition_uri: https://w3id.org/sleep-cde/SleepMetrics
+    description: Computed or measured sleep quality metrics
+    from_schema: https://w3id.org/sleep-cde
+    slots:
+    - id
+    - session_id
+    - apnea_hypopnea_index
+    - oxygen_desaturation_index
+    - minimum_oxygen_saturation
+    - periodic_limb_movement_index
+    - rem_latency
+    - nrem_duration
+    - rem_duration
+    - stage_n1_duration
+    - stage_n2_duration
+    - stage_n3_duration
+    class_uri: sleep:SleepMetrics
+metamodel_version: 1.7.0
+source_file: sleep_cde_schema.yaml
+source_file_date: '2025-12-18T15:20:28'
+source_file_size: 7380
+generation_date: '2025-12-18T15:21:36'
+

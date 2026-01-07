@@ -1,27 +1,59 @@
 #!/usr/bin/env python3
 """
 Generate LinkML schema from NSRR data dictionary TSV file.
-Each row becomes a class with id as the primary identifier.
+Uses display names to create class hierarchy with subclasses for variables sharing the same display name prefix.
 """
 
 import csv
 import re
 from collections import defaultdict
-from typing import Dict, List, Set
+from typing import Dict, List, Set, Tuple
 
 
-def safe_class_name(variable_id: str) -> str:
-    """Convert variable id to a valid LinkML class name."""
-    # Remove any non-alphanumeric characters
-    name = re.sub(r'[^\w]', '_', variable_id)
+def extract_base_class_name(display_name: str) -> str:
+    """Extract the base class name from display name (text before colon or full name)."""
+    if not display_name:
+        return None
+
+    # Split on colon and take the first part
+    parts = display_name.split(':', 1)
+    base = parts[0].strip()
+    return base
+
+
+def safe_class_name(name: str) -> str:
+    """Convert name to a valid LinkML class name."""
+    if not name:
+        return 'Unknown'
+
+    # Remove any non-alphanumeric characters except spaces
+    name = re.sub(r'[^\w\s]', '', name)
+    # Replace spaces with nothing (camel case)
+    words = name.split()
+    name = ''.join(word.capitalize() for word in words)
     # Remove consecutive underscores
     name = re.sub(r'_+', '_', name)
     # Remove leading/trailing underscores
     name = name.strip('_')
-    # Capitalize first letter
-    if name:
-        name = name[0].upper() + name[1:]
+
     return name if name else 'Unknown'
+
+
+def safe_slot_name(name: str) -> str:
+    """Convert name to a valid LinkML slot name (snake_case)."""
+    if not name:
+        return 'unknown'
+
+    # Convert to lowercase and replace spaces with underscores
+    name = name.lower()
+    name = re.sub(r'[^\w\s]', '_', name)
+    name = re.sub(r'\s+', '_', name)
+    # Remove consecutive underscores
+    name = re.sub(r'_+', '_', name)
+    # Remove leading/trailing underscores
+    name = name.strip('_')
+
+    return name if name else 'unknown'
 
 
 def safe_enum_name(domain: str) -> str:
@@ -140,6 +172,18 @@ def normalize_unit(unit: str) -> str:
     return unit
 
 
+def extract_variables_from_calculation(calculation: str) -> Set[str]:
+    """Extract variable names from a calculation formula."""
+    if not calculation:
+        return set()
+
+    # Find all potential variable names (alphanumeric with underscores)
+    # Exclude numeric literals
+    potential_vars = re.findall(r'\b([a-zA-Z][a-zA-Z0-9_]*)\b', calculation)
+
+    return set(potential_vars)
+
+
 def generate_schema(tsv_file: str, output_file: str):
     """Generate LinkML schema from TSV file."""
 
@@ -148,22 +192,30 @@ def generate_schema(tsv_file: str, output_file: str):
         reader = csv.DictReader(f, delimiter='\t')
         rows = [row for row in reader if row.get('id') and row.get('id') != 'choices']
 
+    # Group rows by base class name (extracted from display_name)
+    base_class_groups: Dict[str, List[dict]] = defaultdict(list)
+
+    for row in rows:
+        display_name = row.get('display_name', '')
+        base_name = extract_base_class_name(display_name)
+        if base_name:
+            base_class_groups[base_name].append(row)
+        else:
+            # No display name, use id as base
+            base_class_groups[row['id']].append(row)
+
     # Collect all unique domains for enumerations
     domains: Set[str] = set()
     for row in rows:
         if row['type'] == 'choices' and row['domain']:
             domains.add(row['domain'])
 
-    # Track class names to handle duplicates
-    # First pass: count how many times each class name appears
-    class_name_counts: Dict[str, int] = {}
+    # Track all variables that are used in calculations
+    calculation_variables: Set[str] = set()
     for row in rows:
-        var_id = row['id']
-        class_name = safe_class_name(var_id)
-        class_name_counts[class_name] = class_name_counts.get(class_name, 0) + 1
-
-    # Track usage during generation
-    class_names_seen: Dict[str, int] = {}
+        if row.get('calculation'):
+            vars_in_calc = extract_variables_from_calculation(row['calculation'])
+            calculation_variables.update(vars_in_calc)
 
     # Start building YAML
     yaml_lines = []
@@ -175,7 +227,7 @@ def generate_schema(tsv_file: str, output_file: str):
         'title: Sleep Common Data Elements Schema',
         'description: >-',
         '  A LinkML schema for representing sleep study data based on the NSRR data dictionary.',
-        '  Each variable from the data dictionary is represented as a class.',
+        '  Variables are organized into classes by their display name prefix, with subclasses for specific variants.',
         'license: MIT',
         'default_prefix: sleep',
         'default_range: string',
@@ -192,113 +244,235 @@ def generate_schema(tsv_file: str, output_file: str):
         '',
     ])
 
-    # Classes - each row becomes a class
+    # Classes
     yaml_lines.append('classes:')
     yaml_lines.append('')
 
-    for row in rows:
-        var_id = row['id']
-        base_class_name = safe_class_name(var_id)
+    # Add base Calculation class
+    yaml_lines.extend([
+        '  Calculation:',
+        '    description: Base class for all calculated variables',
+        '    abstract: true',
+        '    slots:',
+        '      - id',
+        '      - formula',
+        '',
+    ])
 
-        # Handle duplicate class names
-        if class_name_counts[base_class_name] > 1:
-            # This is a duplicate, need to add a number
-            occurrence = class_names_seen.get(base_class_name, 0) + 1
-            class_names_seen[base_class_name] = occurrence
-            class_name = f"{base_class_name}_{occurrence}"
+    # Process each base class group
+    for base_name in sorted(base_class_groups.keys()):
+        group = base_class_groups[base_name]
+        base_class_name = safe_class_name(base_name)
+
+        # If there's only one variable in the group, create a single class
+        if len(group) == 1:
+            row = group[0]
+            var_id = row['id']
+            var_type = row['type']
+            var_range = map_type_to_range(var_type, row['domain'])
+            has_calculation = bool(row.get('calculation'))
+
+            # Determine parent class
+            parent_classes = []
+            if has_calculation:
+                parent_classes.append('Calculation')
+
+            # Class definition
+            yaml_lines.append(f'  {base_class_name}:')
+
+            # Description
+            if row['description']:
+                desc = row['description'].strip()
+                yaml_lines.append(f'    description: {escape_yaml_string(desc)}')
+            elif row['display_name']:
+                yaml_lines.append(f'    description: {escape_yaml_string(row["display_name"])}')
+
+            # Parent class (is_a)
+            if parent_classes:
+                yaml_lines.append(f'    is_a: {parent_classes[0]}')
+
+            # ID annotation
+            yaml_lines.append(f'    id_prefixes:')
+            yaml_lines.append(f'      - {var_id}')
+
+            # Exact mappings from labels
+            if row.get('labels'):
+                labels = [l.strip() for l in row['labels'].split(';') if l.strip()]
+                if labels:
+                    yaml_lines.append('    exact_mappings:')
+                    for label in labels:
+                        yaml_lines.append(f'      - {label}')
+
+            # Slots
+            yaml_lines.append('    slots:')
+            yaml_lines.append('      - id')
+
+            if row['type']:
+                yaml_lines.append('      - value')
+            if row['units']:
+                yaml_lines.append('      - units')
+            if has_calculation:
+                yaml_lines.append('      - formula')
+                # Add slots for variables used in calculation
+                vars_in_calc = extract_variables_from_calculation(row['calculation'])
+                for var in sorted(vars_in_calc):
+                    slot_name = safe_slot_name(var)
+                    if slot_name not in ['id', 'value', 'units', 'formula']:
+                        yaml_lines.append(f'      - {slot_name}')
+
+            # Slot usage
+            yaml_lines.append('    slot_usage:')
+            yaml_lines.append('      id:')
+            yaml_lines.append('        identifier: true')
+            yaml_lines.append('        required: true')
+            yaml_lines.append(f'        pattern: "^{var_id}$"')
+
+            if row['type']:
+                yaml_lines.append('      value:')
+                yaml_lines.append(f'        range: {var_range}')
+
+            if row['units']:
+                ucum_code = normalize_unit(row['units'])
+                yaml_lines.append('      units:')
+                if ucum_code:
+                    yaml_lines.append('        unit:')
+                    yaml_lines.append(f'          ucum_code: {escape_yaml_string(ucum_code)}')
+
+            if has_calculation:
+                yaml_lines.append('      formula:')
+                yaml_lines.append(f'        pattern: {escape_yaml_string(row["calculation"])}')
+
+            yaml_lines.append('')
+
         else:
-            class_name = base_class_name
+            # Multiple variables share the same base name - create parent and subclasses
 
-        var_type = row['type']
-        var_range = map_type_to_range(var_type, row['domain'])
+            # Create abstract parent class
+            yaml_lines.append(f'  {base_class_name}:')
+            yaml_lines.append(f'    description: {escape_yaml_string(base_name)}')
+            yaml_lines.append('    abstract: true')
+            yaml_lines.append('    slots:')
+            yaml_lines.append('      - id')
+            yaml_lines.append('      - value')
+            yaml_lines.append('')
 
-        # Class definition
-        yaml_lines.append(f'  {class_name}:')
+            # Create subclass for each variable
+            for row in group:
+                var_id = row['id']
+                subclass_name = safe_class_name(var_id)
+                var_type = row['type']
+                var_range = map_type_to_range(var_type, row['domain'])
+                has_calculation = bool(row.get('calculation'))
 
-        # Description
-        if row['description']:
-            desc = row['description'].strip()
-            yaml_lines.append(f'    description: {escape_yaml_string(desc)}')
-        elif row['display_name']:
-            yaml_lines.append(f'    description: {escape_yaml_string(row["display_name"])}')
+                # Subclass definition
+                yaml_lines.append(f'  {subclass_name}:')
 
-        # Slots
-        yaml_lines.append('    slots:')
-        yaml_lines.append('      - id')
-        if row['display_name']:
-            yaml_lines.append('      - display_name')
-        if row['type']:
-            yaml_lines.append('      - type')
-        if row['units']:
-            yaml_lines.append('      - units')
-        if row['domain']:
-            yaml_lines.append('      - domain')
-        if row['calculation']:
-            yaml_lines.append('      - calculation')
-        if row['commonly_used'] == 'true':
-            yaml_lines.append('      - commonly_used')
+                # Description
+                if row['description']:
+                    desc = row['description'].strip()
+                    yaml_lines.append(f'    description: {escape_yaml_string(desc)}')
+                elif row['display_name']:
+                    yaml_lines.append(f'    description: {escape_yaml_string(row["display_name"])}')
 
-        # Slot usage
-        yaml_lines.append('    slot_usage:')
-        yaml_lines.append('      id:')
-        yaml_lines.append('        identifier: true')
-        yaml_lines.append('        required: true')
-        yaml_lines.append(f'        range: string')
+                # Parent class
+                if has_calculation:
+                    yaml_lines.append(f'    is_a: {base_class_name}')
+                    yaml_lines.append('    mixins:')
+                    yaml_lines.append('      - Calculation')
+                else:
+                    yaml_lines.append(f'    is_a: {base_class_name}')
 
-        if row['type']:
-            yaml_lines.append('      type:')
-            yaml_lines.append(f'        range: {var_range}')
+                # ID annotation
+                yaml_lines.append(f'    id_prefixes:')
+                yaml_lines.append(f'      - {var_id}')
 
-        if row['units']:
-            ucum_code = normalize_unit(row['units'])
-            yaml_lines.append('      units:')
-            if ucum_code:
-                yaml_lines.append('        unit:')
-                yaml_lines.append(f'          ucum_code: {escape_yaml_string(ucum_code)}')
-            else:
-                yaml_lines.append(f'        range: string')
+                # Exact mappings from labels
+                if row.get('labels'):
+                    labels = [l.strip() for l in row['labels'].split(';') if l.strip()]
+                    if labels:
+                        yaml_lines.append('    exact_mappings:')
+                        for label in labels:
+                            yaml_lines.append(f'      - {label}')
 
-        yaml_lines.append('')
+                # Additional slots beyond parent
+                additional_slots = []
+                if row['units']:
+                    additional_slots.append('units')
+                if has_calculation:
+                    additional_slots.append('formula')
+                    # Add slots for variables used in calculation
+                    vars_in_calc = extract_variables_from_calculation(row['calculation'])
+                    for var in sorted(vars_in_calc):
+                        slot_name = safe_slot_name(var)
+                        if slot_name not in ['id', 'value', 'units', 'formula']:
+                            additional_slots.append(slot_name)
+
+                if additional_slots:
+                    yaml_lines.append('    slots:')
+                    for slot in additional_slots:
+                        yaml_lines.append(f'      - {slot}')
+
+                # Slot usage
+                yaml_lines.append('    slot_usage:')
+                yaml_lines.append('      id:')
+                yaml_lines.append('        identifier: true')
+                yaml_lines.append('        required: true')
+                yaml_lines.append(f'        pattern: "^{var_id}$"')
+
+                yaml_lines.append('      value:')
+                yaml_lines.append(f'        range: {var_range}')
+
+                if row['units']:
+                    ucum_code = normalize_unit(row['units'])
+                    yaml_lines.append('      units:')
+                    if ucum_code:
+                        yaml_lines.append('        unit:')
+                        yaml_lines.append(f'          ucum_code: {escape_yaml_string(ucum_code)}')
+
+                if has_calculation:
+                    yaml_lines.append('      formula:')
+                    yaml_lines.append(f'        pattern: {escape_yaml_string(row["calculation"])}')
+
+                yaml_lines.append('')
 
     # Slots
     yaml_lines.append('slots:')
     yaml_lines.append('')
 
-    yaml_lines.append('  id:')
-    yaml_lines.append('    identifier: true')
-    yaml_lines.append('    range: string')
-    yaml_lines.append('    description: Variable identifier')
-    yaml_lines.append('')
+    yaml_lines.extend([
+        '  id:',
+        '    identifier: true',
+        '    range: string',
+        '    description: Variable identifier',
+        '',
+        '  value:',
+        '    range: string',
+        '    description: The value of the variable',
+        '',
+        '  units:',
+        '    range: string',
+        '    description: Units of measurement',
+        '',
+        '  formula:',
+        '    range: string',
+        '    description: Formula for calculated variables',
+        '',
+    ])
 
-    yaml_lines.append('  display_name:')
-    yaml_lines.append('    range: string')
-    yaml_lines.append('    description: Display name for the variable')
-    yaml_lines.append('')
+    # Add dynamic slots for calculation variables
+    all_calc_vars = set()
+    for row in rows:
+        if row.get('calculation'):
+            vars_in_calc = extract_variables_from_calculation(row['calculation'])
+            all_calc_vars.update(vars_in_calc)
 
-    yaml_lines.append('  type:')
-    yaml_lines.append('    range: string')
-    yaml_lines.append('    description: Data type of the variable')
-    yaml_lines.append('')
-
-    yaml_lines.append('  units:')
-    yaml_lines.append('    range: string')
-    yaml_lines.append('    description: Units of measurement')
-    yaml_lines.append('')
-
-    yaml_lines.append('  domain:')
-    yaml_lines.append('    range: string')
-    yaml_lines.append('    description: Domain or enumeration name for categorical variables')
-    yaml_lines.append('')
-
-    yaml_lines.append('  calculation:')
-    yaml_lines.append('    range: string')
-    yaml_lines.append('    description: Formula for calculated variables')
-    yaml_lines.append('')
-
-    yaml_lines.append('  commonly_used:')
-    yaml_lines.append('    range: boolean')
-    yaml_lines.append('    description: Flag indicating if this is a commonly used variable')
-    yaml_lines.append('')
+    for var in sorted(all_calc_vars):
+        slot_name = safe_slot_name(var)
+        if slot_name not in ['id', 'value', 'units', 'formula']:
+            yaml_lines.append(f'  {slot_name}:')
+            yaml_lines.append(f'    description: Variable {var} used in calculation')
+            yaml_lines.append('    range: string')
+            yaml_lines.append('')
 
     # Enumerations
     yaml_lines.append('enums:')
@@ -317,16 +491,15 @@ def generate_schema(tsv_file: str, output_file: str):
     with open(output_file, 'w') as f:
         f.write('\n'.join(yaml_lines))
 
-    # Count unique and duplicate classes
-    unique_classes = sum(1 for count in class_name_counts.values() if count == 1)
-    duplicate_classes = sum(count for count in class_name_counts.values() if count > 1)
-    total_classes = unique_classes + duplicate_classes
+    # Statistics
+    unique_base_classes = len(base_class_groups)
+    total_variables = len(rows)
+    classes_with_calculations = sum(1 for row in rows if row.get('calculation'))
 
     print(f"Schema generated successfully!")
-    print(f"  Classes (one per variable): {total_classes}")
-    print(f"    Unique: {unique_classes}")
-    print(f"    Duplicates: {duplicate_classes}")
-    print(f"  Common slots: 7")
+    print(f"  Base classes: {unique_base_classes}")
+    print(f"  Total variables: {total_variables}")
+    print(f"  Variables with calculations: {classes_with_calculations}")
     print(f"  Enums: {len(domains)}")
     print(f"  Output: {output_file}")
 
