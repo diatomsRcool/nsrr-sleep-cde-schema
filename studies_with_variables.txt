@@ -1,0 +1,31 @@
+1. ABC - Apnea, Bariatric surgery, and CPAP
+  2. ANSWERS - Assessing Nocturnal Sleep/Wake Effects on Risk of Suicide
+  3. APOE - Sleep Disordered Breathing, ApoE and Lipid Metabolism
+  4. APPLES - Apnea Positive Pressure Long-term Efficacy Study
+  5. BESTAIR - Best Apnea Interventions in Research
+  6. CCSHS - Cleveland Children's Sleep and Health Study
+  7. CFS - Cleveland Family Study
+  8. CHAT - Childhood Adenotonsillectomy Trial
+  9. DISECAD - Drug-Induced Sleep Endoscopy Study
+  10. FDCSR - Forced Desynchrony with Chronic Sleep Restriction
+  11. FFCWS - Future of Families and Child Wellbeing Study
+  12. HAASSA - Honolulu-Asia Aging Study of Sleep Apnea
+  13. HCHS - Hispanic Community Health Study / Study of Latinos
+  14. HEARTBEAT - Heart Biomarker Evaluation in Apnea Treatment
+  15. HOMEPAP - Home Positive Airway Pressure
+  16. ISAPS - Intern Sleep and Patient Safety
+  17. LOFTHF - Low Flow Nocturnal Oxygen Therapy in Heart Failure
+  18. MESA - Multi-Ethnic Study of Atherosclerosis
+  19. MROS - MrOS Sleep Study
+  20. MSP - Maternal Sleep in Pregnancy and the Fetus
+  21. NCHSDB - NCH Sleep DataBank
+  22. NFS - Need for Sleep
+  23. NUMOM2B - Nulliparous Pregnancy Outcomes Study
+  24. PATS - Pediatric Adenotonsillectomy Trial of Snoring
+  25. PIMECFS - Post Infectious Myalgic Encephalomyelitis/Chronic Fatigue Syndrome
+  26. SANDD - Alcohol, Sleep, and Circadian Rhythms in Young Humans
+  27. SHINE - Sleep Health in Infancy and Early Childhood
+  28. SHHS - Sleep Heart Health Study
+  29. SOF - Study of Osteoporotic Fractures
+  30. STAGES - Stanford Technology Analytics and Genomics in Sleep
+  31. WSC - Wisconsin Sleep Cohort
