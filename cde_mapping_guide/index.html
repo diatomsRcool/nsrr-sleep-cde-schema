@@ -1,0 +1,1403 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://diatomsRcool.github.io/sleep-cde-schema/cde_mapping_guide/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>Sleep CDE Mapping Guide - sleep-cde-schema</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.618322db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../css/jupyter-cells.css">
+    
+      <link rel="stylesheet" href="../css/pandas-dataframe.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#sleep-cde-mapping-guide" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="sleep-cde-schema" class="md-header__button md-logo" aria-label="sleep-cde-schema" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            sleep-cde-schema
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Sleep CDE Mapping Guide
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/diatomsRcool/sleep-cde-schema" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="sleep-cde-schema" class="md-nav__button md-logo" aria-label="sleep-cde-schema" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    sleep-cde-schema
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/diatomsRcool/sleep-cde-schema" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../elements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Schema
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#a-concept-groups-24-groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A) Concept Groups (24 groups)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#b-canonical-cde-inventory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B) Canonical CDE Inventory
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="B) Canonical CDE Inventory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#modifier-axes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modifier Axes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#canonical-slot-counts-by-group" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Canonical Slot Counts by Group
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#c-mapping-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C) Mapping Strategy
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="C) Mapping Strategy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#priority-order-for-variable-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Priority Order for Variable Mapping
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compositional-tag-parsing-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Compositional Tag Parsing Rules
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Compositional Tag Parsing Rules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ahi-variable-pattern-measure_apnea_defhypopnea_def_psg_type" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AHI Variable Pattern: {measure}_{apnea_def}{hypopnea_def}_{psg_type}
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sleep-stage-suffixes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sleep Stage Suffixes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#body-position-suffixes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Body Position Suffixes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#survey-instrument-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Survey Instrument Mapping
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#d-example-mappings-10-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D) Example Mappings (10 examples)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="D) Example Mappings (10 examples)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-nsrr-harmonized-ahi-exact-match" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. NSRR Harmonized AHI (exact match)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-compositional-ahi-tag-parsed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Compositional AHI Tag (parsed)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-obstructive-ahi-by-position" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Obstructive AHI by Position
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-sleep-stage-percentage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Sleep Stage Percentage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-oxygen-saturation-mean" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Oxygen Saturation Mean
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-psqi-component-score" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. PSQI Component Score
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-ces-d-item-response" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. CES-D Item Response
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-plm-index" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. PLM Index
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-body-position-duration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Body Position Duration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-dataset-local-variable-laboratory-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Dataset-Local Variable (laboratory test)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#e-implementation-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E) Implementation Notes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="E) Implementation Notes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-the-schema-for-cross-dataset-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using the Schema for Cross-Dataset Mapping
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-classes-for-data-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Classes for Data Storage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quality-checks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quality Checks
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="sleep-cde-mapping-guide">Sleep CDE Mapping Guide</h1>
+<p>This document describes the canonical Common Data Element (CDE) model for sleep research, including concept groups, mapping strategies, and example mappings.</p>
+<h2 id="a-concept-groups-24-groups">A) Concept Groups (24 groups)</h2>
+<p>The schema organizes sleep research variables into 24 hierarchical concept groups derived from sleepdata.org folder structures:</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Concept Group</th>
+<th>Description</th>
+<th>Key Canonical Slots</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Demographics &amp; Socioeconomic</td>
+<td>Subject demographic information</td>
+<td><code>age_years</code>, <code>sex</code>, <code>ethnicity</code>, <code>race</code>, <code>education_years</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Anthropometry</td>
+<td>Physical body measurements</td>
+<td><code>height_cm</code>, <code>weight_kg</code>, <code>bmi</code>, <code>neck_circumference_cm</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Vital Signs</td>
+<td>Blood pressure, heart rate, etc.</td>
+<td><code>systolic_bp_mmhg</code>, <code>diastolic_bp_mmhg</code>, <code>heart_rate_bpm</code></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Sleep Architecture</td>
+<td>Staging, efficiency, latency</td>
+<td><code>total_sleep_time_min</code>, <code>sleep_efficiency_pct</code>, <code>sleep_onset_latency_min</code>, <code>waso_min</code></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Sleep Timing &amp; Circadian</td>
+<td>Bedtime, wake time, midpoint</td>
+<td><code>lights_off_time</code>, <code>lights_on_time</code>, <code>sleep_midpoint</code></td>
+</tr>
+<tr>
+<td>6</td>
+<td>Respiratory Events - Apneas</td>
+<td>Apnea indices and counts</td>
+<td><code>apnea_index</code>, <code>apnea_count</code>, <code>mean_apnea_duration_sec</code></td>
+</tr>
+<tr>
+<td>7</td>
+<td>Respiratory Events - Hypopneas</td>
+<td>Hypopnea indices and counts</td>
+<td><code>hypopnea_index</code>, <code>hypopnea_count</code></td>
+</tr>
+<tr>
+<td>8</td>
+<td>Respiratory Events - Combined</td>
+<td>AHI, RDI</td>
+<td><code>ahi</code>, <code>rdi</code>, <code>rera_index</code></td>
+</tr>
+<tr>
+<td>9</td>
+<td>Oxygen Saturation</td>
+<td>SpO2 metrics</td>
+<td><code>spo2_mean_pct</code>, <code>spo2_min_pct</code>, <code>desaturation_index</code>, <code>time_below_90_pct_min</code></td>
+</tr>
+<tr>
+<td>10</td>
+<td>Arousals</td>
+<td>Arousal indices</td>
+<td><code>arousal_index</code>, <code>respiratory_arousal_index</code>, <code>spontaneous_arousal_index</code></td>
+</tr>
+<tr>
+<td>11</td>
+<td>Limb Movements</td>
+<td>PLM indices</td>
+<td><code>plm_index</code>, <code>plms_with_arousal_index</code></td>
+</tr>
+<tr>
+<td>12</td>
+<td>Body Position</td>
+<td>Position during sleep</td>
+<td><code>supine_percent</code>, <code>non_supine_percent</code></td>
+</tr>
+<tr>
+<td>13</td>
+<td>Heart Rate Variability</td>
+<td>HRV metrics</td>
+<td><code>hrv_sdnn_ms</code>, <code>hrv_rmssd_ms</code>, <code>hrv_lf_hf_ratio</code></td>
+</tr>
+<tr>
+<td>14</td>
+<td>Signal Quality</td>
+<td>Recording quality metrics</td>
+<td><code>eeg_quality_pct</code>, <code>oximetry_quality_pct</code>, <code>overall_study_quality</code></td>
+</tr>
+<tr>
+<td>15</td>
+<td>Questionnaires - Sleepiness</td>
+<td>ESS and similar</td>
+<td><code>ess_total_score</code> + <code>SurveyItemResponse</code></td>
+</tr>
+<tr>
+<td>16</td>
+<td>Questionnaires - Sleep Quality</td>
+<td>PSQI</td>
+<td><code>psqi_global_score</code> + <code>SurveyItemResponse</code></td>
+</tr>
+<tr>
+<td>17</td>
+<td>Questionnaires - Insomnia</td>
+<td>ISI, WHIIRS</td>
+<td><code>isi_total_score</code> + <code>SurveyItemResponse</code></td>
+</tr>
+<tr>
+<td>18</td>
+<td>Questionnaires - Chronotype</td>
+<td>MEQ</td>
+<td><code>meq_score</code>, <code>chronotype</code></td>
+</tr>
+<tr>
+<td>19</td>
+<td>General Health Questionnaires</td>
+<td>Depression, anxiety, QoL</td>
+<td><code>phq9_total_score</code>, <code>gad7_total_score</code>, <code>cesd_total_score</code>, <code>sf36_physical_score</code></td>
+</tr>
+<tr>
+<td>20</td>
+<td>Medical History</td>
+<td>Comorbidities</td>
+<td><code>has_hypertension</code>, <code>has_diabetes</code>, <code>has_heart_disease</code></td>
+</tr>
+<tr>
+<td>21</td>
+<td>Laboratory Tests</td>
+<td>Blood tests, biomarkers</td>
+<td>(dataset-local variables mapped via <code>Variable</code> class)</td>
+</tr>
+<tr>
+<td>22</td>
+<td>Actigraphy</td>
+<td>Actigraphy-derived sleep</td>
+<td><code>actigraphy_tst_min</code>, <code>actigraphy_se_pct</code>, <code>actigraphy_waso_min</code></td>
+</tr>
+<tr>
+<td>23</td>
+<td>Treatment Adherence</td>
+<td>CPAP usage</td>
+<td><code>cpap_usage_hours</code>, <code>cpap_ahi_residual</code></td>
+</tr>
+<tr>
+<td>24</td>
+<td>Administrative</td>
+<td>Study metadata</td>
+<td>(via <code>Dataset</code> and <code>Variable</code> classes)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="b-canonical-cde-inventory">B) Canonical CDE Inventory</h2>
+<h3 id="modifier-axes">Modifier Axes</h3>
+<p>The schema separates measurement semantics from acquisition/scoring protocol using these modifier axes:</p>
+<table>
+<thead>
+<tr>
+<th>Modifier Axis</th>
+<th>Enum</th>
+<th>Values</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sleep Stage</td>
+<td><code>SleepStageEnum</code></td>
+<td><code>all_sleep</code>, <code>wake</code>, <code>nrem</code>, <code>n1</code>, <code>n2</code>, <code>n3</code>, <code>rem</code></td>
+<td>Stratify by sleep stage</td>
+</tr>
+<tr>
+<td>Body Position</td>
+<td><code>BodyPositionEnum</code></td>
+<td><code>all_positions</code>, <code>supine</code>, <code>non_supine</code>, <code>lateral</code>, <code>prone</code></td>
+<td>Stratify by position</td>
+</tr>
+<tr>
+<td>PSG Type</td>
+<td><code>PSGTypeEnum</code></td>
+<td><code>type_i</code>, <code>type_ii</code>, <code>type_iii</code>, <code>type_iv</code>, <code>actigraphy</code></td>
+<td>Recording type</td>
+</tr>
+<tr>
+<td>Apnea Type</td>
+<td><code>ApneaTypeEnum</code></td>
+<td><code>all</code>, <code>obstructive</code>, <code>central</code>, <code>mixed</code></td>
+<td>Filter apnea events</td>
+</tr>
+<tr>
+<td>Hypopnea Definition</td>
+<td><code>HypopneaDefinitionEnum</code></td>
+<td><code>aasm_2015_1a</code>, <code>aasm_2015_1b</code>, <code>chicago_1999</code>, etc.</td>
+<td>Scoring rule</td>
+</tr>
+<tr>
+<td>Desaturation Threshold</td>
+<td><code>DesaturationThresholdEnum</code></td>
+<td><code>none</code>, <code>desat_3pct</code>, <code>desat_4pct</code></td>
+<td>Event threshold</td>
+</tr>
+<tr>
+<td>Arousal Requirement</td>
+<td><code>ArousalRequirementEnum</code></td>
+<td><code>with_or_without</code>, <code>required</code>, <code>or_arousal</code></td>
+<td>Event criterion</td>
+</tr>
+<tr>
+<td>Summary Statistic</td>
+<td><code>SummaryStatisticEnum</code></td>
+<td><code>mean</code>, <code>min</code>, <code>max</code>, <code>count</code>, <code>index</code>, <code>percent</code></td>
+<td>Aggregation type</td>
+</tr>
+<tr>
+<td>Time Frame</td>
+<td><code>TimeFrameEnum</code></td>
+<td><code>full_night</code>, <code>weekday</code>, <code>weekend</code>, <code>past_month</code></td>
+<td>Temporal scope</td>
+</tr>
+</tbody>
+</table>
+<h3 id="canonical-slot-counts-by-group">Canonical Slot Counts by Group</h3>
+<table>
+<thead>
+<tr>
+<th>Concept Group</th>
+<th># Canonical Slots</th>
+<th>Example Slots</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Identifiers</td>
+<td>5</td>
+<td><code>id</code>, <code>subject_id</code>, <code>visit_id</code>, <code>dataset_id</code>, <code>variable_id</code></td>
+</tr>
+<tr>
+<td>Demographics</td>
+<td>10</td>
+<td><code>age_years</code>, <code>sex</code>, <code>ethnicity</code>, <code>race</code>, <code>education_years</code></td>
+</tr>
+<tr>
+<td>Anthropometry</td>
+<td>9</td>
+<td><code>height_cm</code>, <code>weight_kg</code>, <code>bmi</code>, <code>neck_circumference_cm</code></td>
+</tr>
+<tr>
+<td>Vital Signs</td>
+<td>5</td>
+<td><code>systolic_bp_mmhg</code>, <code>diastolic_bp_mmhg</code>, <code>heart_rate_bpm</code></td>
+</tr>
+<tr>
+<td>Sleep Architecture</td>
+<td>10</td>
+<td><code>total_sleep_time_min</code>, <code>sleep_efficiency_pct</code>, <code>sleep_stage_percent</code></td>
+</tr>
+<tr>
+<td>Sleep Timing</td>
+<td>7</td>
+<td><code>lights_off_time</code>, <code>sleep_onset_time</code>, <code>sleep_midpoint</code></td>
+</tr>
+<tr>
+<td>Respiratory Events</td>
+<td>12</td>
+<td><code>ahi</code>, <code>apnea_index</code>, <code>hypopnea_index</code>, <code>apnea_count</code></td>
+</tr>
+<tr>
+<td>Oxygen Saturation</td>
+<td>9</td>
+<td><code>spo2_mean_pct</code>, <code>spo2_min_pct</code>, <code>desaturation_index</code></td>
+</tr>
+<tr>
+<td>Arousals</td>
+<td>6</td>
+<td><code>arousal_index</code>, <code>respiratory_arousal_index</code></td>
+</tr>
+<tr>
+<td>Limb Movements</td>
+<td>5</td>
+<td><code>plm_index</code>, <code>plms_with_arousal_index</code></td>
+</tr>
+<tr>
+<td>Body Position</td>
+<td>6</td>
+<td><code>supine_percent</code>, <code>non_supine_percent</code></td>
+</tr>
+<tr>
+<td>Heart Rate/HRV</td>
+<td>9</td>
+<td><code>mean_heart_rate_sleep</code>, <code>hrv_sdnn_ms</code>, <code>hrv_rmssd_ms</code></td>
+</tr>
+<tr>
+<td>Signal Quality</td>
+<td>8</td>
+<td><code>eeg_quality_pct</code>, <code>oximetry_quality_pct</code></td>
+</tr>
+<tr>
+<td>Questionnaire Scores</td>
+<td>14</td>
+<td><code>ess_total_score</code>, <code>psqi_global_score</code>, <code>phq9_total_score</code></td>
+</tr>
+<tr>
+<td>Survey Items</td>
+<td>5</td>
+<td><code>instrument_id</code>, <code>item_id</code>, <code>response_value</code></td>
+</tr>
+<tr>
+<td>Actigraphy</td>
+<td>8</td>
+<td><code>actigraphy_tst_min</code>, <code>actigraphy_se_pct</code></td>
+</tr>
+<tr>
+<td>CPAP Adherence</td>
+<td>6</td>
+<td><code>cpap_usage_hours</code>, <code>cpap_ahi_residual</code></td>
+</tr>
+<tr>
+<td>Medical History</td>
+<td>11</td>
+<td><code>has_hypertension</code>, <code>has_diabetes</code>, <code>smoking_status</code></td>
+</tr>
+<tr>
+<td>Mapping/Metadata</td>
+<td>9</td>
+<td><code>canonical_slot</code>, <code>modifiers</code>, <code>mapping_confidence</code></td>
+</tr>
+<tr>
+<td><strong>TOTAL</strong></td>
+<td><strong>~115 slots</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="c-mapping-strategy">C) Mapping Strategy</h2>
+<h3 id="priority-order-for-variable-mapping">Priority Order for Variable Mapping</h3>
+<ol>
+<li><strong>Exact NSRR Harmonized Match</strong> (confidence: <code>exact</code>)</li>
+<li>Variables prefixed with <code>nsrr_</code> map directly to canonical slots</li>
+<li>
+<p>Example: <code>nsrr_ahi_hp3u</code> → <code>ahi</code> with modifiers</p>
+</li>
+<li>
+<p><strong>Concept Tag Match</strong> (confidence: <code>high</code>)</p>
+</li>
+<li>Match concept tags from variable metadata to canonical concepts</li>
+<li>
+<p>Example: tag <code>subjective_sleepiness</code> → <code>ess_total_score</code></p>
+</li>
+<li>
+<p><strong>Instrument Item Tag via SurveyItemResponse</strong> (confidence: <code>exact</code>)</p>
+</li>
+<li>Questionnaire items map to <code>SurveyItemResponse</code> class</li>
+<li>
+<p>Example: <code>ess_01sit</code> → <code>SurveyItemResponse(instrument_id="ESS", item_id="01")</code></p>
+</li>
+<li>
+<p><strong>Compositional Tag Parsing</strong> (confidence: <code>high</code>)</p>
+</li>
+<li>Parse structured tags into canonical slot + modifiers</li>
+<li>
+<p>Example: <code>ahi_ap0uhp3x3r_f1t1</code> → parsed components</p>
+</li>
+<li>
+<p><strong>Concept Path + Label Similarity</strong> (confidence: <code>medium</code>)</p>
+</li>
+<li>Match based on folder hierarchy and label text</li>
+<li>
+<p>Example: folder <code>Sleep Monitoring/Polysomnography/Apnea-Hypopnea Indices</code> → respiratory event slots</p>
+</li>
+<li>
+<p><strong>Dataset-Local Fallback</strong> (confidence: <code>low</code>)</p>
+</li>
+<li>Variables not matching above are stored as <code>dataset_local</code> with metadata preserved</li>
+<li>Mapped via <code>Variable</code> class with <code>canonical_slot=null</code></li>
+</ol>
+<h3 id="compositional-tag-parsing-rules">Compositional Tag Parsing Rules</h3>
+<p>The NSRR uses structured variable names that encode measurement parameters. Parse these as follows:</p>
+<h4 id="ahi-variable-pattern-measure_apnea_defhypopnea_def_psg_type">AHI Variable Pattern: <code>{measure}_{apnea_def}{hypopnea_def}_{psg_type}</code></h4>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Pattern</th>
+<th>Example</th>
+<th>Maps To</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Measure</td>
+<td><code>ahi</code>, <code>oahi</code>, <code>cahi</code>, <code>ai</code>, <code>hi</code></td>
+<td><code>ahi</code></td>
+<td><code>ahi</code> slot + <code>apnea_type</code> modifier</td>
+</tr>
+<tr>
+<td>Apnea Def</td>
+<td><code>ap{desat}{arousal}</code></td>
+<td><code>ap0u</code> = no desat, with/without arousal</td>
+<td><code>desaturation_threshold</code>, <code>arousal_requirement</code></td>
+</tr>
+<tr>
+<td>Hypopnea Def</td>
+<td><code>hp{flow}x{desat}{arousal}</code></td>
+<td><code>hp3x3r</code> = 30% flow, 3% desat OR arousal</td>
+<td><code>hypopnea_definition</code></td>
+</tr>
+<tr>
+<td>PSG Type</td>
+<td><code>f{type}t{subtype}</code></td>
+<td><code>f1t1</code> = type I PSG</td>
+<td><code>psg_type</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="sleep-stage-suffixes">Sleep Stage Suffixes</h4>
+<table>
+<thead>
+<tr>
+<th>Suffix</th>
+<th>Sleep Stage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>_sn</code></td>
+<td>NREM sleep</td>
+</tr>
+<tr>
+<td><code>_sr</code></td>
+<td>REM sleep</td>
+</tr>
+<tr>
+<td><code>_s1</code></td>
+<td>Stage N1</td>
+</tr>
+<tr>
+<td><code>_s2</code></td>
+<td>Stage N2</td>
+</tr>
+<tr>
+<td><code>_s3</code></td>
+<td>Stage N3</td>
+</tr>
+</tbody>
+</table>
+<h4 id="body-position-suffixes">Body Position Suffixes</h4>
+<table>
+<thead>
+<tr>
+<th>Suffix</th>
+<th>Body Position</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>_pb</code></td>
+<td>Supine</td>
+</tr>
+<tr>
+<td><code>_po</code></td>
+<td>Non-supine</td>
+</tr>
+</tbody>
+</table>
+<h3 id="survey-instrument-mapping">Survey Instrument Mapping</h3>
+<p>Questionnaire items should be mapped to the <code>SurveyItemResponse</code> class rather than creating individual slots:</p>
+<pre><code class="language-yaml"># Example: ESS item mapping
+source_variable: ess_01sit
+maps_to:
+  class: SurveyItemResponse
+  instrument_id: &quot;ESS&quot;
+  item_id: &quot;01&quot;
+  item_text: &quot;Sitting and reading&quot;
+</code></pre>
+<p>Standard instruments recognized:
+- <strong>ESS</strong> - Epworth Sleepiness Scale (8 items, score 0-24)
+- <strong>PSQI</strong> - Pittsburgh Sleep Quality Index (19 items, score 0-21)
+- <strong>PHQ-9</strong> - Patient Health Questionnaire (9 items, score 0-27)
+- <strong>GAD-7</strong> - Generalized Anxiety Disorder (7 items, score 0-21)
+- <strong>CES-D</strong> - Center for Epidemiologic Studies Depression (20 items)
+- <strong>ISI</strong> - Insomnia Severity Index (7 items, score 0-28)
+- <strong>FSS</strong> - Fatigue Severity Scale (9 items)
+- <strong>MEQ</strong> - Morningness-Eveningness Questionnaire</p>
+<h2 id="d-example-mappings-10-examples">D) Example Mappings (10 examples)</h2>
+<h3 id="1-nsrr-harmonized-ahi-exact-match">1. NSRR Harmonized AHI (exact match)</h3>
+<pre><code class="language-yaml">source:
+  dataset: SHHS
+  variable: nsrr_ahi_hp3u
+  label: &quot;Apnea-Hypopnea Index : (All apneas + hypopneas with &gt;= 3% oxygen desaturation) / hour of sleep&quot;
+  concept_path: &quot;Harmonized/Polysomnography/Apnea-Hypopnea Indices&quot;
+mapping:
+  canonical_slot: ahi
+  modifiers:
+    - apnea_type: all
+    - hypopnea_definition: desat_3_only
+    - desaturation_threshold: desat_3pct
+    - arousal_requirement: with_or_without
+    - sleep_stage: all_sleep
+    - body_position: all_positions
+  confidence: exact
+</code></pre>
+<h3 id="2-compositional-ahi-tag-parsed">2. Compositional AHI Tag (parsed)</h3>
+<pre><code class="language-yaml">source:
+  dataset: CFS
+  variable: ahi_ap0uhp3x3r_f1t1
+  label: &quot;Apnea-Hypopnea Index: (All apneas with no oxygen desaturation threshold used and with or without arousal + hypopneas with &gt; 30% flow reduction and with &gt;= 3% oxygen desaturation or with arousal) / hour of sleep from type I polysomnography&quot;
+mapping:
+  canonical_slot: ahi
+  modifiers:
+    - apnea_type: all
+    - hypopnea_definition: aasm_2015_1a
+    - desaturation_threshold: desat_3pct
+    - arousal_requirement: or_arousal
+    - psg_type: type_i
+  confidence: high
+  notes: &quot;Parsed from compositional tag&quot;
+</code></pre>
+<h3 id="3-obstructive-ahi-by-position">3. Obstructive AHI by Position</h3>
+<pre><code class="language-yaml">source:
+  dataset: MESA
+  variable: nsrr_oahi_hp3u_pb
+  label: &quot;Obstructive Apnea-Hypopnea Index for supine sleep&quot;
+mapping:
+  canonical_slot: ahi
+  modifiers:
+    - apnea_type: obstructive
+    - hypopnea_definition: desat_3_only
+    - body_position: supine
+  confidence: exact
+</code></pre>
+<h3 id="4-sleep-stage-percentage">4. Sleep Stage Percentage</h3>
+<pre><code class="language-yaml">source:
+  dataset: SHHS
+  variable: nsrr_pctdursp_sr
+  label: &quot;Percentage of total sleep duration (i.e., total sleep time, TST) in REM from polysomnography&quot;
+mapping:
+  canonical_slot: sleep_stage_percent
+  modifiers:
+    - sleep_stage: rem
+  confidence: exact
+</code></pre>
+<h3 id="5-oxygen-saturation-mean">5. Oxygen Saturation Mean</h3>
+<pre><code class="language-yaml">source:
+  dataset: CFS
+  variable: avglvlsa_f1t1
+  label: &quot;Average oxygen saturation level in total sleep duration from type I polysomnography&quot;
+mapping:
+  canonical_slot: spo2_mean_pct
+  modifiers:
+    - summary_statistic: mean
+    - sleep_stage: all_sleep
+    - psg_type: type_i
+  confidence: high
+</code></pre>
+<h3 id="6-psqi-component-score">6. PSQI Component Score</h3>
+<pre><code class="language-yaml">source:
+  dataset: HCHS
+  variable: sleep_quality
+  label: &quot;Pittsburgh Sleep Quality Index: Rate overall sleep quality last month&quot;
+  concept_path: &quot;Sleep Questionnaires/General and Sleep Disorder Screening/Pittsburgh Sleep Quality Index (PSQI)&quot;
+mapping:
+  canonical_slot: null
+  class: SurveyItemResponse
+  instrument_id: PSQI
+  item_id: &quot;component_1&quot;
+  confidence: high
+  notes: &quot;Maps to PSQI Component 1 (Subjective sleep quality)&quot;
+</code></pre>
+<h3 id="7-ces-d-item-response">7. CES-D Item Response</h3>
+<pre><code class="language-yaml">source:
+  dataset: MESA
+  variable: cesd_6
+  label: &quot;Center for Epidemiologic Studies Depression Scale: Over the past 2 weeks, I felt depressed.&quot;
+mapping:
+  canonical_slot: null
+  class: SurveyItemResponse
+  instrument_id: CES-D
+  item_id: &quot;6&quot;
+  confidence: exact
+</code></pre>
+<h3 id="8-plm-index">8. PLM Index</h3>
+<pre><code class="language-yaml">source:
+  dataset: MROS
+  variable: plmindex
+  label: &quot;Periodic limb movement index - Number of periodic limb movement per hour of sleep from type I polysomnography&quot;
+mapping:
+  canonical_slot: plm_index
+  modifiers:
+    - sleep_stage: all_sleep
+    - psg_type: type_i
+  confidence: high
+</code></pre>
+<h3 id="9-body-position-duration">9. Body Position Duration</h3>
+<pre><code class="language-yaml">source:
+  dataset: SHHS
+  variable: supinep
+  label: &quot;Percentage duration of sleep in supine position from type I polysomnography&quot;
+mapping:
+  canonical_slot: supine_percent
+  modifiers:
+    - psg_type: type_i
+  confidence: exact
+</code></pre>
+<h3 id="10-dataset-local-variable-laboratory-test">10. Dataset-Local Variable (laboratory test)</h3>
+<pre><code class="language-yaml">source:
+  dataset: ABC
+  variable: active_ghrelin
+  label: &quot;Active Ghrelin&quot;
+  concept_path: &quot;Clinical Data/Laboratory Tests&quot;
+  units: &quot;pg/mL&quot;
+mapping:
+  canonical_slot: null
+  class: Variable
+  confidence: dataset_local
+  notes: &quot;Laboratory biomarker not in canonical CDE set; preserved as dataset-local variable&quot;
+</code></pre>
+<h2 id="e-implementation-notes">E) Implementation Notes</h2>
+<h3 id="using-the-schema-for-cross-dataset-mapping">Using the Schema for Cross-Dataset Mapping</h3>
+<ol>
+<li><strong>Load source variables</strong> from dataset metadata (TSV files)</li>
+<li><strong>Apply mapping rules</strong> in priority order</li>
+<li><strong>Generate <code>VariableMapping</code> instances</strong> for each source variable</li>
+<li><strong>Transform data</strong> using canonical slots and modifiers</li>
+<li><strong>Store harmonized data</strong> in appropriate measurement classes</li>
+</ol>
+<h3 id="key-classes-for-data-storage">Key Classes for Data Storage</h3>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>RespiratoryEventMetric</code></td>
+<td>AHI, apnea/hypopnea indices with full modifier context</td>
+</tr>
+<tr>
+<td><code>OxygenSaturationMetric</code></td>
+<td>SpO2 measurements with modifiers</td>
+</tr>
+<tr>
+<td><code>SleepStageMetric</code></td>
+<td>Stage-stratified duration/percentage</td>
+</tr>
+<tr>
+<td><code>SleepStudyRecord</code></td>
+<td>Complete PSG summary for a subject-visit</td>
+</tr>
+<tr>
+<td><code>SurveyItemResponse</code></td>
+<td>Individual questionnaire item responses</td>
+</tr>
+<tr>
+<td><code>SurveyScore</code></td>
+<td>Computed questionnaire scores</td>
+</tr>
+<tr>
+<td><code>Variable</code></td>
+<td>Dataset-local variables not mapped to canonical CDEs</td>
+</tr>
+<tr>
+<td><code>VariableMapping</code></td>
+<td>Documentation of source→canonical mappings</td>
+</tr>
+</tbody>
+</table>
+<h3 id="quality-checks">Quality Checks</h3>
+<p>Before finalizing mappings:
+- Verify total canonical slots &lt; 200 (target: 40-120)
+- Check no slot name has &gt;5 concatenated components
+- Confirm questionnaire items use <code>SurveyItemResponse</code>, not individual slots
+- Validate modifier combinations are clinically meaningful</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.tabs.link"], "search": "../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>

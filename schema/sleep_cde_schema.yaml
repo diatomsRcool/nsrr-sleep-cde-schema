@@ -1,0 +1,3241 @@
+name: sleep-cde-schema
+description: 'A compact, reusable LinkML schema for sleep research common data elements
+  (CDEs). Designed to support cross-dataset harmonization by separating measurement
+  semantics from acquisition/scoring protocol modifiers. Target: 40-120 canonical
+  CDEs organized into ~20 concept groups, with explicit modifier axes for sleep stage,
+  body position, respiratory event definitions, and PSG type.'
+title: Sleep Common Data Elements Schema
+id: https://w3id.org/nsrr/sleep-cde
+version: 2.0.0
+imports:
+- linkml:types
+license: MIT
+prefixes:
+  sleep:
+    prefix_prefix: sleep
+    prefix_reference: https://w3id.org/nsrr/sleep-cde/
+  linkml:
+    prefix_prefix: linkml
+    prefix_reference: https://w3id.org/linkml/
+  schema:
+    prefix_prefix: schema
+    prefix_reference: http://schema.org/
+  NCIT:
+    prefix_prefix: NCIT
+    prefix_reference: http://purl.obolibrary.org/obo/NCIT_
+  HP:
+    prefix_prefix: HP
+    prefix_reference: http://purl.obolibrary.org/obo/HP_
+  SNOMED:
+    prefix_prefix: SNOMED
+    prefix_reference: http://snomed.info/id/
+  LOINC:
+    prefix_prefix: LOINC
+    prefix_reference: https://loinc.org/
+default_prefix: sleep
+default_range: string
+types:
+  string:
+    name: string
+    definition_uri: https://w3id.org/linkml/String
+    description: A character string
+    notes:
+    - In RDF serializations, a slot with range of string is treated as a literal or
+      type xsd:string.   If you are authoring schemas in LinkML YAML, the type is
+      referenced with the lower case "string".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    exact_mappings:
+    - schema:Text
+    base: str
+    uri: xsd:string
+  integer:
+    name: integer
+    definition_uri: https://w3id.org/linkml/Integer
+    description: An integer
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "integer".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    exact_mappings:
+    - schema:Integer
+    base: int
+    uri: xsd:integer
+  boolean:
+    name: boolean
+    definition_uri: https://w3id.org/linkml/Boolean
+    description: A binary (true or false) value
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "boolean".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    exact_mappings:
+    - schema:Boolean
+    base: Bool
+    uri: xsd:boolean
+    repr: bool
+  float:
+    name: float
+    definition_uri: https://w3id.org/linkml/Float
+    description: A real number that conforms to the xsd:float specification
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "float".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    exact_mappings:
+    - schema:Float
+    base: float
+    uri: xsd:float
+  double:
+    name: double
+    definition_uri: https://w3id.org/linkml/Double
+    description: A real number that conforms to the xsd:double specification
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "double".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    close_mappings:
+    - schema:Float
+    base: float
+    uri: xsd:double
+  decimal:
+    name: decimal
+    definition_uri: https://w3id.org/linkml/Decimal
+    description: A real number with arbitrary precision that conforms to the xsd:decimal
+      specification
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "decimal".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    broad_mappings:
+    - schema:Number
+    base: Decimal
+    uri: xsd:decimal
+  time:
+    name: time
+    definition_uri: https://w3id.org/linkml/Time
+    description: A time object represents a (local) time of day, independent of any
+      particular day
+    notes:
+    - URI is dateTime because OWL reasoners do not work with straight date or time
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "time".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    exact_mappings:
+    - schema:Time
+    base: XSDTime
+    uri: xsd:time
+    repr: str
+  date:
+    name: date
+    definition_uri: https://w3id.org/linkml/Date
+    description: a date (year, month and day) in an idealized calendar
+    notes:
+    - URI is dateTime because OWL reasoners don't work with straight date or time
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "date".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    exact_mappings:
+    - schema:Date
+    base: XSDDate
+    uri: xsd:date
+    repr: str
+  datetime:
+    name: datetime
+    definition_uri: https://w3id.org/linkml/Datetime
+    description: The combination of a date and time
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "datetime".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    exact_mappings:
+    - schema:DateTime
+    base: XSDDateTime
+    uri: xsd:dateTime
+    repr: str
+  date_or_datetime:
+    name: date_or_datetime
+    definition_uri: https://w3id.org/linkml/DateOrDatetime
+    description: Either a date or a datetime
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "date_or_datetime".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: str
+    uri: linkml:DateOrDatetime
+    repr: str
+  uriorcurie:
+    name: uriorcurie
+    definition_uri: https://w3id.org/linkml/Uriorcurie
+    description: a URI or a CURIE
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "uriorcurie".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: URIorCURIE
+    uri: xsd:anyURI
+    repr: str
+  curie:
+    name: curie
+    definition_uri: https://w3id.org/linkml/Curie
+    conforms_to: https://www.w3.org/TR/curie/
+    description: a compact URI
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "curie".
+    comments:
+    - in RDF serializations this MUST be expanded to a URI
+    - in non-RDF serializations MAY be serialized as the compact representation
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: Curie
+    uri: xsd:string
+    repr: str
+  uri:
+    name: uri
+    definition_uri: https://w3id.org/linkml/Uri
+    conforms_to: https://www.ietf.org/rfc/rfc3987.txt
+    description: a complete URI
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "uri".
+    comments:
+    - in RDF serializations a slot with range of uri is treated as a literal or type
+      xsd:anyURI unless it is an identifier or a reference to an identifier, in which
+      case it is translated directly to a node
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    close_mappings:
+    - schema:URL
+    base: URI
+    uri: xsd:anyURI
+    repr: str
+  ncname:
+    name: ncname
+    definition_uri: https://w3id.org/linkml/Ncname
+    description: Prefix part of CURIE
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "ncname".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: NCName
+    uri: xsd:string
+    repr: str
+  objectidentifier:
+    name: objectidentifier
+    definition_uri: https://w3id.org/linkml/Objectidentifier
+    description: A URI or CURIE that represents an object in the model.
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "objectidentifier".
+    comments:
+    - Used for inheritance and type checking
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: ElementIdentifier
+    uri: shex:iri
+    repr: str
+  nodeidentifier:
+    name: nodeidentifier
+    definition_uri: https://w3id.org/linkml/Nodeidentifier
+    description: A URI, CURIE or BNODE that represents a node in a model.
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "nodeidentifier".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: NodeIdentifier
+    uri: shex:nonLiteral
+    repr: str
+  jsonpointer:
+    name: jsonpointer
+    definition_uri: https://w3id.org/linkml/Jsonpointer
+    conforms_to: https://datatracker.ietf.org/doc/html/rfc6901
+    description: A string encoding a JSON Pointer. The value of the string MUST conform
+      to JSON Point syntax and SHOULD dereference to a valid object within the current
+      instance document when encoded in tree form.
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "jsonpointer".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: str
+    uri: xsd:string
+    repr: str
+  jsonpath:
+    name: jsonpath
+    definition_uri: https://w3id.org/linkml/Jsonpath
+    conforms_to: https://www.ietf.org/archive/id/draft-goessner-dispatch-jsonpath-00.html
+    description: A string encoding a JSON Path. The value of the string MUST conform
+      to JSON Point syntax and SHOULD dereference to zero or more valid objects within
+      the current instance document when encoded in tree form.
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "jsonpath".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: str
+    uri: xsd:string
+    repr: str
+  sparqlpath:
+    name: sparqlpath
+    definition_uri: https://w3id.org/linkml/Sparqlpath
+    conforms_to: https://www.w3.org/TR/sparql11-query/#propertypaths
+    description: A string encoding a SPARQL Property Path. The value of the string
+      MUST conform to SPARQL syntax and SHOULD dereference to zero or more valid objects
+      within the current instance document when encoded as RDF.
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "sparqlpath".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: str
+    uri: xsd:string
+    repr: str
+enums:
+  SleepStageEnum:
+    name: SleepStageEnum
+    definition_uri: https://w3id.org/nsrr/sleep-cde/SleepStageEnum
+    description: Sleep stage for stratified measurements
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    permissible_values:
+      all_sleep:
+        text: all_sleep
+        description: All sleep stages combined (total sleep time)
+      wake:
+        text: wake
+        description: Wake after sleep onset
+      nrem:
+        text: nrem
+        description: All NREM sleep (N1+N2+N3)
+      n1:
+        text: n1
+        description: Stage N1 (light sleep)
+      n2:
+        text: n2
+        description: Stage N2 (intermediate sleep)
+      n3:
+        text: n3
+        description: Stage N3 (slow wave/deep sleep)
+      rem:
+        text: rem
+        description: REM sleep
+  BodyPositionEnum:
+    name: BodyPositionEnum
+    definition_uri: https://w3id.org/nsrr/sleep-cde/BodyPositionEnum
+    description: Body position during sleep for stratified measurements
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    permissible_values:
+      all_positions:
+        text: all_positions
+        description: All positions combined
+      supine:
+        text: supine
+        description: Supine (back) position
+      non_supine:
+        text: non_supine
+        description: Non-supine (lateral/prone combined)
+      lateral:
+        text: lateral
+        description: Lateral (side) position
+      prone:
+        text: prone
+        description: Prone (stomach) position
+      upright:
+        text: upright
+        description: Upright/sitting position
+  PSGTypeEnum:
+    name: PSGTypeEnum
+    definition_uri: https://w3id.org/nsrr/sleep-cde/PSGTypeEnum
+    description: Type of polysomnography study
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    permissible_values:
+      type_i:
+        text: type_i
+        description: Type I attended in-lab PSG with technician
+      type_ii:
+        text: type_ii
+        description: Type II unattended comprehensive portable PSG
+      type_iii:
+        text: type_iii
+        description: Type III limited channel home sleep test
+      type_iv:
+        text: type_iv
+        description: Type IV single/dual channel (oximetry-based)
+      actigraphy:
+        text: actigraphy
+        description: Actigraphy-based sleep estimation
+      questionnaire:
+        text: questionnaire
+        description: Self-reported/questionnaire-based
+  ApneaTypeEnum:
+    name: ApneaTypeEnum
+    definition_uri: https://w3id.org/nsrr/sleep-cde/ApneaTypeEnum
+    description: Classification of apnea events
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    permissible_values:
+      all:
+        text: all
+        description: All apnea types combined (obstructive + central + mixed)
+      obstructive:
+        text: obstructive
+        description: Obstructive apneas only
+      central:
+        text: central
+        description: Central apneas only
+      mixed:
+        text: mixed
+        description: Mixed apneas only
+  HypopneaDefinitionEnum:
+    name: HypopneaDefinitionEnum
+    definition_uri: https://w3id.org/nsrr/sleep-cde/HypopneaDefinitionEnum
+    description: Hypopnea scoring rule definition
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    permissible_values:
+      aasm_2007_recommended:
+        text: aasm_2007_recommended
+        description: AASM 2007 - 50% flow reduction + 3% desat OR arousal
+      aasm_2007_alternative:
+        text: aasm_2007_alternative
+        description: AASM 2007 - 50% flow reduction + 4% desat
+      aasm_2012:
+        text: aasm_2012
+        description: AASM 2012 - 30% flow reduction + 3% desat OR arousal
+      aasm_2015_1a:
+        text: aasm_2015_1a
+        description: AASM 2015 v2.2 Rule 1A - 30% flow reduction + 3% desat OR arousal
+      aasm_2015_1b:
+        text: aasm_2015_1b
+        description: AASM 2015 v2.2 Rule 1B - 30% flow reduction + 4% desat
+      chicago_1999:
+        text: chicago_1999
+        description: Chicago 1999 - discernible flow reduction + 3% desat OR arousal
+      desat_3_only:
+        text: desat_3_only
+        description: Any reduction with 3% desaturation (no arousal criterion)
+      desat_4_only:
+        text: desat_4_only
+        description: Any reduction with 4% desaturation (no arousal criterion)
+      any_reduction:
+        text: any_reduction
+        description: Any discernible flow reduction (no desat/arousal criterion)
+  DesaturationThresholdEnum:
+    name: DesaturationThresholdEnum
+    definition_uri: https://w3id.org/nsrr/sleep-cde/DesaturationThresholdEnum
+    description: Oxygen desaturation threshold for event scoring
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    permissible_values:
+      none:
+        text: none
+        description: No desaturation threshold applied
+      desat_2pct:
+        text: desat_2pct
+        description: 2% desaturation threshold
+      desat_3pct:
+        text: desat_3pct
+        description: 3% desaturation threshold
+      desat_4pct:
+        text: desat_4pct
+        description: 4% desaturation threshold
+      desat_5pct:
+        text: desat_5pct
+        description: 5% desaturation threshold
+  ArousalRequirementEnum:
+    name: ArousalRequirementEnum
+    definition_uri: https://w3id.org/nsrr/sleep-cde/ArousalRequirementEnum
+    description: Arousal criterion for respiratory event scoring
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    permissible_values:
+      with_or_without:
+        text: with_or_without
+        description: Arousal not required (with or without arousal)
+      required:
+        text: required
+        description: Arousal required for event
+      or_arousal:
+        text: or_arousal
+        description: Either desaturation OR arousal required
+      and_arousal:
+        text: and_arousal
+        description: Both desaturation AND arousal required
+  SummaryStatisticEnum:
+    name: SummaryStatisticEnum
+    definition_uri: https://w3id.org/nsrr/sleep-cde/SummaryStatisticEnum
+    description: Type of summary statistic
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    permissible_values:
+      value:
+        text: value
+        description: Single value or raw measurement
+      mean:
+        text: mean
+        description: Arithmetic mean
+      median:
+        text: median
+        description: Median value
+      min:
+        text: min
+        description: Minimum value
+      max:
+        text: max
+        description: Maximum value
+      sd:
+        text: sd
+        description: Standard deviation
+      count:
+        text: count
+        description: Count/number of events
+      sum:
+        text: sum
+        description: Sum total
+      percent:
+        text: percent
+        description: Percentage
+      index:
+        text: index
+        description: Rate per hour (events/hour)
+  TimeFrameEnum:
+    name: TimeFrameEnum
+    definition_uri: https://w3id.org/nsrr/sleep-cde/TimeFrameEnum
+    description: Time period for measurement aggregation
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    permissible_values:
+      full_night:
+        text: full_night
+        description: Entire recording/sleep period
+      first_half:
+        text: first_half
+        description: First half of recording
+      second_half:
+        text: second_half
+        description: Second half of recording
+      weekday:
+        text: weekday
+        description: Weekday average
+      weekend:
+        text: weekend
+        description: Weekend average
+      weekly:
+        text: weekly
+        description: Full week average
+      past_month:
+        text: past_month
+        description: Past month recall period
+      past_week:
+        text: past_week
+        description: Past week recall period
+  SexEnum:
+    name: SexEnum
+    definition_uri: https://w3id.org/nsrr/sleep-cde/SexEnum
+    description: Biological sex
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    permissible_values:
+      male:
+        text: male
+        description: Male
+      female:
+        text: female
+        description: Female
+      intersex:
+        text: intersex
+        description: Intersex
+      unknown:
+        text: unknown
+        description: Unknown
+  EthnicityEnum:
+    name: EthnicityEnum
+    definition_uri: https://w3id.org/nsrr/sleep-cde/EthnicityEnum
+    description: Ethnicity classification
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    permissible_values:
+      hispanic_or_latino:
+        text: hispanic_or_latino
+        description: Hispanic or Latino
+      not_hispanic_or_latino:
+        text: not_hispanic_or_latino
+        description: Not Hispanic or Latino
+      unknown:
+        text: unknown
+        description: Unknown or not reported
+  RaceEnum:
+    name: RaceEnum
+    definition_uri: https://w3id.org/nsrr/sleep-cde/RaceEnum
+    description: Race classification
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    permissible_values:
+      white:
+        text: white
+        description: White
+      black_or_african_american:
+        text: black_or_african_american
+        description: Black or African American
+      asian:
+        text: asian
+        description: Asian
+      american_indian_or_alaska_native:
+        text: american_indian_or_alaska_native
+        description: American Indian or Alaska Native
+      native_hawaiian_or_pacific_islander:
+        text: native_hawaiian_or_pacific_islander
+        description: Native Hawaiian or Other Pacific Islander
+      multiple:
+        text: multiple
+        description: Multiple races
+      other:
+        text: other
+        description: Other race
+      unknown:
+        text: unknown
+        description: Unknown or not reported
+  YesNoEnum:
+    name: YesNoEnum
+    definition_uri: https://w3id.org/nsrr/sleep-cde/YesNoEnum
+    description: Binary yes/no response
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    permissible_values:
+      'yes':
+        text: 'yes'
+        description: 'True'
+      'no':
+        text: 'no'
+        description: 'False'
+  YesNoUnknownEnum:
+    name: YesNoUnknownEnum
+    definition_uri: https://w3id.org/nsrr/sleep-cde/YesNoUnknownEnum
+    description: Yes/no with unknown option
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    permissible_values:
+      'yes':
+        text: 'yes'
+        description: 'True'
+      'no':
+        text: 'no'
+        description: 'False'
+      unknown:
+        text: unknown
+        description: Unknown or not applicable
+  FrequencyEnum:
+    name: FrequencyEnum
+    definition_uri: https://w3id.org/nsrr/sleep-cde/FrequencyEnum
+    description: Frequency response scale (general)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    permissible_values:
+      never:
+        text: never
+        description: Never or not at all
+      rarely:
+        text: rarely
+        description: Rarely (less than once per week)
+      sometimes:
+        text: sometimes
+        description: Sometimes (1-2 times per week)
+      often:
+        text: often
+        description: Often (3-4 times per week)
+      always:
+        text: always
+        description: Always or almost always
+  LikertFrequency4Enum:
+    name: LikertFrequency4Enum
+    definition_uri: https://w3id.org/nsrr/sleep-cde/LikertFrequency4Enum
+    description: 4-point Likert frequency scale
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    permissible_values:
+      not_during_past_month:
+        text: not_during_past_month
+        description: Not during the past month
+      less_than_once_a_week:
+        text: less_than_once_a_week
+        description: Less than once a week
+      once_or_twice_a_week:
+        text: once_or_twice_a_week
+        description: Once or twice a week
+      three_or_more_times_a_week:
+        text: three_or_more_times_a_week
+        description: Three or more times a week
+  LikertAgreement5Enum:
+    name: LikertAgreement5Enum
+    definition_uri: https://w3id.org/nsrr/sleep-cde/LikertAgreement5Enum
+    description: 5-point Likert agreement scale
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    permissible_values:
+      strongly_disagree:
+        text: strongly_disagree
+        description: Strongly disagree
+      disagree:
+        text: disagree
+        description: Disagree
+      neutral:
+        text: neutral
+        description: Neither agree nor disagree
+      agree:
+        text: agree
+        description: Agree
+      strongly_agree:
+        text: strongly_agree
+        description: Strongly agree
+  SleepQualityEnum:
+    name: SleepQualityEnum
+    definition_uri: https://w3id.org/nsrr/sleep-cde/SleepQualityEnum
+    description: Subjective sleep quality rating
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    permissible_values:
+      very_good:
+        text: very_good
+        description: Very good
+      fairly_good:
+        text: fairly_good
+        description: Fairly good
+      fairly_bad:
+        text: fairly_bad
+        description: Fairly bad
+      very_bad:
+        text: very_bad
+        description: Very bad
+  ESSResponseEnum:
+    name: ESSResponseEnum
+    definition_uri: https://w3id.org/nsrr/sleep-cde/ESSResponseEnum
+    description: Epworth Sleepiness Scale response options
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    permissible_values:
+      no_chance:
+        text: no_chance
+        description: Would never doze (0)
+      slight_chance:
+        text: slight_chance
+        description: Slight chance of dozing (1)
+      moderate_chance:
+        text: moderate_chance
+        description: Moderate chance of dozing (2)
+      high_chance:
+        text: high_chance
+        description: High chance of dozing (3)
+  CESDResponseEnum:
+    name: CESDResponseEnum
+    definition_uri: https://w3id.org/nsrr/sleep-cde/CESDResponseEnum
+    description: CES-D frequency response scale
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    permissible_values:
+      rarely:
+        text: rarely
+        description: Rarely or none of the time (less than 1 day)
+      some:
+        text: some
+        description: Some or a little of the time (1-2 days)
+      occasionally:
+        text: occasionally
+        description: Occasionally or moderate amount (3-4 days)
+      most:
+        text: most
+        description: Most or all of the time (5-7 days)
+  PHQResponseEnum:
+    name: PHQResponseEnum
+    definition_uri: https://w3id.org/nsrr/sleep-cde/PHQResponseEnum
+    description: PHQ-9/PHQ-8 frequency response scale
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    permissible_values:
+      not_at_all:
+        text: not_at_all
+        description: Not at all (0)
+      several_days:
+        text: several_days
+        description: Several days (1)
+      more_than_half:
+        text: more_than_half
+        description: More than half the days (2)
+      nearly_every_day:
+        text: nearly_every_day
+        description: Nearly every day (3)
+  GADResponseEnum:
+    name: GADResponseEnum
+    definition_uri: https://w3id.org/nsrr/sleep-cde/GADResponseEnum
+    description: GAD-7 frequency response scale
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    permissible_values:
+      not_at_all:
+        text: not_at_all
+        description: Not at all (0)
+      several_days:
+        text: several_days
+        description: Several days (1)
+      more_than_half:
+        text: more_than_half
+        description: More than half the days (2)
+      nearly_every_day:
+        text: nearly_every_day
+        description: Nearly every day (3)
+slots:
+  id:
+    name: id
+    definition_uri: https://w3id.org/nsrr/sleep-cde/id
+    description: Unique identifier
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:id
+    identifier: true
+    owner: VariableMapping
+    domain_of:
+    - Dataset
+    - Variable
+    - VariableValue
+    - CodeIdentifier
+    - AcquisitionProtocol
+    - ScoringProtocol
+    - Instrument
+    - SurveyItemResponse
+    - SurveyScore
+    - SleepStudyRecord
+    - SleepStageMetric
+    - RespiratoryEventMetric
+    - OxygenSaturationMetric
+    - ArousalMetric
+    - LimbMovementMetric
+    - BodyPositionMetric
+    - HeartRateMetric
+    - SubjectDemographics
+    - SubjectAnthropometry
+    - SubjectVitalSigns
+    - SubjectMedicalHistory
+    - CPAPAdherence
+    - ActigraphyRecord
+    - VariableMapping
+    range: string
+    required: true
+  dataset_id:
+    name: dataset_id
+    definition_uri: https://w3id.org/nsrr/sleep-cde/dataset_id
+    description: Identifier for the source dataset/study
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:dataset_id
+    owner: VariableMapping
+    domain_of:
+    - Variable
+    - SleepStudyRecord
+    - VariableMapping
+    range: string
+  variable_id:
+    name: variable_id
+    definition_uri: https://w3id.org/nsrr/sleep-cde/variable_id
+    description: Original variable name/identifier from source dataset
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:variable_id
+    owner: VariableValue
+    domain_of:
+    - Variable
+    - VariableValue
+    range: string
+  subject_id:
+    name: subject_id
+    definition_uri: https://w3id.org/nsrr/sleep-cde/subject_id
+    description: Participant/subject identifier
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:subject_id
+    owner: ActigraphyRecord
+    domain_of:
+    - VariableValue
+    - SurveyItemResponse
+    - SurveyScore
+    - SleepStudyRecord
+    - SleepStageMetric
+    - RespiratoryEventMetric
+    - OxygenSaturationMetric
+    - ArousalMetric
+    - LimbMovementMetric
+    - BodyPositionMetric
+    - HeartRateMetric
+    - SubjectDemographics
+    - SubjectAnthropometry
+    - SubjectVitalSigns
+    - SubjectMedicalHistory
+    - CPAPAdherence
+    - ActigraphyRecord
+    range: string
+  visit_id:
+    name: visit_id
+    definition_uri: https://w3id.org/nsrr/sleep-cde/visit_id
+    description: Visit/timepoint identifier
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:visit_id
+    owner: ActigraphyRecord
+    domain_of:
+    - VariableValue
+    - SurveyItemResponse
+    - SurveyScore
+    - SleepStudyRecord
+    - SleepStageMetric
+    - RespiratoryEventMetric
+    - OxygenSaturationMetric
+    - ArousalMetric
+    - LimbMovementMetric
+    - BodyPositionMetric
+    - HeartRateMetric
+    - SubjectDemographics
+    - SubjectAnthropometry
+    - SubjectVitalSigns
+    - CPAPAdherence
+    - ActigraphyRecord
+    range: string
+  name:
+    name: name
+    definition_uri: https://w3id.org/nsrr/sleep-cde/name
+    description: Human-readable name
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:name
+    owner: Instrument
+    domain_of:
+    - Dataset
+    - AcquisitionProtocol
+    - ScoringProtocol
+    - Instrument
+    range: string
+  label:
+    name: label
+    definition_uri: https://w3id.org/nsrr/sleep-cde/label
+    description: Display label for variable
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:label
+    owner: Variable
+    domain_of:
+    - Variable
+    range: string
+  description:
+    name: description
+    definition_uri: https://w3id.org/nsrr/sleep-cde/description
+    description: Detailed description
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:description
+    owner: Instrument
+    domain_of:
+    - Dataset
+    - Variable
+    - AcquisitionProtocol
+    - ScoringProtocol
+    - Instrument
+    range: string
+  concept_path:
+    name: concept_path
+    definition_uri: https://w3id.org/nsrr/sleep-cde/concept_path
+    description: Hierarchical concept path (folder structure)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:concept_path
+    owner: Variable
+    domain_of:
+    - Variable
+    range: string
+  tags:
+    name: tags
+    definition_uri: https://w3id.org/nsrr/sleep-cde/tags
+    description: Concept tags associated with variable
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:tags
+    owner: Variable
+    domain_of:
+    - Dataset
+    - Variable
+    range: string
+    multivalued: true
+  units:
+    name: units
+    definition_uri: https://w3id.org/nsrr/sleep-cde/units
+    description: Unit of measurement
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:units
+    owner: Variable
+    domain_of:
+    - Variable
+    range: string
+  value_type:
+    name: value_type
+    definition_uri: https://w3id.org/nsrr/sleep-cde/value_type
+    description: Data type of the value
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:value_type
+    owner: Variable
+    domain_of:
+    - Variable
+    range: string
+  sleep_stage:
+    name: sleep_stage
+    definition_uri: https://w3id.org/nsrr/sleep-cde/sleep_stage
+    description: Sleep stage context for measurement
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:sleep_stage
+    owner: HeartRateMetric
+    domain_of:
+    - SleepStageMetric
+    - RespiratoryEventMetric
+    - OxygenSaturationMetric
+    - ArousalMetric
+    - LimbMovementMetric
+    - HeartRateMetric
+    range: SleepStageEnum
+  body_position:
+    name: body_position
+    definition_uri: https://w3id.org/nsrr/sleep-cde/body_position
+    description: Body position context for measurement
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:body_position
+    owner: HeartRateMetric
+    domain_of:
+    - RespiratoryEventMetric
+    - OxygenSaturationMetric
+    - ArousalMetric
+    - HeartRateMetric
+    range: BodyPositionEnum
+  psg_type:
+    name: psg_type
+    definition_uri: https://w3id.org/nsrr/sleep-cde/psg_type
+    description: Type of polysomnography study
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:psg_type
+    owner: HeartRateMetric
+    domain_of:
+    - AcquisitionProtocol
+    - SleepStudyRecord
+    - SleepStageMetric
+    - RespiratoryEventMetric
+    - OxygenSaturationMetric
+    - ArousalMetric
+    - LimbMovementMetric
+    - BodyPositionMetric
+    - HeartRateMetric
+    range: PSGTypeEnum
+  apnea_type:
+    name: apnea_type
+    definition_uri: https://w3id.org/nsrr/sleep-cde/apnea_type
+    description: Type of apnea events included
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:apnea_type
+    owner: RespiratoryEventMetric
+    domain_of:
+    - RespiratoryEventMetric
+    range: ApneaTypeEnum
+  hypopnea_definition:
+    name: hypopnea_definition
+    definition_uri: https://w3id.org/nsrr/sleep-cde/hypopnea_definition
+    description: Hypopnea scoring rule used
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:hypopnea_definition
+    owner: RespiratoryEventMetric
+    domain_of:
+    - ScoringProtocol
+    - RespiratoryEventMetric
+    range: HypopneaDefinitionEnum
+  desaturation_threshold:
+    name: desaturation_threshold
+    definition_uri: https://w3id.org/nsrr/sleep-cde/desaturation_threshold
+    description: Oxygen desaturation threshold for event scoring
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:desaturation_threshold
+    owner: OxygenSaturationMetric
+    domain_of:
+    - ScoringProtocol
+    - RespiratoryEventMetric
+    - OxygenSaturationMetric
+    range: DesaturationThresholdEnum
+  arousal_requirement:
+    name: arousal_requirement
+    definition_uri: https://w3id.org/nsrr/sleep-cde/arousal_requirement
+    description: Arousal criterion for event scoring
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:arousal_requirement
+    owner: RespiratoryEventMetric
+    domain_of:
+    - ScoringProtocol
+    - RespiratoryEventMetric
+    range: ArousalRequirementEnum
+  summary_statistic:
+    name: summary_statistic
+    definition_uri: https://w3id.org/nsrr/sleep-cde/summary_statistic
+    description: Type of summary statistic
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:summary_statistic
+    owner: OxygenSaturationMetric
+    domain_of:
+    - RespiratoryEventMetric
+    - OxygenSaturationMetric
+    range: SummaryStatisticEnum
+  time_frame:
+    name: time_frame
+    definition_uri: https://w3id.org/nsrr/sleep-cde/time_frame
+    description: Time period for aggregation
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:time_frame
+    owner: ActigraphyRecord
+    domain_of:
+    - HeartRateMetric
+    - CPAPAdherence
+    - ActigraphyRecord
+    range: TimeFrameEnum
+  age_years:
+    name: age_years
+    definition_uri: https://w3id.org/nsrr/sleep-cde/age_years
+    description: Age in years
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:age_years
+    owner: SubjectDemographics
+    domain_of:
+    - SubjectDemographics
+    range: float
+  age_months:
+    name: age_months
+    definition_uri: https://w3id.org/nsrr/sleep-cde/age_months
+    description: Age in months (for infants/children)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:age_months
+    owner: SubjectDemographics
+    domain_of:
+    - SubjectDemographics
+    range: float
+  age_gt89:
+    name: age_gt89
+    definition_uri: https://w3id.org/nsrr/sleep-cde/age_gt89
+    description: Flag indicating age greater than 89 years (for de-identification)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:age_gt89
+    owner: SubjectDemographics
+    domain_of:
+    - SubjectDemographics
+    range: YesNoEnum
+  sex:
+    name: sex
+    definition_uri: https://w3id.org/nsrr/sleep-cde/sex
+    description: Biological sex
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:sex
+    owner: SubjectDemographics
+    domain_of:
+    - SubjectDemographics
+    range: SexEnum
+  ethnicity:
+    name: ethnicity
+    definition_uri: https://w3id.org/nsrr/sleep-cde/ethnicity
+    description: Ethnicity
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:ethnicity
+    owner: SubjectDemographics
+    domain_of:
+    - SubjectDemographics
+    range: EthnicityEnum
+  race:
+    name: race
+    definition_uri: https://w3id.org/nsrr/sleep-cde/race
+    description: Race
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:race
+    owner: SubjectDemographics
+    domain_of:
+    - SubjectDemographics
+    range: RaceEnum
+  education_years:
+    name: education_years
+    definition_uri: https://w3id.org/nsrr/sleep-cde/education_years
+    description: Years of education completed
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:education_years
+    owner: SubjectDemographics
+    domain_of:
+    - SubjectDemographics
+    range: integer
+  employment_status:
+    name: employment_status
+    definition_uri: https://w3id.org/nsrr/sleep-cde/employment_status
+    description: Current employment status
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:employment_status
+    owner: SubjectDemographics
+    domain_of:
+    - SubjectDemographics
+    range: string
+  marital_status:
+    name: marital_status
+    definition_uri: https://w3id.org/nsrr/sleep-cde/marital_status
+    description: Marital status
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:marital_status
+    owner: SubjectDemographics
+    domain_of:
+    - SubjectDemographics
+    range: string
+  household_income:
+    name: household_income
+    definition_uri: https://w3id.org/nsrr/sleep-cde/household_income
+    description: Household income category
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:household_income
+    owner: SubjectDemographics
+    domain_of:
+    - SubjectDemographics
+    range: string
+  height_cm:
+    name: height_cm
+    definition_uri: https://w3id.org/nsrr/sleep-cde/height_cm
+    description: Height in centimeters
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:height_cm
+    owner: SubjectAnthropometry
+    domain_of:
+    - SubjectAnthropometry
+    range: float
+  weight_kg:
+    name: weight_kg
+    definition_uri: https://w3id.org/nsrr/sleep-cde/weight_kg
+    description: Weight in kilograms
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:weight_kg
+    owner: SubjectAnthropometry
+    domain_of:
+    - SubjectAnthropometry
+    range: float
+  bmi:
+    name: bmi
+    definition_uri: https://w3id.org/nsrr/sleep-cde/bmi
+    description: Body mass index (kg/m^2)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:bmi
+    owner: SubjectAnthropometry
+    domain_of:
+    - SubjectAnthropometry
+    range: float
+  bmi_percentile:
+    name: bmi_percentile
+    definition_uri: https://w3id.org/nsrr/sleep-cde/bmi_percentile
+    description: BMI percentile (for pediatric)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:bmi_percentile
+    owner: SubjectAnthropometry
+    domain_of:
+    - SubjectAnthropometry
+    range: float
+  bmi_zscore:
+    name: bmi_zscore
+    definition_uri: https://w3id.org/nsrr/sleep-cde/bmi_zscore
+    description: BMI z-score (for pediatric)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:bmi_zscore
+    owner: SubjectAnthropometry
+    domain_of:
+    - SubjectAnthropometry
+    range: float
+  neck_circumference_cm:
+    name: neck_circumference_cm
+    definition_uri: https://w3id.org/nsrr/sleep-cde/neck_circumference_cm
+    description: Neck circumference in centimeters
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:neck_circumference_cm
+    owner: SubjectAnthropometry
+    domain_of:
+    - SubjectAnthropometry
+    range: float
+  waist_circumference_cm:
+    name: waist_circumference_cm
+    definition_uri: https://w3id.org/nsrr/sleep-cde/waist_circumference_cm
+    description: Waist circumference in centimeters
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:waist_circumference_cm
+    owner: SubjectAnthropometry
+    domain_of:
+    - SubjectAnthropometry
+    range: float
+  hip_circumference_cm:
+    name: hip_circumference_cm
+    definition_uri: https://w3id.org/nsrr/sleep-cde/hip_circumference_cm
+    description: Hip circumference in centimeters
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:hip_circumference_cm
+    owner: SubjectAnthropometry
+    domain_of:
+    - SubjectAnthropometry
+    range: float
+  waist_hip_ratio:
+    name: waist_hip_ratio
+    definition_uri: https://w3id.org/nsrr/sleep-cde/waist_hip_ratio
+    description: Waist-to-hip ratio
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:waist_hip_ratio
+    owner: SubjectAnthropometry
+    domain_of:
+    - SubjectAnthropometry
+    range: float
+  systolic_bp_mmhg:
+    name: systolic_bp_mmhg
+    definition_uri: https://w3id.org/nsrr/sleep-cde/systolic_bp_mmhg
+    description: Systolic blood pressure in mmHg
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:systolic_bp_mmhg
+    owner: SubjectVitalSigns
+    domain_of:
+    - SubjectVitalSigns
+    range: float
+  diastolic_bp_mmhg:
+    name: diastolic_bp_mmhg
+    definition_uri: https://w3id.org/nsrr/sleep-cde/diastolic_bp_mmhg
+    description: Diastolic blood pressure in mmHg
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:diastolic_bp_mmhg
+    owner: SubjectVitalSigns
+    domain_of:
+    - SubjectVitalSigns
+    range: float
+  heart_rate_bpm:
+    name: heart_rate_bpm
+    definition_uri: https://w3id.org/nsrr/sleep-cde/heart_rate_bpm
+    description: Heart rate in beats per minute
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:heart_rate_bpm
+    owner: SubjectVitalSigns
+    domain_of:
+    - SubjectVitalSigns
+    range: float
+  respiratory_rate:
+    name: respiratory_rate
+    definition_uri: https://w3id.org/nsrr/sleep-cde/respiratory_rate
+    description: Respiratory rate (breaths per minute)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:respiratory_rate
+    owner: SubjectVitalSigns
+    domain_of:
+    - SubjectVitalSigns
+    range: float
+  temperature_celsius:
+    name: temperature_celsius
+    definition_uri: https://w3id.org/nsrr/sleep-cde/temperature_celsius
+    description: Body temperature in Celsius
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:temperature_celsius
+    owner: SubjectVitalSigns
+    domain_of:
+    - SubjectVitalSigns
+    range: float
+  total_sleep_time_min:
+    name: total_sleep_time_min
+    definition_uri: https://w3id.org/nsrr/sleep-cde/total_sleep_time_min
+    description: Total sleep time (TST) in minutes
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:total_sleep_time_min
+    owner: SleepStudyRecord
+    domain_of:
+    - SleepStudyRecord
+    range: float
+  time_in_bed_min:
+    name: time_in_bed_min
+    definition_uri: https://w3id.org/nsrr/sleep-cde/time_in_bed_min
+    description: Time in bed (TIB) in minutes
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:time_in_bed_min
+    owner: SleepStudyRecord
+    domain_of:
+    - SleepStudyRecord
+    range: float
+  sleep_efficiency_pct:
+    name: sleep_efficiency_pct
+    definition_uri: https://w3id.org/nsrr/sleep-cde/sleep_efficiency_pct
+    description: Sleep efficiency (TST/TIB * 100) as percentage
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:sleep_efficiency_pct
+    owner: SleepStudyRecord
+    domain_of:
+    - SleepStudyRecord
+    range: float
+  sleep_onset_latency_min:
+    name: sleep_onset_latency_min
+    definition_uri: https://w3id.org/nsrr/sleep-cde/sleep_onset_latency_min
+    description: Sleep onset latency (SOL) in minutes
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:sleep_onset_latency_min
+    owner: SleepStudyRecord
+    domain_of:
+    - SleepStudyRecord
+    range: float
+  rem_latency_min:
+    name: rem_latency_min
+    definition_uri: https://w3id.org/nsrr/sleep-cde/rem_latency_min
+    description: REM sleep latency in minutes
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:rem_latency_min
+    owner: SleepStudyRecord
+    domain_of:
+    - SleepStudyRecord
+    range: float
+  waso_min:
+    name: waso_min
+    definition_uri: https://w3id.org/nsrr/sleep-cde/waso_min
+    description: Wake after sleep onset (WASO) in minutes
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:waso_min
+    owner: SleepStudyRecord
+    domain_of:
+    - SleepStudyRecord
+    range: float
+  sleep_stage_duration_min:
+    name: sleep_stage_duration_min
+    definition_uri: https://w3id.org/nsrr/sleep-cde/sleep_stage_duration_min
+    description: Duration in specified sleep stage (minutes)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:sleep_stage_duration_min
+    owner: SleepStageMetric
+    domain_of:
+    - SleepStageMetric
+    range: float
+  sleep_stage_percent:
+    name: sleep_stage_percent
+    definition_uri: https://w3id.org/nsrr/sleep-cde/sleep_stage_percent
+    description: Percentage of TST in specified sleep stage
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:sleep_stage_percent
+    owner: SleepStageMetric
+    domain_of:
+    - SleepStageMetric
+    range: float
+  num_stage_transitions:
+    name: num_stage_transitions
+    definition_uri: https://w3id.org/nsrr/sleep-cde/num_stage_transitions
+    description: Number of sleep stage transitions
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:num_stage_transitions
+    range: integer
+  num_awakenings:
+    name: num_awakenings
+    definition_uri: https://w3id.org/nsrr/sleep-cde/num_awakenings
+    description: Number of awakenings during sleep period
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:num_awakenings
+    owner: SleepStudyRecord
+    domain_of:
+    - SleepStudyRecord
+    range: integer
+  lights_off_time:
+    name: lights_off_time
+    definition_uri: https://w3id.org/nsrr/sleep-cde/lights_off_time
+    description: Lights off / bedtime (HH:MM or decimal hours)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:lights_off_time
+    owner: SleepStudyRecord
+    domain_of:
+    - SleepStudyRecord
+    range: string
+  lights_on_time:
+    name: lights_on_time
+    definition_uri: https://w3id.org/nsrr/sleep-cde/lights_on_time
+    description: Lights on / wake time (HH:MM or decimal hours)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:lights_on_time
+    owner: SleepStudyRecord
+    domain_of:
+    - SleepStudyRecord
+    range: string
+  sleep_onset_time:
+    name: sleep_onset_time
+    definition_uri: https://w3id.org/nsrr/sleep-cde/sleep_onset_time
+    description: Sleep onset time
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:sleep_onset_time
+    owner: SleepStudyRecord
+    domain_of:
+    - SleepStudyRecord
+    range: string
+  sleep_offset_time:
+    name: sleep_offset_time
+    definition_uri: https://w3id.org/nsrr/sleep-cde/sleep_offset_time
+    description: Final awakening time
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:sleep_offset_time
+    owner: SleepStudyRecord
+    domain_of:
+    - SleepStudyRecord
+    range: string
+  sleep_midpoint:
+    name: sleep_midpoint
+    definition_uri: https://w3id.org/nsrr/sleep-cde/sleep_midpoint
+    description: Midpoint of sleep period
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:sleep_midpoint
+    range: string
+  recording_start_time:
+    name: recording_start_time
+    definition_uri: https://w3id.org/nsrr/sleep-cde/recording_start_time
+    description: PSG recording start time
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:recording_start_time
+    range: string
+  recording_duration_min:
+    name: recording_duration_min
+    definition_uri: https://w3id.org/nsrr/sleep-cde/recording_duration_min
+    description: Total recording duration in minutes
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:recording_duration_min
+    owner: SleepStudyRecord
+    domain_of:
+    - SleepStudyRecord
+    range: float
+  apnea_index:
+    name: apnea_index
+    definition_uri: https://w3id.org/nsrr/sleep-cde/apnea_index
+    description: Apnea index (apneas per hour of sleep)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:apnea_index
+    owner: RespiratoryEventMetric
+    domain_of:
+    - RespiratoryEventMetric
+    range: float
+  hypopnea_index:
+    name: hypopnea_index
+    definition_uri: https://w3id.org/nsrr/sleep-cde/hypopnea_index
+    description: Hypopnea index (hypopneas per hour of sleep)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:hypopnea_index
+    owner: RespiratoryEventMetric
+    domain_of:
+    - RespiratoryEventMetric
+    range: float
+  ahi:
+    name: ahi
+    definition_uri: https://w3id.org/nsrr/sleep-cde/ahi
+    description: Apnea-hypopnea index (AHI) - events per hour of sleep
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:ahi
+    owner: RespiratoryEventMetric
+    domain_of:
+    - RespiratoryEventMetric
+    range: float
+  rdi:
+    name: rdi
+    definition_uri: https://w3id.org/nsrr/sleep-cde/rdi
+    description: Respiratory disturbance index (RDI) - including RERAs
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:rdi
+    range: float
+  rera_index:
+    name: rera_index
+    definition_uri: https://w3id.org/nsrr/sleep-cde/rera_index
+    description: Respiratory effort-related arousal index
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:rera_index
+    range: float
+  apnea_count:
+    name: apnea_count
+    definition_uri: https://w3id.org/nsrr/sleep-cde/apnea_count
+    description: Total number of apnea events
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:apnea_count
+    owner: RespiratoryEventMetric
+    domain_of:
+    - RespiratoryEventMetric
+    range: integer
+  hypopnea_count:
+    name: hypopnea_count
+    definition_uri: https://w3id.org/nsrr/sleep-cde/hypopnea_count
+    description: Total number of hypopnea events
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:hypopnea_count
+    owner: RespiratoryEventMetric
+    domain_of:
+    - RespiratoryEventMetric
+    range: integer
+  respiratory_event_count:
+    name: respiratory_event_count
+    definition_uri: https://w3id.org/nsrr/sleep-cde/respiratory_event_count
+    description: Total number of respiratory events
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:respiratory_event_count
+    range: integer
+  mean_apnea_duration_sec:
+    name: mean_apnea_duration_sec
+    definition_uri: https://w3id.org/nsrr/sleep-cde/mean_apnea_duration_sec
+    description: Mean duration of apnea events in seconds
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:mean_apnea_duration_sec
+    range: float
+  max_apnea_duration_sec:
+    name: max_apnea_duration_sec
+    definition_uri: https://w3id.org/nsrr/sleep-cde/max_apnea_duration_sec
+    description: Maximum apnea duration in seconds
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:max_apnea_duration_sec
+    range: float
+  mean_hypopnea_duration_sec:
+    name: mean_hypopnea_duration_sec
+    definition_uri: https://w3id.org/nsrr/sleep-cde/mean_hypopnea_duration_sec
+    description: Mean duration of hypopnea events in seconds
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:mean_hypopnea_duration_sec
+    range: float
+  spo2_mean_pct:
+    name: spo2_mean_pct
+    definition_uri: https://w3id.org/nsrr/sleep-cde/spo2_mean_pct
+    description: Mean SpO2 during sleep (%)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:spo2_mean_pct
+    owner: OxygenSaturationMetric
+    domain_of:
+    - OxygenSaturationMetric
+    range: float
+  spo2_min_pct:
+    name: spo2_min_pct
+    definition_uri: https://w3id.org/nsrr/sleep-cde/spo2_min_pct
+    description: Minimum SpO2 during sleep (%)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:spo2_min_pct
+    owner: OxygenSaturationMetric
+    domain_of:
+    - OxygenSaturationMetric
+    range: float
+  spo2_nadir_pct:
+    name: spo2_nadir_pct
+    definition_uri: https://w3id.org/nsrr/sleep-cde/spo2_nadir_pct
+    description: SpO2 nadir (lowest value) during sleep (%)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:spo2_nadir_pct
+    owner: OxygenSaturationMetric
+    domain_of:
+    - OxygenSaturationMetric
+    range: float
+  spo2_baseline_pct:
+    name: spo2_baseline_pct
+    definition_uri: https://w3id.org/nsrr/sleep-cde/spo2_baseline_pct
+    description: Baseline/awake SpO2 (%)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:spo2_baseline_pct
+    owner: OxygenSaturationMetric
+    domain_of:
+    - OxygenSaturationMetric
+    range: float
+  desaturation_index:
+    name: desaturation_index
+    definition_uri: https://w3id.org/nsrr/sleep-cde/desaturation_index
+    description: Oxygen desaturation index (events per hour)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:desaturation_index
+    owner: OxygenSaturationMetric
+    domain_of:
+    - OxygenSaturationMetric
+    range: float
+  time_below_90_pct_min:
+    name: time_below_90_pct_min
+    definition_uri: https://w3id.org/nsrr/sleep-cde/time_below_90_pct_min
+    description: Time with SpO2 below 90% in minutes
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:time_below_90_pct_min
+    owner: OxygenSaturationMetric
+    domain_of:
+    - OxygenSaturationMetric
+    range: float
+  time_below_90_pct_percent:
+    name: time_below_90_pct_percent
+    definition_uri: https://w3id.org/nsrr/sleep-cde/time_below_90_pct_percent
+    description: Percentage of sleep time with SpO2 below 90%
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:time_below_90_pct_percent
+    owner: OxygenSaturationMetric
+    domain_of:
+    - OxygenSaturationMetric
+    range: float
+  time_below_88_pct_min:
+    name: time_below_88_pct_min
+    definition_uri: https://w3id.org/nsrr/sleep-cde/time_below_88_pct_min
+    description: Time with SpO2 below 88% in minutes
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:time_below_88_pct_min
+    range: float
+  mean_desaturation_pct:
+    name: mean_desaturation_pct
+    definition_uri: https://w3id.org/nsrr/sleep-cde/mean_desaturation_pct
+    description: Mean desaturation magnitude (%)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:mean_desaturation_pct
+    range: float
+  arousal_index:
+    name: arousal_index
+    definition_uri: https://w3id.org/nsrr/sleep-cde/arousal_index
+    description: Arousal index (arousals per hour of sleep)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:arousal_index
+    owner: ArousalMetric
+    domain_of:
+    - ArousalMetric
+    range: float
+  arousal_count:
+    name: arousal_count
+    definition_uri: https://w3id.org/nsrr/sleep-cde/arousal_count
+    description: Total number of arousals
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:arousal_count
+    owner: ArousalMetric
+    domain_of:
+    - ArousalMetric
+    range: integer
+  respiratory_arousal_index:
+    name: respiratory_arousal_index
+    definition_uri: https://w3id.org/nsrr/sleep-cde/respiratory_arousal_index
+    description: Respiratory-related arousal index
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:respiratory_arousal_index
+    owner: ArousalMetric
+    domain_of:
+    - ArousalMetric
+    range: float
+  spontaneous_arousal_index:
+    name: spontaneous_arousal_index
+    definition_uri: https://w3id.org/nsrr/sleep-cde/spontaneous_arousal_index
+    description: Spontaneous arousal index
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:spontaneous_arousal_index
+    owner: ArousalMetric
+    domain_of:
+    - ArousalMetric
+    range: float
+  plm_arousal_index:
+    name: plm_arousal_index
+    definition_uri: https://w3id.org/nsrr/sleep-cde/plm_arousal_index
+    description: PLM-related arousal index
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:plm_arousal_index
+    owner: ArousalMetric
+    domain_of:
+    - ArousalMetric
+    range: float
+  mean_arousal_duration_sec:
+    name: mean_arousal_duration_sec
+    definition_uri: https://w3id.org/nsrr/sleep-cde/mean_arousal_duration_sec
+    description: Mean arousal duration in seconds
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:mean_arousal_duration_sec
+    range: float
+  plm_index:
+    name: plm_index
+    definition_uri: https://w3id.org/nsrr/sleep-cde/plm_index
+    description: Periodic limb movement index (PLMs per hour of sleep)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:plm_index
+    owner: LimbMovementMetric
+    domain_of:
+    - LimbMovementMetric
+    range: float
+  plm_count:
+    name: plm_count
+    definition_uri: https://w3id.org/nsrr/sleep-cde/plm_count
+    description: Total number of periodic limb movements
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:plm_count
+    owner: LimbMovementMetric
+    domain_of:
+    - LimbMovementMetric
+    range: integer
+  plms_with_arousal_index:
+    name: plms_with_arousal_index
+    definition_uri: https://w3id.org/nsrr/sleep-cde/plms_with_arousal_index
+    description: PLMS with arousal index
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:plms_with_arousal_index
+    owner: LimbMovementMetric
+    domain_of:
+    - LimbMovementMetric
+    range: float
+  plms_with_arousal_count:
+    name: plms_with_arousal_count
+    definition_uri: https://w3id.org/nsrr/sleep-cde/plms_with_arousal_count
+    description: Number of PLMs with arousal
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:plms_with_arousal_count
+    owner: LimbMovementMetric
+    domain_of:
+    - LimbMovementMetric
+    range: integer
+  limb_movement_index:
+    name: limb_movement_index
+    definition_uri: https://w3id.org/nsrr/sleep-cde/limb_movement_index
+    description: Limb movement index (all LMs per hour)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:limb_movement_index
+    range: float
+  supine_duration_min:
+    name: supine_duration_min
+    definition_uri: https://w3id.org/nsrr/sleep-cde/supine_duration_min
+    description: Time in supine position during sleep (minutes)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:supine_duration_min
+    owner: BodyPositionMetric
+    domain_of:
+    - BodyPositionMetric
+    range: float
+  supine_percent:
+    name: supine_percent
+    definition_uri: https://w3id.org/nsrr/sleep-cde/supine_percent
+    description: Percentage of sleep in supine position
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:supine_percent
+    owner: BodyPositionMetric
+    domain_of:
+    - BodyPositionMetric
+    range: float
+  non_supine_duration_min:
+    name: non_supine_duration_min
+    definition_uri: https://w3id.org/nsrr/sleep-cde/non_supine_duration_min
+    description: Time in non-supine position during sleep (minutes)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:non_supine_duration_min
+    owner: BodyPositionMetric
+    domain_of:
+    - BodyPositionMetric
+    range: float
+  non_supine_percent:
+    name: non_supine_percent
+    definition_uri: https://w3id.org/nsrr/sleep-cde/non_supine_percent
+    description: Percentage of sleep in non-supine position
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:non_supine_percent
+    owner: BodyPositionMetric
+    domain_of:
+    - BodyPositionMetric
+    range: float
+  lateral_duration_min:
+    name: lateral_duration_min
+    definition_uri: https://w3id.org/nsrr/sleep-cde/lateral_duration_min
+    description: Time in lateral position during sleep (minutes)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:lateral_duration_min
+    owner: BodyPositionMetric
+    domain_of:
+    - BodyPositionMetric
+    range: float
+  prone_duration_min:
+    name: prone_duration_min
+    definition_uri: https://w3id.org/nsrr/sleep-cde/prone_duration_min
+    description: Time in prone position during sleep (minutes)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:prone_duration_min
+    owner: BodyPositionMetric
+    domain_of:
+    - BodyPositionMetric
+    range: float
+  hrv_sdnn_ms:
+    name: hrv_sdnn_ms
+    definition_uri: https://w3id.org/nsrr/sleep-cde/hrv_sdnn_ms
+    description: SDNN - Standard deviation of NN intervals (ms)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:hrv_sdnn_ms
+    owner: HeartRateMetric
+    domain_of:
+    - HeartRateMetric
+    range: float
+  hrv_rmssd_ms:
+    name: hrv_rmssd_ms
+    definition_uri: https://w3id.org/nsrr/sleep-cde/hrv_rmssd_ms
+    description: RMSSD - Root mean square of successive differences (ms)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:hrv_rmssd_ms
+    owner: HeartRateMetric
+    domain_of:
+    - HeartRateMetric
+    range: float
+  hrv_pnn50_pct:
+    name: hrv_pnn50_pct
+    definition_uri: https://w3id.org/nsrr/sleep-cde/hrv_pnn50_pct
+    description: pNN50 - Percentage of successive NNs differing by >50ms
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:hrv_pnn50_pct
+    owner: HeartRateMetric
+    domain_of:
+    - HeartRateMetric
+    range: float
+  hrv_lf_power:
+    name: hrv_lf_power
+    definition_uri: https://w3id.org/nsrr/sleep-cde/hrv_lf_power
+    description: Low frequency power (0.04-0.15 Hz)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:hrv_lf_power
+    owner: HeartRateMetric
+    domain_of:
+    - HeartRateMetric
+    range: float
+  hrv_hf_power:
+    name: hrv_hf_power
+    definition_uri: https://w3id.org/nsrr/sleep-cde/hrv_hf_power
+    description: High frequency power (0.15-0.4 Hz)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:hrv_hf_power
+    owner: HeartRateMetric
+    domain_of:
+    - HeartRateMetric
+    range: float
+  hrv_lf_hf_ratio:
+    name: hrv_lf_hf_ratio
+    definition_uri: https://w3id.org/nsrr/sleep-cde/hrv_lf_hf_ratio
+    description: LF/HF ratio
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:hrv_lf_hf_ratio
+    owner: HeartRateMetric
+    domain_of:
+    - HeartRateMetric
+    range: float
+  mean_heart_rate_sleep:
+    name: mean_heart_rate_sleep
+    definition_uri: https://w3id.org/nsrr/sleep-cde/mean_heart_rate_sleep
+    description: Mean heart rate during sleep (bpm)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:mean_heart_rate_sleep
+    owner: HeartRateMetric
+    domain_of:
+    - HeartRateMetric
+    range: float
+  min_heart_rate_sleep:
+    name: min_heart_rate_sleep
+    definition_uri: https://w3id.org/nsrr/sleep-cde/min_heart_rate_sleep
+    description: Minimum heart rate during sleep (bpm)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:min_heart_rate_sleep
+    owner: HeartRateMetric
+    domain_of:
+    - HeartRateMetric
+    range: float
+  max_heart_rate_sleep:
+    name: max_heart_rate_sleep
+    definition_uri: https://w3id.org/nsrr/sleep-cde/max_heart_rate_sleep
+    description: Maximum heart rate during sleep (bpm)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:max_heart_rate_sleep
+    owner: HeartRateMetric
+    domain_of:
+    - HeartRateMetric
+    range: float
+  eeg_quality_pct:
+    name: eeg_quality_pct
+    definition_uri: https://w3id.org/nsrr/sleep-cde/eeg_quality_pct
+    description: Percentage of EEG signal with acceptable quality
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:eeg_quality_pct
+    range: float
+  eog_quality_pct:
+    name: eog_quality_pct
+    definition_uri: https://w3id.org/nsrr/sleep-cde/eog_quality_pct
+    description: Percentage of EOG signal with acceptable quality
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:eog_quality_pct
+    range: float
+  emg_quality_pct:
+    name: emg_quality_pct
+    definition_uri: https://w3id.org/nsrr/sleep-cde/emg_quality_pct
+    description: Percentage of EMG signal with acceptable quality
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:emg_quality_pct
+    range: float
+  ecg_quality_pct:
+    name: ecg_quality_pct
+    definition_uri: https://w3id.org/nsrr/sleep-cde/ecg_quality_pct
+    description: Percentage of ECG signal with acceptable quality
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:ecg_quality_pct
+    range: float
+  oximetry_quality_pct:
+    name: oximetry_quality_pct
+    definition_uri: https://w3id.org/nsrr/sleep-cde/oximetry_quality_pct
+    description: Percentage of oximetry signal with acceptable quality
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:oximetry_quality_pct
+    range: float
+  airflow_quality_pct:
+    name: airflow_quality_pct
+    definition_uri: https://w3id.org/nsrr/sleep-cde/airflow_quality_pct
+    description: Percentage of airflow signal with acceptable quality
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:airflow_quality_pct
+    range: float
+  position_quality_pct:
+    name: position_quality_pct
+    definition_uri: https://w3id.org/nsrr/sleep-cde/position_quality_pct
+    description: Percentage of position signal with acceptable quality
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:position_quality_pct
+    range: float
+  overall_study_quality:
+    name: overall_study_quality
+    definition_uri: https://w3id.org/nsrr/sleep-cde/overall_study_quality
+    description: Overall PSG study quality rating
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:overall_study_quality
+    range: string
+  ess_total_score:
+    name: ess_total_score
+    definition_uri: https://w3id.org/nsrr/sleep-cde/ess_total_score
+    description: Epworth Sleepiness Scale total score (0-24)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:ess_total_score
+    range: integer
+  psqi_global_score:
+    name: psqi_global_score
+    definition_uri: https://w3id.org/nsrr/sleep-cde/psqi_global_score
+    description: Pittsburgh Sleep Quality Index global score (0-21)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:psqi_global_score
+    range: integer
+  psqi_component_score:
+    name: psqi_component_score
+    definition_uri: https://w3id.org/nsrr/sleep-cde/psqi_component_score
+    description: PSQI component score (0-3)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:psqi_component_score
+    range: integer
+  isi_total_score:
+    name: isi_total_score
+    definition_uri: https://w3id.org/nsrr/sleep-cde/isi_total_score
+    description: Insomnia Severity Index total score (0-28)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:isi_total_score
+    range: integer
+  phq9_total_score:
+    name: phq9_total_score
+    definition_uri: https://w3id.org/nsrr/sleep-cde/phq9_total_score
+    description: PHQ-9 depression score (0-27)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:phq9_total_score
+    range: integer
+  phq8_total_score:
+    name: phq8_total_score
+    definition_uri: https://w3id.org/nsrr/sleep-cde/phq8_total_score
+    description: PHQ-8 depression score (0-24)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:phq8_total_score
+    range: integer
+  gad7_total_score:
+    name: gad7_total_score
+    definition_uri: https://w3id.org/nsrr/sleep-cde/gad7_total_score
+    description: GAD-7 anxiety score (0-21)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:gad7_total_score
+    range: integer
+  cesd_total_score:
+    name: cesd_total_score
+    definition_uri: https://w3id.org/nsrr/sleep-cde/cesd_total_score
+    description: CES-D depression score
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:cesd_total_score
+    range: integer
+  sf36_physical_score:
+    name: sf36_physical_score
+    definition_uri: https://w3id.org/nsrr/sleep-cde/sf36_physical_score
+    description: SF-36 Physical Component Summary score
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:sf36_physical_score
+    range: float
+  sf36_mental_score:
+    name: sf36_mental_score
+    definition_uri: https://w3id.org/nsrr/sleep-cde/sf36_mental_score
+    description: SF-36 Mental Component Summary score
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:sf36_mental_score
+    range: float
+  fosq_total_score:
+    name: fosq_total_score
+    definition_uri: https://w3id.org/nsrr/sleep-cde/fosq_total_score
+    description: FOSQ total score
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:fosq_total_score
+    range: float
+  fss_mean_score:
+    name: fss_mean_score
+    definition_uri: https://w3id.org/nsrr/sleep-cde/fss_mean_score
+    description: Fatigue Severity Scale mean score
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:fss_mean_score
+    range: float
+  meq_score:
+    name: meq_score
+    definition_uri: https://w3id.org/nsrr/sleep-cde/meq_score
+    description: Morningness-Eveningness Questionnaire score
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:meq_score
+    range: integer
+  chronotype:
+    name: chronotype
+    definition_uri: https://w3id.org/nsrr/sleep-cde/chronotype
+    description: Chronotype classification
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:chronotype
+    range: string
+  instrument_id:
+    name: instrument_id
+    definition_uri: https://w3id.org/nsrr/sleep-cde/instrument_id
+    description: Identifier for the survey instrument (e.g., ESS, PSQI, PHQ9)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:instrument_id
+    owner: SurveyScore
+    domain_of:
+    - SurveyItemResponse
+    - SurveyScore
+    range: string
+  item_id:
+    name: item_id
+    definition_uri: https://w3id.org/nsrr/sleep-cde/item_id
+    description: Item number/identifier within instrument
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:item_id
+    owner: SurveyItemResponse
+    domain_of:
+    - SurveyItemResponse
+    range: string
+  item_text:
+    name: item_text
+    definition_uri: https://w3id.org/nsrr/sleep-cde/item_text
+    description: Text of the survey question
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:item_text
+    owner: SurveyItemResponse
+    domain_of:
+    - SurveyItemResponse
+    range: string
+  response_value:
+    name: response_value
+    definition_uri: https://w3id.org/nsrr/sleep-cde/response_value
+    description: Numeric response value
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:response_value
+    owner: SurveyItemResponse
+    domain_of:
+    - SurveyItemResponse
+    range: integer
+  response_text:
+    name: response_text
+    definition_uri: https://w3id.org/nsrr/sleep-cde/response_text
+    description: Text representation of response
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:response_text
+    owner: SurveyItemResponse
+    domain_of:
+    - SurveyItemResponse
+    range: string
+  actigraphy_tst_min:
+    name: actigraphy_tst_min
+    definition_uri: https://w3id.org/nsrr/sleep-cde/actigraphy_tst_min
+    description: Actigraphy-estimated total sleep time (minutes)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:actigraphy_tst_min
+    owner: ActigraphyRecord
+    domain_of:
+    - ActigraphyRecord
+    range: float
+  actigraphy_se_pct:
+    name: actigraphy_se_pct
+    definition_uri: https://w3id.org/nsrr/sleep-cde/actigraphy_se_pct
+    description: Actigraphy-estimated sleep efficiency (%)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:actigraphy_se_pct
+    owner: ActigraphyRecord
+    domain_of:
+    - ActigraphyRecord
+    range: float
+  actigraphy_sol_min:
+    name: actigraphy_sol_min
+    definition_uri: https://w3id.org/nsrr/sleep-cde/actigraphy_sol_min
+    description: Actigraphy-estimated sleep onset latency (minutes)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:actigraphy_sol_min
+    owner: ActigraphyRecord
+    domain_of:
+    - ActigraphyRecord
+    range: float
+  actigraphy_waso_min:
+    name: actigraphy_waso_min
+    definition_uri: https://w3id.org/nsrr/sleep-cde/actigraphy_waso_min
+    description: Actigraphy-estimated WASO (minutes)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:actigraphy_waso_min
+    owner: ActigraphyRecord
+    domain_of:
+    - ActigraphyRecord
+    range: float
+  activity_count:
+    name: activity_count
+    definition_uri: https://w3id.org/nsrr/sleep-cde/activity_count
+    description: Activity count from actigraphy
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:activity_count
+    owner: ActigraphyRecord
+    domain_of:
+    - ActigraphyRecord
+    range: float
+  rest_interval_start:
+    name: rest_interval_start
+    definition_uri: https://w3id.org/nsrr/sleep-cde/rest_interval_start
+    description: Rest interval start time from actigraphy
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:rest_interval_start
+    owner: ActigraphyRecord
+    domain_of:
+    - ActigraphyRecord
+    range: string
+  rest_interval_end:
+    name: rest_interval_end
+    definition_uri: https://w3id.org/nsrr/sleep-cde/rest_interval_end
+    description: Rest interval end time from actigraphy
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:rest_interval_end
+    owner: ActigraphyRecord
+    domain_of:
+    - ActigraphyRecord
+    range: string
+  valid_days:
+    name: valid_days
+    definition_uri: https://w3id.org/nsrr/sleep-cde/valid_days
+    description: Number of valid recording days
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:valid_days
+    owner: ActigraphyRecord
+    domain_of:
+    - ActigraphyRecord
+    range: integer
+  cpap_usage_hours:
+    name: cpap_usage_hours
+    definition_uri: https://w3id.org/nsrr/sleep-cde/cpap_usage_hours
+    description: CPAP usage in hours per night
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:cpap_usage_hours
+    owner: CPAPAdherence
+    domain_of:
+    - CPAPAdherence
+    range: float
+  cpap_usage_percent_days:
+    name: cpap_usage_percent_days
+    definition_uri: https://w3id.org/nsrr/sleep-cde/cpap_usage_percent_days
+    description: Percentage of days with CPAP use
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:cpap_usage_percent_days
+    owner: CPAPAdherence
+    domain_of:
+    - CPAPAdherence
+    range: float
+  cpap_usage_percent_days_gt4h:
+    name: cpap_usage_percent_days_gt4h
+    definition_uri: https://w3id.org/nsrr/sleep-cde/cpap_usage_percent_days_gt4h
+    description: Percentage of days with CPAP use >4 hours
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:cpap_usage_percent_days_gt4h
+    owner: CPAPAdherence
+    domain_of:
+    - CPAPAdherence
+    range: float
+  cpap_pressure_cmh2o:
+    name: cpap_pressure_cmh2o
+    definition_uri: https://w3id.org/nsrr/sleep-cde/cpap_pressure_cmh2o
+    description: CPAP pressure setting (cmH2O)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:cpap_pressure_cmh2o
+    owner: CPAPAdherence
+    domain_of:
+    - CPAPAdherence
+    range: float
+  cpap_ahi_residual:
+    name: cpap_ahi_residual
+    definition_uri: https://w3id.org/nsrr/sleep-cde/cpap_ahi_residual
+    description: Residual AHI on CPAP
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:cpap_ahi_residual
+    owner: CPAPAdherence
+    domain_of:
+    - CPAPAdherence
+    range: float
+  cpap_leak_lpm:
+    name: cpap_leak_lpm
+    definition_uri: https://w3id.org/nsrr/sleep-cde/cpap_leak_lpm
+    description: CPAP mask leak (L/min)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:cpap_leak_lpm
+    owner: CPAPAdherence
+    domain_of:
+    - CPAPAdherence
+    range: float
+  has_hypertension:
+    name: has_hypertension
+    definition_uri: https://w3id.org/nsrr/sleep-cde/has_hypertension
+    description: History of hypertension
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:has_hypertension
+    owner: SubjectMedicalHistory
+    domain_of:
+    - SubjectMedicalHistory
+    range: YesNoUnknownEnum
+  has_diabetes:
+    name: has_diabetes
+    definition_uri: https://w3id.org/nsrr/sleep-cde/has_diabetes
+    description: History of diabetes
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:has_diabetes
+    owner: SubjectMedicalHistory
+    domain_of:
+    - SubjectMedicalHistory
+    range: YesNoUnknownEnum
+  has_heart_disease:
+    name: has_heart_disease
+    definition_uri: https://w3id.org/nsrr/sleep-cde/has_heart_disease
+    description: History of cardiovascular disease
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:has_heart_disease
+    owner: SubjectMedicalHistory
+    domain_of:
+    - SubjectMedicalHistory
+    range: YesNoUnknownEnum
+  has_stroke:
+    name: has_stroke
+    definition_uri: https://w3id.org/nsrr/sleep-cde/has_stroke
+    description: History of stroke
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:has_stroke
+    owner: SubjectMedicalHistory
+    domain_of:
+    - SubjectMedicalHistory
+    range: YesNoUnknownEnum
+  has_depression:
+    name: has_depression
+    definition_uri: https://w3id.org/nsrr/sleep-cde/has_depression
+    description: History of depression
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:has_depression
+    owner: SubjectMedicalHistory
+    domain_of:
+    - SubjectMedicalHistory
+    range: YesNoUnknownEnum
+  has_anxiety:
+    name: has_anxiety
+    definition_uri: https://w3id.org/nsrr/sleep-cde/has_anxiety
+    description: History of anxiety disorder
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:has_anxiety
+    owner: SubjectMedicalHistory
+    domain_of:
+    - SubjectMedicalHistory
+    range: YesNoUnknownEnum
+  has_insomnia:
+    name: has_insomnia
+    definition_uri: https://w3id.org/nsrr/sleep-cde/has_insomnia
+    description: History of insomnia
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:has_insomnia
+    owner: SubjectMedicalHistory
+    domain_of:
+    - SubjectMedicalHistory
+    range: YesNoUnknownEnum
+  has_rls:
+    name: has_rls
+    definition_uri: https://w3id.org/nsrr/sleep-cde/has_rls
+    description: History of restless legs syndrome
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:has_rls
+    owner: SubjectMedicalHistory
+    domain_of:
+    - SubjectMedicalHistory
+    range: YesNoUnknownEnum
+  has_narcolepsy:
+    name: has_narcolepsy
+    definition_uri: https://w3id.org/nsrr/sleep-cde/has_narcolepsy
+    description: History of narcolepsy
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:has_narcolepsy
+    owner: SubjectMedicalHistory
+    domain_of:
+    - SubjectMedicalHistory
+    range: YesNoUnknownEnum
+  smoking_status:
+    name: smoking_status
+    definition_uri: https://w3id.org/nsrr/sleep-cde/smoking_status
+    description: Smoking status
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:smoking_status
+    owner: SubjectMedicalHistory
+    domain_of:
+    - SubjectMedicalHistory
+    range: string
+  alcohol_use:
+    name: alcohol_use
+    definition_uri: https://w3id.org/nsrr/sleep-cde/alcohol_use
+    description: Alcohol consumption frequency
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:alcohol_use
+    owner: SubjectMedicalHistory
+    domain_of:
+    - SubjectMedicalHistory
+    range: string
+  canonical_slot:
+    name: canonical_slot
+    definition_uri: https://w3id.org/nsrr/sleep-cde/canonical_slot
+    description: Reference to canonical CDE slot this variable maps to
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:canonical_slot
+    owner: VariableMapping
+    domain_of:
+    - Variable
+    - VariableMapping
+    range: string
+  modifiers:
+    name: modifiers
+    definition_uri: https://w3id.org/nsrr/sleep-cde/modifiers
+    description: List of modifier values applied to canonical slot
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:modifiers
+    owner: VariableMapping
+    domain_of:
+    - Variable
+    - VariableMapping
+    range: string
+    multivalued: true
+  mapping_confidence:
+    name: mapping_confidence
+    definition_uri: https://w3id.org/nsrr/sleep-cde/mapping_confidence
+    description: Confidence level of mapping (exact, high, medium, low)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:mapping_confidence
+    owner: VariableMapping
+    domain_of:
+    - Variable
+    - VariableMapping
+    range: string
+  mapping_notes:
+    name: mapping_notes
+    definition_uri: https://w3id.org/nsrr/sleep-cde/mapping_notes
+    description: Notes about the mapping
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:mapping_notes
+    owner: VariableMapping
+    domain_of:
+    - Variable
+    - VariableMapping
+    range: string
+  source_variable:
+    name: source_variable
+    definition_uri: https://w3id.org/nsrr/sleep-cde/source_variable
+    description: Original source variable identifier
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:source_variable
+    owner: VariableMapping
+    domain_of:
+    - VariableMapping
+    range: string
+  is_harmonized:
+    name: is_harmonized
+    definition_uri: https://w3id.org/nsrr/sleep-cde/is_harmonized
+    description: Whether this is a harmonized/canonical variable
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:is_harmonized
+    owner: Variable
+    domain_of:
+    - Variable
+    range: boolean
+  is_derived:
+    name: is_derived
+    definition_uri: https://w3id.org/nsrr/sleep-cde/is_derived
+    description: Whether this is a derived/calculated variable
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:is_derived
+    owner: Variable
+    domain_of:
+    - Variable
+    range: boolean
+  derivation_formula:
+    name: derivation_formula
+    definition_uri: https://w3id.org/nsrr/sleep-cde/derivation_formula
+    description: Formula used to derive this variable
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:derivation_formula
+    owner: Variable
+    domain_of:
+    - Variable
+    range: string
+  variableValue__value:
+    name: variableValue__value
+    description: The observed value (polymorphic)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:value
+    alias: value
+    owner: VariableValue
+    domain_of:
+    - VariableValue
+    range: string
+  codeIdentifier__system:
+    name: codeIdentifier__system
+    description: Code system (e.g., SNOMED, LOINC, NCIT)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:system
+    alias: system
+    owner: CodeIdentifier
+    domain_of:
+    - CodeIdentifier
+    range: string
+  codeIdentifier__code:
+    name: codeIdentifier__code
+    description: Code value
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:code
+    alias: code
+    owner: CodeIdentifier
+    domain_of:
+    - CodeIdentifier
+    range: string
+  codeIdentifier__display:
+    name: codeIdentifier__display
+    description: Display name
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:display
+    alias: display
+    owner: CodeIdentifier
+    domain_of:
+    - CodeIdentifier
+    range: string
+  acquisitionProtocol__device_type:
+    name: acquisitionProtocol__device_type
+    description: Type of recording device
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:device_type
+    alias: device_type
+    owner: AcquisitionProtocol
+    domain_of:
+    - AcquisitionProtocol
+    range: string
+  acquisitionProtocol__sensor_configuration:
+    name: acquisitionProtocol__sensor_configuration
+    description: Sensor/channel configuration
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:sensor_configuration
+    alias: sensor_configuration
+    owner: AcquisitionProtocol
+    domain_of:
+    - AcquisitionProtocol
+    range: string
+  acquisitionProtocol__sampling_rate_hz:
+    name: acquisitionProtocol__sampling_rate_hz
+    description: Sampling rate in Hz
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:sampling_rate_hz
+    alias: sampling_rate_hz
+    owner: AcquisitionProtocol
+    domain_of:
+    - AcquisitionProtocol
+    range: float
+  acquisitionProtocol__recording_environment:
+    name: acquisitionProtocol__recording_environment
+    description: Recording environment (lab, home, etc.)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:recording_environment
+    alias: recording_environment
+    owner: AcquisitionProtocol
+    domain_of:
+    - AcquisitionProtocol
+    range: string
+  scoringProtocol__epoch_length_sec:
+    name: scoringProtocol__epoch_length_sec
+    description: Epoch length for staging in seconds (typically 30)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:epoch_length_sec
+    alias: epoch_length_sec
+    owner: ScoringProtocol
+    domain_of:
+    - ScoringProtocol
+    range: integer
+  scoringProtocol__staging_rules:
+    name: scoringProtocol__staging_rules
+    description: Sleep staging rules used (e.g., AASM 2007, R&K)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:staging_rules
+    alias: staging_rules
+    owner: ScoringProtocol
+    domain_of:
+    - ScoringProtocol
+    range: string
+  scoringProtocol__scorer_id:
+    name: scoringProtocol__scorer_id
+    description: Identifier for scorer or scoring center
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:scorer_id
+    alias: scorer_id
+    owner: ScoringProtocol
+    domain_of:
+    - ScoringProtocol
+    range: string
+  scoringProtocol__interrater_reliability:
+    name: scoringProtocol__interrater_reliability
+    description: Interrater reliability metric
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:interrater_reliability
+    alias: interrater_reliability
+    owner: ScoringProtocol
+    domain_of:
+    - ScoringProtocol
+    range: float
+  instrument__abbreviation:
+    name: instrument__abbreviation
+    description: Standard abbreviation (e.g., ESS, PSQI)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:abbreviation
+    alias: abbreviation
+    owner: Instrument
+    domain_of:
+    - Instrument
+    range: string
+  instrument__version:
+    name: instrument__version
+    description: Version of the instrument
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:version
+    alias: version
+    owner: Instrument
+    domain_of:
+    - Instrument
+    range: string
+  instrument__num_items:
+    name: instrument__num_items
+    description: Number of items
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:num_items
+    alias: num_items
+    owner: Instrument
+    domain_of:
+    - Instrument
+    range: integer
+  instrument__score_range:
+    name: instrument__score_range
+    description: Range of total score (e.g., "0-24")
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:score_range
+    alias: score_range
+    owner: Instrument
+    domain_of:
+    - Instrument
+    range: string
+  instrument__citation:
+    name: instrument__citation
+    description: Citation for the instrument
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:citation
+    alias: citation
+    owner: Instrument
+    domain_of:
+    - Instrument
+    range: string
+  surveyScore__score_type:
+    name: surveyScore__score_type
+    description: Type of score (total, subscale, component)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:score_type
+    alias: score_type
+    owner: SurveyScore
+    domain_of:
+    - SurveyScore
+    range: string
+  surveyScore__score_name:
+    name: surveyScore__score_name
+    description: Name of the score
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:score_name
+    alias: score_name
+    owner: SurveyScore
+    domain_of:
+    - SurveyScore
+    range: string
+  surveyScore__score_value:
+    name: surveyScore__score_value
+    description: Numeric score value
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:score_value
+    alias: score_value
+    owner: SurveyScore
+    domain_of:
+    - SurveyScore
+    range: float
+  sleepStudyRecord__study_date:
+    name: sleepStudyRecord__study_date
+    description: Date of sleep study
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:study_date
+    alias: study_date
+    owner: SleepStudyRecord
+    domain_of:
+    - SleepStudyRecord
+    range: date
+  variableMapping__source_label:
+    name: variableMapping__source_label
+    description: Original variable label
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:source_label
+    alias: source_label
+    owner: VariableMapping
+    domain_of:
+    - VariableMapping
+    range: string
+  variableMapping__source_concept_path:
+    name: variableMapping__source_concept_path
+    description: Original concept path
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:source_concept_path
+    alias: source_concept_path
+    owner: VariableMapping
+    domain_of:
+    - VariableMapping
+    range: string
+  variableMapping__transformation:
+    name: variableMapping__transformation
+    description: Any transformation applied
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:transformation
+    alias: transformation
+    owner: VariableMapping
+    domain_of:
+    - VariableMapping
+    range: string
+  Dataset_id:
+    name: Dataset_id
+    definition_uri: https://w3id.org/nsrr/sleep-cde/id
+    description: Unique identifier
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    is_a: id
+    domain: Dataset
+    slot_uri: sleep:id
+    identifier: true
+    alias: id
+    owner: Dataset
+    domain_of:
+    - Dataset
+    is_usage_slot: true
+    usage_slot_name: id
+    range: string
+    required: true
+    pattern: ^[A-Z0-9_]+$
+classes:
+  Dataset:
+    name: Dataset
+    definition_uri: https://w3id.org/nsrr/sleep-cde/Dataset
+    description: A sleep research dataset/study
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slots:
+    - Dataset_id
+    - name
+    - description
+    - tags
+    slot_usage:
+      id:
+        name: id
+        pattern: ^[A-Z0-9_]+$
+    class_uri: sleep:Dataset
+  Variable:
+    name: Variable
+    definition_uri: https://w3id.org/nsrr/sleep-cde/Variable
+    description: A variable definition from a source dataset
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slots:
+    - id
+    - dataset_id
+    - variable_id
+    - label
+    - description
+    - concept_path
+    - tags
+    - units
+    - value_type
+    - canonical_slot
+    - modifiers
+    - mapping_confidence
+    - mapping_notes
+    - is_harmonized
+    - is_derived
+    - derivation_formula
+    class_uri: sleep:Variable
+  VariableValue:
+    name: VariableValue
+    definition_uri: https://w3id.org/nsrr/sleep-cde/VariableValue
+    description: An observed value for a variable
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slots:
+    - id
+    - variable_id
+    - subject_id
+    - visit_id
+    - variableValue__value
+    attributes:
+      value:
+        name: value
+        description: The observed value (polymorphic)
+        range: string
+    class_uri: sleep:VariableValue
+  CodeIdentifier:
+    name: CodeIdentifier
+    definition_uri: https://w3id.org/nsrr/sleep-cde/CodeIdentifier
+    description: External code/identifier for a concept
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slots:
+    - id
+    - codeIdentifier__system
+    - codeIdentifier__code
+    - codeIdentifier__display
+    attributes:
+      system:
+        name: system
+        description: Code system (e.g., SNOMED, LOINC, NCIT)
+        range: string
+      code:
+        name: code
+        description: Code value
+        range: string
+      display:
+        name: display
+        description: Display name
+        range: string
+    class_uri: sleep:CodeIdentifier
+  AcquisitionProtocol:
+    name: AcquisitionProtocol
+    definition_uri: https://w3id.org/nsrr/sleep-cde/AcquisitionProtocol
+    description: Protocol parameters for data acquisition
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slots:
+    - id
+    - name
+    - description
+    - psg_type
+    - acquisitionProtocol__device_type
+    - acquisitionProtocol__sensor_configuration
+    - acquisitionProtocol__sampling_rate_hz
+    - acquisitionProtocol__recording_environment
+    attributes:
+      device_type:
+        name: device_type
+        description: Type of recording device
+        range: string
+      sensor_configuration:
+        name: sensor_configuration
+        description: Sensor/channel configuration
+        range: string
+      sampling_rate_hz:
+        name: sampling_rate_hz
+        description: Sampling rate in Hz
+        range: float
+      recording_environment:
+        name: recording_environment
+        description: Recording environment (lab, home, etc.)
+        range: string
+    class_uri: sleep:AcquisitionProtocol
+  ScoringProtocol:
+    name: ScoringProtocol
+    definition_uri: https://w3id.org/nsrr/sleep-cde/ScoringProtocol
+    description: Protocol parameters for sleep/event scoring
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slots:
+    - id
+    - name
+    - description
+    - hypopnea_definition
+    - desaturation_threshold
+    - arousal_requirement
+    - scoringProtocol__epoch_length_sec
+    - scoringProtocol__staging_rules
+    - scoringProtocol__scorer_id
+    - scoringProtocol__interrater_reliability
+    attributes:
+      epoch_length_sec:
+        name: epoch_length_sec
+        description: Epoch length for staging in seconds (typically 30)
+        range: integer
+      staging_rules:
+        name: staging_rules
+        description: Sleep staging rules used (e.g., AASM 2007, R&K)
+        range: string
+      scorer_id:
+        name: scorer_id
+        description: Identifier for scorer or scoring center
+        range: string
+      interrater_reliability:
+        name: interrater_reliability
+        description: Interrater reliability metric
+        range: float
+    class_uri: sleep:ScoringProtocol
+  Instrument:
+    name: Instrument
+    definition_uri: https://w3id.org/nsrr/sleep-cde/Instrument
+    description: A survey instrument or questionnaire
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slots:
+    - id
+    - name
+    - description
+    - instrument__abbreviation
+    - instrument__version
+    - instrument__num_items
+    - instrument__score_range
+    - instrument__citation
+    attributes:
+      abbreviation:
+        name: abbreviation
+        description: Standard abbreviation (e.g., ESS, PSQI)
+        range: string
+      version:
+        name: version
+        description: Version of the instrument
+        range: string
+      num_items:
+        name: num_items
+        description: Number of items
+        range: integer
+      score_range:
+        name: score_range
+        description: Range of total score (e.g., "0-24")
+        range: string
+      citation:
+        name: citation
+        description: Citation for the instrument
+        range: string
+    class_uri: sleep:Instrument
+  SurveyItemResponse:
+    name: SurveyItemResponse
+    definition_uri: https://w3id.org/nsrr/sleep-cde/SurveyItemResponse
+    description: A response to a single survey item
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slots:
+    - id
+    - subject_id
+    - visit_id
+    - instrument_id
+    - item_id
+    - item_text
+    - response_value
+    - response_text
+    class_uri: sleep:SurveyItemResponse
+  SurveyScore:
+    name: SurveyScore
+    definition_uri: https://w3id.org/nsrr/sleep-cde/SurveyScore
+    description: A computed score from a survey instrument
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slots:
+    - id
+    - subject_id
+    - visit_id
+    - instrument_id
+    - surveyScore__score_type
+    - surveyScore__score_name
+    - surveyScore__score_value
+    attributes:
+      score_type:
+        name: score_type
+        description: Type of score (total, subscale, component)
+        range: string
+      score_name:
+        name: score_name
+        description: Name of the score
+        range: string
+      score_value:
+        name: score_value
+        description: Numeric score value
+        range: float
+    class_uri: sleep:SurveyScore
+  SleepStudyRecord:
+    name: SleepStudyRecord
+    definition_uri: https://w3id.org/nsrr/sleep-cde/SleepStudyRecord
+    description: A single sleep study observation with all measurements
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slots:
+    - id
+    - subject_id
+    - visit_id
+    - dataset_id
+    - psg_type
+    - total_sleep_time_min
+    - time_in_bed_min
+    - sleep_efficiency_pct
+    - sleep_onset_latency_min
+    - rem_latency_min
+    - waso_min
+    - num_awakenings
+    - lights_off_time
+    - lights_on_time
+    - sleep_onset_time
+    - sleep_offset_time
+    - recording_duration_min
+    - sleepStudyRecord__study_date
+    attributes:
+      study_date:
+        name: study_date
+        description: Date of sleep study
+        range: date
+    class_uri: sleep:SleepStudyRecord
+  SleepStageMetric:
+    name: SleepStageMetric
+    definition_uri: https://w3id.org/nsrr/sleep-cde/SleepStageMetric
+    description: Sleep staging metric stratified by stage
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slots:
+    - id
+    - subject_id
+    - visit_id
+    - sleep_stage
+    - sleep_stage_duration_min
+    - sleep_stage_percent
+    - psg_type
+    class_uri: sleep:SleepStageMetric
+  RespiratoryEventMetric:
+    name: RespiratoryEventMetric
+    definition_uri: https://w3id.org/nsrr/sleep-cde/RespiratoryEventMetric
+    description: Respiratory event metric with full modifier context
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slots:
+    - id
+    - subject_id
+    - visit_id
+    - ahi
+    - apnea_index
+    - hypopnea_index
+    - apnea_count
+    - hypopnea_count
+    - apnea_type
+    - hypopnea_definition
+    - desaturation_threshold
+    - arousal_requirement
+    - sleep_stage
+    - body_position
+    - psg_type
+    - summary_statistic
+    class_uri: sleep:RespiratoryEventMetric
+  OxygenSaturationMetric:
+    name: OxygenSaturationMetric
+    definition_uri: https://w3id.org/nsrr/sleep-cde/OxygenSaturationMetric
+    description: Oxygen saturation measurement with context
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slots:
+    - id
+    - subject_id
+    - visit_id
+    - spo2_mean_pct
+    - spo2_min_pct
+    - spo2_nadir_pct
+    - spo2_baseline_pct
+    - desaturation_index
+    - time_below_90_pct_min
+    - time_below_90_pct_percent
+    - desaturation_threshold
+    - sleep_stage
+    - body_position
+    - psg_type
+    - summary_statistic
+    class_uri: sleep:OxygenSaturationMetric
+  ArousalMetric:
+    name: ArousalMetric
+    definition_uri: https://w3id.org/nsrr/sleep-cde/ArousalMetric
+    description: Arousal measurement with context
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slots:
+    - id
+    - subject_id
+    - visit_id
+    - arousal_index
+    - arousal_count
+    - respiratory_arousal_index
+    - spontaneous_arousal_index
+    - plm_arousal_index
+    - sleep_stage
+    - body_position
+    - psg_type
+    class_uri: sleep:ArousalMetric
+  LimbMovementMetric:
+    name: LimbMovementMetric
+    definition_uri: https://w3id.org/nsrr/sleep-cde/LimbMovementMetric
+    description: Limb movement measurement with context
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slots:
+    - id
+    - subject_id
+    - visit_id
+    - plm_index
+    - plm_count
+    - plms_with_arousal_index
+    - plms_with_arousal_count
+    - sleep_stage
+    - psg_type
+    class_uri: sleep:LimbMovementMetric
+  BodyPositionMetric:
+    name: BodyPositionMetric
+    definition_uri: https://w3id.org/nsrr/sleep-cde/BodyPositionMetric
+    description: Body position duration measurement
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slots:
+    - id
+    - subject_id
+    - visit_id
+    - supine_duration_min
+    - supine_percent
+    - non_supine_duration_min
+    - non_supine_percent
+    - lateral_duration_min
+    - prone_duration_min
+    - psg_type
+    class_uri: sleep:BodyPositionMetric
+  HeartRateMetric:
+    name: HeartRateMetric
+    definition_uri: https://w3id.org/nsrr/sleep-cde/HeartRateMetric
+    description: Heart rate and HRV measurement
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slots:
+    - id
+    - subject_id
+    - visit_id
+    - mean_heart_rate_sleep
+    - min_heart_rate_sleep
+    - max_heart_rate_sleep
+    - hrv_sdnn_ms
+    - hrv_rmssd_ms
+    - hrv_pnn50_pct
+    - hrv_lf_power
+    - hrv_hf_power
+    - hrv_lf_hf_ratio
+    - sleep_stage
+    - body_position
+    - psg_type
+    - time_frame
+    class_uri: sleep:HeartRateMetric
+  SubjectDemographics:
+    name: SubjectDemographics
+    definition_uri: https://w3id.org/nsrr/sleep-cde/SubjectDemographics
+    description: Demographic information for a subject
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slots:
+    - id
+    - subject_id
+    - visit_id
+    - age_years
+    - age_months
+    - age_gt89
+    - sex
+    - ethnicity
+    - race
+    - education_years
+    - employment_status
+    - marital_status
+    - household_income
+    class_uri: sleep:SubjectDemographics
+  SubjectAnthropometry:
+    name: SubjectAnthropometry
+    definition_uri: https://w3id.org/nsrr/sleep-cde/SubjectAnthropometry
+    description: Anthropometric measurements for a subject
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slots:
+    - id
+    - subject_id
+    - visit_id
+    - height_cm
+    - weight_kg
+    - bmi
+    - bmi_percentile
+    - bmi_zscore
+    - neck_circumference_cm
+    - waist_circumference_cm
+    - hip_circumference_cm
+    - waist_hip_ratio
+    class_uri: sleep:SubjectAnthropometry
+  SubjectVitalSigns:
+    name: SubjectVitalSigns
+    definition_uri: https://w3id.org/nsrr/sleep-cde/SubjectVitalSigns
+    description: Vital sign measurements for a subject
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slots:
+    - id
+    - subject_id
+    - visit_id
+    - systolic_bp_mmhg
+    - diastolic_bp_mmhg
+    - heart_rate_bpm
+    - respiratory_rate
+    - temperature_celsius
+    class_uri: sleep:SubjectVitalSigns
+  SubjectMedicalHistory:
+    name: SubjectMedicalHistory
+    definition_uri: https://w3id.org/nsrr/sleep-cde/SubjectMedicalHistory
+    description: Medical history for a subject
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slots:
+    - id
+    - subject_id
+    - has_hypertension
+    - has_diabetes
+    - has_heart_disease
+    - has_stroke
+    - has_depression
+    - has_anxiety
+    - has_insomnia
+    - has_rls
+    - has_narcolepsy
+    - smoking_status
+    - alcohol_use
+    class_uri: sleep:SubjectMedicalHistory
+  CPAPAdherence:
+    name: CPAPAdherence
+    definition_uri: https://w3id.org/nsrr/sleep-cde/CPAPAdherence
+    description: CPAP treatment adherence data
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slots:
+    - id
+    - subject_id
+    - visit_id
+    - cpap_usage_hours
+    - cpap_usage_percent_days
+    - cpap_usage_percent_days_gt4h
+    - cpap_pressure_cmh2o
+    - cpap_ahi_residual
+    - cpap_leak_lpm
+    - time_frame
+    class_uri: sleep:CPAPAdherence
+  ActigraphyRecord:
+    name: ActigraphyRecord
+    definition_uri: https://w3id.org/nsrr/sleep-cde/ActigraphyRecord
+    description: Actigraphy-derived sleep measurements
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slots:
+    - id
+    - subject_id
+    - visit_id
+    - actigraphy_tst_min
+    - actigraphy_se_pct
+    - actigraphy_sol_min
+    - actigraphy_waso_min
+    - activity_count
+    - rest_interval_start
+    - rest_interval_end
+    - valid_days
+    - time_frame
+    class_uri: sleep:ActigraphyRecord
+  VariableMapping:
+    name: VariableMapping
+    definition_uri: https://w3id.org/nsrr/sleep-cde/VariableMapping
+    description: Mapping from a source variable to canonical CDE
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slots:
+    - id
+    - source_variable
+    - dataset_id
+    - canonical_slot
+    - modifiers
+    - mapping_confidence
+    - mapping_notes
+    - variableMapping__source_label
+    - variableMapping__source_concept_path
+    - variableMapping__transformation
+    attributes:
+      source_label:
+        name: source_label
+        description: Original variable label
+        range: string
+      source_concept_path:
+        name: source_concept_path
+        description: Original concept path
+        range: string
+      transformation:
+        name: transformation
+        description: Any transformation applied
+        range: string
+    class_uri: sleep:VariableMapping
+metamodel_version: 1.7.0
+source_file: sleep_cde_schema.yaml
+source_file_date: '2026-01-23T13:55:19'
+source_file_size: 43465
+generation_date: '2026-01-23T13:55:29'
+
