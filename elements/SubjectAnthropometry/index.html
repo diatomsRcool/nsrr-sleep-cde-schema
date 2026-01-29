@@ -451,6 +451,15 @@ attributes:
     - SubjectMedicalHistory
     - CPAPAdherence
     - ActigraphyRecord
+    - SnoringMetric
+    - CapnographyMetric
+    - PVTResult
+    - SleepinessAssessment
+    - BerlinQuestionnaireResult
+    - STOPBANGResult
+    - PROMISSleepScore
+    - PediatricSleepAssessment
+    - PediatricAnthropometry
     - VariableMapping
     range: string
     required: true
@@ -479,6 +488,15 @@ attributes:
     - SubjectMedicalHistory
     - CPAPAdherence
     - ActigraphyRecord
+    - SnoringMetric
+    - CapnographyMetric
+    - PVTResult
+    - SleepinessAssessment
+    - BerlinQuestionnaireResult
+    - STOPBANGResult
+    - PROMISSleepScore
+    - PediatricSleepAssessment
+    - PediatricAnthropometry
     range: string
   visit_id:
     name: visit_id
@@ -504,6 +522,15 @@ attributes:
     - SubjectVitalSigns
     - CPAPAdherence
     - ActigraphyRecord
+    - SnoringMetric
+    - CapnographyMetric
+    - PVTResult
+    - SleepinessAssessment
+    - BerlinQuestionnaireResult
+    - STOPBANGResult
+    - PROMISSleepScore
+    - PediatricSleepAssessment
+    - PediatricAnthropometry
     range: string
   height_cm:
     name: height_cm
@@ -514,6 +541,7 @@ attributes:
     owner: SubjectAnthropometry
     domain_of:
     - SubjectAnthropometry
+    - PediatricAnthropometry
     range: float
   weight_kg:
     name: weight_kg
@@ -524,6 +552,7 @@ attributes:
     owner: SubjectAnthropometry
     domain_of:
     - SubjectAnthropometry
+    - PediatricAnthropometry
     range: float
   bmi:
     name: bmi
@@ -534,6 +563,7 @@ attributes:
     owner: SubjectAnthropometry
     domain_of:
     - SubjectAnthropometry
+    - PediatricAnthropometry
     range: float
   bmi_percentile:
     name: bmi_percentile
@@ -544,6 +574,7 @@ attributes:
     owner: SubjectAnthropometry
     domain_of:
     - SubjectAnthropometry
+    - PediatricAnthropometry
     range: float
   bmi_zscore:
     name: bmi_zscore
@@ -554,6 +585,7 @@ attributes:
     owner: SubjectAnthropometry
     domain_of:
     - SubjectAnthropometry
+    - PediatricAnthropometry
     range: float
   neck_circumference_cm:
     name: neck_circumference_cm

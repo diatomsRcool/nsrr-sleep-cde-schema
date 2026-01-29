@@ -433,18 +433,23 @@ Alias: sleep_stage</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../OxygenSaturationMetric/">OxygenSaturationMetric</a></td>
-<td>Oxygen saturation measurement with context</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../HeartRateMetric/">HeartRateMetric</a></td>
-<td>Heart rate and HRV measurement</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../LimbMovementMetric/">LimbMovementMetric</a></td>
 <td>Limb movement measurement with context</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../CapnographyMetric/">CapnographyMetric</a></td>
+<td>CO2/capnography measurements during sleep</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../RespiratoryEventMetric/">RespiratoryEventMetric</a></td>
+<td>Respiratory event metric with full modifier context</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../OxygenSaturationMetric/">OxygenSaturationMetric</a></td>
+<td>Oxygen saturation measurement with context</td>
 <td>no</td>
 </tr>
 <tr>
@@ -453,13 +458,13 @@ Alias: sleep_stage</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../SleepStageMetric/">SleepStageMetric</a></td>
-<td>Sleep staging metric stratified by stage</td>
+<td><a href="../HeartRateMetric/">HeartRateMetric</a></td>
+<td>Heart rate and HRV measurement</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../RespiratoryEventMetric/">RespiratoryEventMetric</a></td>
-<td>Respiratory event metric with full modifier context</td>
+<td><a href="../SleepStageMetric/">SleepStageMetric</a></td>
+<td>Sleep staging metric stratified by stage</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -507,6 +512,7 @@ domain_of:
 - ArousalMetric
 - LimbMovementMetric
 - HeartRateMetric
+- CapnographyMetric
 range: SleepStageEnum
 
 </code></pre>

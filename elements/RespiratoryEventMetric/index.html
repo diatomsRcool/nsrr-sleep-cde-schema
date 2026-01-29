@@ -559,6 +559,15 @@ attributes:
     - SubjectMedicalHistory
     - CPAPAdherence
     - ActigraphyRecord
+    - SnoringMetric
+    - CapnographyMetric
+    - PVTResult
+    - SleepinessAssessment
+    - BerlinQuestionnaireResult
+    - STOPBANGResult
+    - PROMISSleepScore
+    - PediatricSleepAssessment
+    - PediatricAnthropometry
     - VariableMapping
     range: string
     required: true
@@ -587,6 +596,15 @@ attributes:
     - SubjectMedicalHistory
     - CPAPAdherence
     - ActigraphyRecord
+    - SnoringMetric
+    - CapnographyMetric
+    - PVTResult
+    - SleepinessAssessment
+    - BerlinQuestionnaireResult
+    - STOPBANGResult
+    - PROMISSleepScore
+    - PediatricSleepAssessment
+    - PediatricAnthropometry
     range: string
   visit_id:
     name: visit_id
@@ -612,6 +630,15 @@ attributes:
     - SubjectVitalSigns
     - CPAPAdherence
     - ActigraphyRecord
+    - SnoringMetric
+    - CapnographyMetric
+    - PVTResult
+    - SleepinessAssessment
+    - BerlinQuestionnaireResult
+    - STOPBANGResult
+    - PROMISSleepScore
+    - PediatricSleepAssessment
+    - PediatricAnthropometry
     range: string
   ahi:
     name: ahi
@@ -721,6 +748,7 @@ attributes:
     - ArousalMetric
     - LimbMovementMetric
     - HeartRateMetric
+    - CapnographyMetric
     range: SleepStageEnum
   body_position:
     name: body_position
@@ -752,6 +780,8 @@ attributes:
     - LimbMovementMetric
     - BodyPositionMetric
     - HeartRateMetric
+    - SnoringMetric
+    - CapnographyMetric
     range: PSGTypeEnum
   summary_statistic:
     name: summary_statistic

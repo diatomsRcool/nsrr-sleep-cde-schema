@@ -2,1050 +2,1378 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/about/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/cde_mapping_guide/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/AcquisitionProtocol/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/ActigraphyRecord/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/ApneaTypeEnum/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/ArousalMetric/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/ArousalRequirementEnum/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/BerlinQuestionnaireResult/</loc>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/BerlinRiskEnum/</loc>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/BodyPositionEnum/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/BodyPositionMetric/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/Boolean/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/CESDResponseEnum/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/CPAPAdherence/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/CapnographyMetric/</loc>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/CodeIdentifier/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/Curie/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/Dataset/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/Date/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/DateOrDatetime/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/Datetime/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/Decimal/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/DesaturationThresholdEnum/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/Double/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/ESSResponseEnum/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/EthnicityEnum/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/Float/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/FrequencyEnum/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/GADResponseEnum/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/HeartRateMetric/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/HypopneaDefinitionEnum/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/Instrument/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/Integer/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/Jsonpath/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/Jsonpointer/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/LikertAgreement5Enum/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/LikertFrequency4Enum/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/LimbMovementMetric/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/Ncname/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/Nodeidentifier/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/Objectidentifier/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/OxygenSaturationMetric/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/PHQResponseEnum/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/PROMISQualityEnum/</loc>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/PROMISResponseEnum/</loc>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/PROMISSleepScore/</loc>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/PSGTypeEnum/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/PVTResult/</loc>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/PediatricAnthropometry/</loc>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/PediatricSleepAssessment/</loc>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/RaceEnum/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/RespiratoryEventMetric/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/STOPBANGResult/</loc>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/STOPBANGRiskEnum/</loc>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/ScoringProtocol/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/SexEnum/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/SleepQualityEnum/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/SleepStageEnum/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/SleepStageMetric/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/SleepStudyRecord/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/SleepinessAssessment/</loc>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/SnoringFrequencyEnum/</loc>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/SnoringLoudnessEnum/</loc>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/SnoringMetric/</loc>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/Sparqlpath/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/String/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/SubjectAnthropometry/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/SubjectDemographics/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/SubjectMedicalHistory/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/SubjectVitalSigns/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/SummaryStatisticEnum/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/SurveyItemResponse/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/SurveyScore/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/Time/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/TimeFrameEnum/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/Uri/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/Uriorcurie/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/Variable/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/VariableMapping/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/VariableValue/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/YesNoEnum/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/YesNoUnknownEnum/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/abbreviation/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/actigraphy_se_pct/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/actigraphy_sol_min/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/actigraphy_tst_min/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/actigraphy_waso_min/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/activity_count/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/adenoid_size/</loc>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/age_gt89/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/age_months/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/age_over_50/</loc>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/age_years/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/ahi/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/airflow_quality_pct/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/alcohol_use/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/apnea_count/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/apnea_index/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/apnea_type/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/arousal_count/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/arousal_index/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/arousal_requirement/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/assessment_time/</loc>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/berlin_category1_positive/</loc>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/berlin_category2_positive/</loc>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/berlin_category3_positive/</loc>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/berlin_risk/</loc>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/berlin_total_positive/</loc>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/bmi/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/bmi_over_35/</loc>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/bmi_percentile/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/bmi_zscore/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/body_position/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/canonical_slot/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/central_apnea_count/</loc>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/central_apnea_index/</loc>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/cesd_total_score/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/chq_physical_score/</loc>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/chq_psychosocial_score/</loc>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/chronotype/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/citation/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/code/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/concept_path/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/cpap_ahi_residual/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/cpap_leak_lpm/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/cpap_pressure_cmh2o/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/cpap_usage_hours/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/cpap_usage_percent_days/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/cpap_usage_percent_days_gt4h/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/dataset_id/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/derivation_formula/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/desaturation_index/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/desaturation_threshold/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/description/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/device_type/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/diastolic_bp_mmhg/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/display/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/ecg_quality_pct/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/education_years/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/eeg_quality_pct/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/emg_quality_pct/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/employment_status/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/eog_quality_pct/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/epoch_length_sec/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/ess_total_score/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/etco2_baseline_sleep/</loc>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/etco2_baseline_wake/</loc>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/etco2_mean/</loc>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/etco2_peak/</loc>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/ethnicity/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/fosq_total_score/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/fss_mean_score/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/gad7_total_score/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/gestational_age_weeks/</loc>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/has_anxiety/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/has_depression/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/has_diabetes/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/has_heart_disease/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/has_hypertension/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/has_insomnia/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/has_narcolepsy/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/has_rls/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/has_stroke/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/heart_rate_bpm/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/height_cm/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/high_bp/</loc>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/hip_circumference_cm/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/household_income/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/hrv_hf_power/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/hrv_lf_hf_ratio/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/hrv_lf_power/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/hrv_pnn50_pct/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/hrv_rmssd_ms/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/hrv_sdnn_ms/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/hypopnea_count/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/hypopnea_definition/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/hypopnea_index/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/id/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/instrument_id/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/interrater_reliability/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/is_derived/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/is_harmonized/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/isi_total_score/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/item_id/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/item_text/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/kss_score/</loc>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/label/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/lateral_duration_min/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/lights_off_time/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/lights_on_time/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/limb_movement_index/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/male_gender/</loc>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/mapping_confidence/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/mapping_notes/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/marital_status/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/max_apnea_duration_sec/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/max_heart_rate_sleep/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/mean_apnea_duration_sec/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/mean_arousal_duration_sec/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/mean_desaturation_pct/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/mean_heart_rate_sleep/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/mean_hypopnea_duration_sec/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/mean_sleep_bout_duration_min/</loc>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/mean_wake_bout_duration_min/</loc>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/meq_score/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/min_heart_rate_sleep/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/mixed_apnea_count/</loc>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/mixed_apnea_index/</loc>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/modifiers/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/name/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/nap_count/</loc>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/nap_duration_mean_min/</loc>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/nap_duration_total_min/</loc>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/neck_circumference_cm/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/neck_over_40/</loc>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/non_supine_duration_min/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/non_supine_percent/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/num_awakenings/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/num_items/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/num_stage_transitions/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/observed_apnea/</loc>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/obstructive_apnea_count/</loc>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/obstructive_apnea_index/</loc>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/osa18_caregiver_concern/</loc>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/osa18_daytime_function/</loc>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/osa18_emotional_distress/</loc>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/osa18_physical_symptoms/</loc>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/osa18_sleep_disturbance/</loc>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/osa18_total_score/</loc>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/overall_study_quality/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/oximetry_quality_pct/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/phq8_total_score/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/phq9_total_score/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/plm_arousal_index/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/plm_count/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/plm_index/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/plms_with_arousal_count/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/plms_with_arousal_index/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/position_quality_pct/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/promis_sleep_disturbance_raw/</loc>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/promis_sleep_disturbance_tscore/</loc>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/promis_sleep_impairment_raw/</loc>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/promis_sleep_impairment_tscore/</loc>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/prone_duration_min/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/psg_type/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/psq_srbd_score/</loc>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/psqi_component_score/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/psqi_global_score/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/pvt_false_start_count/</loc>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/pvt_fastest_10pct_rt/</loc>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/pvt_lapse_count/</loc>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/pvt_mean_rt_ms/</loc>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/pvt_median_rt_ms/</loc>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/pvt_slowest_10pct_rt/</loc>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/race/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/rdi/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/recording_duration_min/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/recording_environment/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/recording_start_time/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/rem_latency_min/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/rera_index/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/respiratory_arousal_index/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/respiratory_event_count/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/respiratory_rate/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/response_text/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/response_value/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/rest_interval_end/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/rest_interval_start/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/sampling_rate_hz/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/score_name/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/score_range/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/score_type/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/score_value/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/scorer_id/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/sensor_configuration/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/sex/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/sf36_mental_score/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/sf36_physical_score/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/sleep-cde-schema/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/sleep_bout_count/</loc>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/sleep_efficiency_pct/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/sleep_fragmentation_index/</loc>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/sleep_midpoint/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/sleep_offset_time/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/sleep_onset_latency_min/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/sleep_onset_time/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/sleep_stage/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/sleep_stage_duration_min/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/sleep_stage_percent/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/smoking_status/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/snoring/</loc>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/snoring_duration_min/</loc>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/snoring_frequency/</loc>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/snoring_index/</loc>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/snoring_loudness/</loc>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/snoring_percent/</loc>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/source_concept_path/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/source_label/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/source_variable/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/spo2_baseline_pct/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/spo2_mean_pct/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/spo2_min_pct/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/spo2_nadir_pct/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/spontaneous_arousal_index/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/staging_rules/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/stopbang_risk/</loc>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/stopbang_score/</loc>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/study_date/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/subject_id/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/summary_statistic/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/supine_duration_min/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/supine_percent/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/system/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/systolic_bp_mmhg/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/tags/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/temperature_celsius/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/test_duration_min/</loc>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/time_below_88_pct_min/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/time_below_90_pct_min/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/time_below_90_pct_percent/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/time_co2_above_45_pct/</loc>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/time_co2_above_50_pct/</loc>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/time_frame/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/time_in_bed_min/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/time_of_day/</loc>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/tiredness/</loc>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/tonsil_size/</loc>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/total_sleep_time_min/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/transformation/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/units/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/valid_days/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/value/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/value_type/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/variable_id/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/vas_sleepiness/</loc>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/version/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/visit_id/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/waist_circumference_cm/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/waist_hip_ratio/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/wake_bout_count/</loc>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/waso_min/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/sleep-cde-schema/elements/weight_kg/</loc>
-         <lastmod>2026-01-23</lastmod>
+         <lastmod>2026-01-29</lastmod>
     </url>
 </urlset>

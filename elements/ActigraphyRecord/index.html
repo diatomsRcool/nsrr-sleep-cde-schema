@@ -266,9 +266,23 @@
 
       ActigraphyRecord : id
 
+      ActigraphyRecord : mean_sleep_bout_duration_min
+
+      ActigraphyRecord : mean_wake_bout_duration_min
+
+      ActigraphyRecord : nap_count
+
+      ActigraphyRecord : nap_duration_mean_min
+
+      ActigraphyRecord : nap_duration_total_min
+
       ActigraphyRecord : rest_interval_end
 
       ActigraphyRecord : rest_interval_start
+
+      ActigraphyRecord : sleep_bout_count
+
+      ActigraphyRecord : sleep_fragmentation_index
 
       ActigraphyRecord : subject_id
 
@@ -286,6 +300,8 @@
       ActigraphyRecord : valid_days
 
       ActigraphyRecord : visit_id
+
+      ActigraphyRecord : wake_bout_count
 
 
 </div>
@@ -373,6 +389,54 @@
 <td>Time period for aggregation</td>
 <td>direct</td>
 </tr>
+<tr>
+<td><a href="../sleep_fragmentation_index/">sleep_fragmentation_index</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Sleep fragmentation index from actigraphy</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../sleep_bout_count/">sleep_bout_count</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>Number of sleep bouts (continuous sleep periods)</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../wake_bout_count/">wake_bout_count</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>Number of wake bouts during sleep period</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../mean_sleep_bout_duration_min/">mean_sleep_bout_duration_min</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Mean duration of sleep bouts (minutes)</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../mean_wake_bout_duration_min/">mean_wake_bout_duration_min</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Mean duration of wake bouts (minutes)</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../nap_count/">nap_count</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>Number of daytime naps</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../nap_duration_total_min/">nap_duration_total_min</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Total duration of naps (minutes)</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../nap_duration_mean_min/">nap_duration_mean_min</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Mean duration of naps (minutes)</td>
+<td>direct</td>
+</tr>
 </tbody>
 </table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
@@ -419,6 +483,14 @@ slots:
 - rest_interval_end
 - valid_days
 - time_frame
+- sleep_fragmentation_index
+- sleep_bout_count
+- wake_bout_count
+- mean_sleep_bout_duration_min
+- mean_wake_bout_duration_min
+- nap_count
+- nap_duration_total_min
+- nap_duration_mean_min
 
 </code></pre>
 </details>
@@ -460,6 +532,15 @@ attributes:
     - SubjectMedicalHistory
     - CPAPAdherence
     - ActigraphyRecord
+    - SnoringMetric
+    - CapnographyMetric
+    - PVTResult
+    - SleepinessAssessment
+    - BerlinQuestionnaireResult
+    - STOPBANGResult
+    - PROMISSleepScore
+    - PediatricSleepAssessment
+    - PediatricAnthropometry
     - VariableMapping
     range: string
     required: true
@@ -488,6 +569,15 @@ attributes:
     - SubjectMedicalHistory
     - CPAPAdherence
     - ActigraphyRecord
+    - SnoringMetric
+    - CapnographyMetric
+    - PVTResult
+    - SleepinessAssessment
+    - BerlinQuestionnaireResult
+    - STOPBANGResult
+    - PROMISSleepScore
+    - PediatricSleepAssessment
+    - PediatricAnthropometry
     range: string
   visit_id:
     name: visit_id
@@ -513,6 +603,15 @@ attributes:
     - SubjectVitalSigns
     - CPAPAdherence
     - ActigraphyRecord
+    - SnoringMetric
+    - CapnographyMetric
+    - PVTResult
+    - SleepinessAssessment
+    - BerlinQuestionnaireResult
+    - STOPBANGResult
+    - PROMISSleepScore
+    - PediatricSleepAssessment
+    - PediatricAnthropometry
     range: string
   actigraphy_tst_min:
     name: actigraphy_tst_min
@@ -606,6 +705,86 @@ attributes:
     - CPAPAdherence
     - ActigraphyRecord
     range: TimeFrameEnum
+  sleep_fragmentation_index:
+    name: sleep_fragmentation_index
+    description: Sleep fragmentation index from actigraphy
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    rank: 1000
+    alias: sleep_fragmentation_index
+    owner: ActigraphyRecord
+    domain_of:
+    - ActigraphyRecord
+    range: float
+  sleep_bout_count:
+    name: sleep_bout_count
+    description: Number of sleep bouts (continuous sleep periods)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    rank: 1000
+    alias: sleep_bout_count
+    owner: ActigraphyRecord
+    domain_of:
+    - ActigraphyRecord
+    range: integer
+  wake_bout_count:
+    name: wake_bout_count
+    description: Number of wake bouts during sleep period
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    rank: 1000
+    alias: wake_bout_count
+    owner: ActigraphyRecord
+    domain_of:
+    - ActigraphyRecord
+    range: integer
+  mean_sleep_bout_duration_min:
+    name: mean_sleep_bout_duration_min
+    description: Mean duration of sleep bouts (minutes)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    rank: 1000
+    alias: mean_sleep_bout_duration_min
+    owner: ActigraphyRecord
+    domain_of:
+    - ActigraphyRecord
+    range: float
+  mean_wake_bout_duration_min:
+    name: mean_wake_bout_duration_min
+    description: Mean duration of wake bouts (minutes)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    rank: 1000
+    alias: mean_wake_bout_duration_min
+    owner: ActigraphyRecord
+    domain_of:
+    - ActigraphyRecord
+    range: float
+  nap_count:
+    name: nap_count
+    description: Number of daytime naps
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    rank: 1000
+    alias: nap_count
+    owner: ActigraphyRecord
+    domain_of:
+    - ActigraphyRecord
+    range: integer
+  nap_duration_total_min:
+    name: nap_duration_total_min
+    description: Total duration of naps (minutes)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    rank: 1000
+    alias: nap_duration_total_min
+    owner: ActigraphyRecord
+    domain_of:
+    - ActigraphyRecord
+    range: float
+  nap_duration_mean_min:
+    name: nap_duration_mean_min
+    description: Mean duration of naps (minutes)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    rank: 1000
+    alias: nap_duration_mean_min
+    owner: ActigraphyRecord
+    domain_of:
+    - ActigraphyRecord
+    range: float
 
 </code></pre>
 </details>

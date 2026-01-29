@@ -775,6 +775,114 @@ enums:
       nearly_every_day:
         text: nearly_every_day
         description: Nearly every day (3)
+  PROMISResponseEnum:
+    name: PROMISResponseEnum
+    definition_uri: https://w3id.org/nsrr/sleep-cde/PROMISResponseEnum
+    description: PROMIS 5-point response scale
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    permissible_values:
+      not_at_all:
+        text: not_at_all
+        description: Not at all (1)
+      a_little_bit:
+        text: a_little_bit
+        description: A little bit (2)
+      somewhat:
+        text: somewhat
+        description: Somewhat (3)
+      quite_a_bit:
+        text: quite_a_bit
+        description: Quite a bit (4)
+      very_much:
+        text: very_much
+        description: Very much (5)
+  PROMISQualityEnum:
+    name: PROMISQualityEnum
+    definition_uri: https://w3id.org/nsrr/sleep-cde/PROMISQualityEnum
+    description: PROMIS sleep quality scale
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    permissible_values:
+      very_poor:
+        text: very_poor
+        description: Very poor (1)
+      poor:
+        text: poor
+        description: Poor (2)
+      fair:
+        text: fair
+        description: Fair (3)
+      good:
+        text: good
+        description: Good (4)
+      very_good:
+        text: very_good
+        description: Very good (5)
+  BerlinRiskEnum:
+    name: BerlinRiskEnum
+    definition_uri: https://w3id.org/nsrr/sleep-cde/BerlinRiskEnum
+    description: Berlin Questionnaire risk categories
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    permissible_values:
+      low_risk:
+        text: low_risk
+        description: Low risk for OSA (0-1 positive categories)
+      high_risk:
+        text: high_risk
+        description: High risk for OSA (2-3 positive categories)
+  STOPBANGRiskEnum:
+    name: STOPBANGRiskEnum
+    definition_uri: https://w3id.org/nsrr/sleep-cde/STOPBANGRiskEnum
+    description: STOP-BANG risk categories
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    permissible_values:
+      low_risk:
+        text: low_risk
+        description: Low risk (score 0-2)
+      intermediate_risk:
+        text: intermediate_risk
+        description: Intermediate risk (score 3-4)
+      high_risk:
+        text: high_risk
+        description: High risk (score 5-8)
+  SnoringFrequencyEnum:
+    name: SnoringFrequencyEnum
+    definition_uri: https://w3id.org/nsrr/sleep-cde/SnoringFrequencyEnum
+    description: Snoring frequency response scale
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    permissible_values:
+      never:
+        text: never
+        description: Never or almost never
+      occasionally:
+        text: occasionally
+        description: Occasionally (1-2 nights/week)
+      frequently:
+        text: frequently
+        description: Frequently (3-4 nights/week)
+      always:
+        text: always
+        description: Always or almost always (5-7 nights/week)
+  SnoringLoudnessEnum:
+    name: SnoringLoudnessEnum
+    definition_uri: https://w3id.org/nsrr/sleep-cde/SnoringLoudnessEnum
+    description: Snoring loudness scale
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    permissible_values:
+      none:
+        text: none
+        description: No snoring
+      mild:
+        text: mild
+        description: Slightly louder than breathing
+      moderate:
+        text: moderate
+        description: As loud as talking
+      loud:
+        text: loud
+        description: Louder than talking
+      very_loud:
+        text: very_loud
+        description: Can be heard in adjacent rooms
 slots:
   id:
     name: id
@@ -808,6 +916,15 @@ slots:
     - SubjectMedicalHistory
     - CPAPAdherence
     - ActigraphyRecord
+    - SnoringMetric
+    - CapnographyMetric
+    - PVTResult
+    - SleepinessAssessment
+    - BerlinQuestionnaireResult
+    - STOPBANGResult
+    - PROMISSleepScore
+    - PediatricSleepAssessment
+    - PediatricAnthropometry
     - VariableMapping
     range: string
     required: true
@@ -840,7 +957,7 @@ slots:
     description: Participant/subject identifier
     from_schema: https://w3id.org/nsrr/sleep-cde
     slot_uri: sleep:subject_id
-    owner: ActigraphyRecord
+    owner: PediatricAnthropometry
     domain_of:
     - VariableValue
     - SurveyItemResponse
@@ -859,6 +976,15 @@ slots:
     - SubjectMedicalHistory
     - CPAPAdherence
     - ActigraphyRecord
+    - SnoringMetric
+    - CapnographyMetric
+    - PVTResult
+    - SleepinessAssessment
+    - BerlinQuestionnaireResult
+    - STOPBANGResult
+    - PROMISSleepScore
+    - PediatricSleepAssessment
+    - PediatricAnthropometry
     range: string
   visit_id:
     name: visit_id
@@ -866,7 +992,7 @@ slots:
     description: Visit/timepoint identifier
     from_schema: https://w3id.org/nsrr/sleep-cde
     slot_uri: sleep:visit_id
-    owner: ActigraphyRecord
+    owner: PediatricAnthropometry
     domain_of:
     - VariableValue
     - SurveyItemResponse
@@ -884,6 +1010,15 @@ slots:
     - SubjectVitalSigns
     - CPAPAdherence
     - ActigraphyRecord
+    - SnoringMetric
+    - CapnographyMetric
+    - PVTResult
+    - SleepinessAssessment
+    - BerlinQuestionnaireResult
+    - STOPBANGResult
+    - PROMISSleepScore
+    - PediatricSleepAssessment
+    - PediatricAnthropometry
     range: string
   name:
     name: name
@@ -970,7 +1105,7 @@ slots:
     description: Sleep stage context for measurement
     from_schema: https://w3id.org/nsrr/sleep-cde
     slot_uri: sleep:sleep_stage
-    owner: HeartRateMetric
+    owner: CapnographyMetric
     domain_of:
     - SleepStageMetric
     - RespiratoryEventMetric
@@ -978,6 +1113,7 @@ slots:
     - ArousalMetric
     - LimbMovementMetric
     - HeartRateMetric
+    - CapnographyMetric
     range: SleepStageEnum
   body_position:
     name: body_position
@@ -998,7 +1134,7 @@ slots:
     description: Type of polysomnography study
     from_schema: https://w3id.org/nsrr/sleep-cde
     slot_uri: sleep:psg_type
-    owner: HeartRateMetric
+    owner: CapnographyMetric
     domain_of:
     - AcquisitionProtocol
     - SleepStudyRecord
@@ -1009,6 +1145,8 @@ slots:
     - LimbMovementMetric
     - BodyPositionMetric
     - HeartRateMetric
+    - SnoringMetric
+    - CapnographyMetric
     range: PSGTypeEnum
   apnea_type:
     name: apnea_type
@@ -1093,9 +1231,10 @@ slots:
     description: Age in months (for infants/children)
     from_schema: https://w3id.org/nsrr/sleep-cde
     slot_uri: sleep:age_months
-    owner: SubjectDemographics
+    owner: PediatricAnthropometry
     domain_of:
     - SubjectDemographics
+    - PediatricAnthropometry
     range: float
   age_gt89:
     name: age_gt89
@@ -1183,9 +1322,10 @@ slots:
     description: Height in centimeters
     from_schema: https://w3id.org/nsrr/sleep-cde
     slot_uri: sleep:height_cm
-    owner: SubjectAnthropometry
+    owner: PediatricAnthropometry
     domain_of:
     - SubjectAnthropometry
+    - PediatricAnthropometry
     range: float
   weight_kg:
     name: weight_kg
@@ -1193,9 +1333,10 @@ slots:
     description: Weight in kilograms
     from_schema: https://w3id.org/nsrr/sleep-cde
     slot_uri: sleep:weight_kg
-    owner: SubjectAnthropometry
+    owner: PediatricAnthropometry
     domain_of:
     - SubjectAnthropometry
+    - PediatricAnthropometry
     range: float
   bmi:
     name: bmi
@@ -1203,9 +1344,10 @@ slots:
     description: Body mass index (kg/m^2)
     from_schema: https://w3id.org/nsrr/sleep-cde
     slot_uri: sleep:bmi
-    owner: SubjectAnthropometry
+    owner: PediatricAnthropometry
     domain_of:
     - SubjectAnthropometry
+    - PediatricAnthropometry
     range: float
   bmi_percentile:
     name: bmi_percentile
@@ -1213,9 +1355,10 @@ slots:
     description: BMI percentile (for pediatric)
     from_schema: https://w3id.org/nsrr/sleep-cde
     slot_uri: sleep:bmi_percentile
-    owner: SubjectAnthropometry
+    owner: PediatricAnthropometry
     domain_of:
     - SubjectAnthropometry
+    - PediatricAnthropometry
     range: float
   bmi_zscore:
     name: bmi_zscore
@@ -1223,9 +1366,10 @@ slots:
     description: BMI z-score (for pediatric)
     from_schema: https://w3id.org/nsrr/sleep-cde
     slot_uri: sleep:bmi_zscore
-    owner: SubjectAnthropometry
+    owner: PediatricAnthropometry
     domain_of:
     - SubjectAnthropometry
+    - PediatricAnthropometry
     range: float
   neck_circumference_cm:
     name: neck_circumference_cm
@@ -1970,6 +2114,9 @@ slots:
     description: Epworth Sleepiness Scale total score (0-24)
     from_schema: https://w3id.org/nsrr/sleep-cde
     slot_uri: sleep:ess_total_score
+    owner: SleepinessAssessment
+    domain_of:
+    - SleepinessAssessment
     range: integer
   psqi_global_score:
     name: psqi_global_score
@@ -2062,6 +2209,236 @@ slots:
     from_schema: https://w3id.org/nsrr/sleep-cde
     slot_uri: sleep:chronotype
     range: string
+  promis_sleep_disturbance_tscore:
+    name: promis_sleep_disturbance_tscore
+    definition_uri: https://w3id.org/nsrr/sleep-cde/promis_sleep_disturbance_tscore
+    description: PROMIS Sleep Disturbance T-score
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:promis_sleep_disturbance_tscore
+    owner: PROMISSleepScore
+    domain_of:
+    - PROMISSleepScore
+    range: float
+  promis_sleep_disturbance_raw:
+    name: promis_sleep_disturbance_raw
+    definition_uri: https://w3id.org/nsrr/sleep-cde/promis_sleep_disturbance_raw
+    description: PROMIS Sleep Disturbance raw score
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:promis_sleep_disturbance_raw
+    owner: PROMISSleepScore
+    domain_of:
+    - PROMISSleepScore
+    range: integer
+  promis_sleep_impairment_tscore:
+    name: promis_sleep_impairment_tscore
+    definition_uri: https://w3id.org/nsrr/sleep-cde/promis_sleep_impairment_tscore
+    description: PROMIS Sleep-Related Impairment T-score
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:promis_sleep_impairment_tscore
+    owner: PROMISSleepScore
+    domain_of:
+    - PROMISSleepScore
+    range: float
+  promis_sleep_impairment_raw:
+    name: promis_sleep_impairment_raw
+    definition_uri: https://w3id.org/nsrr/sleep-cde/promis_sleep_impairment_raw
+    description: PROMIS Sleep-Related Impairment raw score
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:promis_sleep_impairment_raw
+    owner: PROMISSleepScore
+    domain_of:
+    - PROMISSleepScore
+    range: integer
+  berlin_category1_positive:
+    name: berlin_category1_positive
+    definition_uri: https://w3id.org/nsrr/sleep-cde/berlin_category1_positive
+    description: Berlin Questionnaire Category 1 positive (snoring)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:berlin_category1_positive
+    owner: BerlinQuestionnaireResult
+    domain_of:
+    - BerlinQuestionnaireResult
+    range: YesNoEnum
+  berlin_category2_positive:
+    name: berlin_category2_positive
+    definition_uri: https://w3id.org/nsrr/sleep-cde/berlin_category2_positive
+    description: Berlin Questionnaire Category 2 positive (sleepiness)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:berlin_category2_positive
+    owner: BerlinQuestionnaireResult
+    domain_of:
+    - BerlinQuestionnaireResult
+    range: YesNoEnum
+  berlin_category3_positive:
+    name: berlin_category3_positive
+    definition_uri: https://w3id.org/nsrr/sleep-cde/berlin_category3_positive
+    description: Berlin Questionnaire Category 3 positive (BMI/hypertension)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:berlin_category3_positive
+    owner: BerlinQuestionnaireResult
+    domain_of:
+    - BerlinQuestionnaireResult
+    range: YesNoEnum
+  berlin_total_positive:
+    name: berlin_total_positive
+    definition_uri: https://w3id.org/nsrr/sleep-cde/berlin_total_positive
+    description: Number of positive Berlin categories (0-3)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:berlin_total_positive
+    owner: BerlinQuestionnaireResult
+    domain_of:
+    - BerlinQuestionnaireResult
+    range: integer
+  berlin_risk:
+    name: berlin_risk
+    definition_uri: https://w3id.org/nsrr/sleep-cde/berlin_risk
+    description: Berlin Questionnaire risk classification
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:berlin_risk
+    owner: BerlinQuestionnaireResult
+    domain_of:
+    - BerlinQuestionnaireResult
+    range: BerlinRiskEnum
+  stopbang_score:
+    name: stopbang_score
+    definition_uri: https://w3id.org/nsrr/sleep-cde/stopbang_score
+    description: STOP-BANG total score (0-8)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:stopbang_score
+    owner: STOPBANGResult
+    domain_of:
+    - STOPBANGResult
+    range: integer
+  stopbang_risk:
+    name: stopbang_risk
+    definition_uri: https://w3id.org/nsrr/sleep-cde/stopbang_risk
+    description: STOP-BANG risk classification
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:stopbang_risk
+    owner: STOPBANGResult
+    domain_of:
+    - STOPBANGResult
+    range: STOPBANGRiskEnum
+  chq_physical_score:
+    name: chq_physical_score
+    definition_uri: https://w3id.org/nsrr/sleep-cde/chq_physical_score
+    description: Child Health Questionnaire Physical Summary Score
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:chq_physical_score
+    owner: PediatricSleepAssessment
+    domain_of:
+    - PediatricSleepAssessment
+    range: float
+  chq_psychosocial_score:
+    name: chq_psychosocial_score
+    definition_uri: https://w3id.org/nsrr/sleep-cde/chq_psychosocial_score
+    description: Child Health Questionnaire Psychosocial Summary Score
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:chq_psychosocial_score
+    owner: PediatricSleepAssessment
+    domain_of:
+    - PediatricSleepAssessment
+    range: float
+  osa18_total_score:
+    name: osa18_total_score
+    definition_uri: https://w3id.org/nsrr/sleep-cde/osa18_total_score
+    description: OSA-18 Quality of Life total score
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:osa18_total_score
+    owner: PediatricSleepAssessment
+    domain_of:
+    - PediatricSleepAssessment
+    range: integer
+  osa18_sleep_disturbance:
+    name: osa18_sleep_disturbance
+    definition_uri: https://w3id.org/nsrr/sleep-cde/osa18_sleep_disturbance
+    description: OSA-18 Sleep Disturbance domain score
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:osa18_sleep_disturbance
+    owner: PediatricSleepAssessment
+    domain_of:
+    - PediatricSleepAssessment
+    range: integer
+  osa18_physical_symptoms:
+    name: osa18_physical_symptoms
+    definition_uri: https://w3id.org/nsrr/sleep-cde/osa18_physical_symptoms
+    description: OSA-18 Physical Symptoms domain score
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:osa18_physical_symptoms
+    owner: PediatricSleepAssessment
+    domain_of:
+    - PediatricSleepAssessment
+    range: integer
+  osa18_emotional_distress:
+    name: osa18_emotional_distress
+    definition_uri: https://w3id.org/nsrr/sleep-cde/osa18_emotional_distress
+    description: OSA-18 Emotional Distress domain score
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:osa18_emotional_distress
+    owner: PediatricSleepAssessment
+    domain_of:
+    - PediatricSleepAssessment
+    range: integer
+  osa18_daytime_function:
+    name: osa18_daytime_function
+    definition_uri: https://w3id.org/nsrr/sleep-cde/osa18_daytime_function
+    description: OSA-18 Daytime Function domain score
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:osa18_daytime_function
+    owner: PediatricSleepAssessment
+    domain_of:
+    - PediatricSleepAssessment
+    range: integer
+  osa18_caregiver_concern:
+    name: osa18_caregiver_concern
+    definition_uri: https://w3id.org/nsrr/sleep-cde/osa18_caregiver_concern
+    description: OSA-18 Caregiver Concern domain score
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:osa18_caregiver_concern
+    owner: PediatricSleepAssessment
+    domain_of:
+    - PediatricSleepAssessment
+    range: integer
+  psq_srbd_score:
+    name: psq_srbd_score
+    definition_uri: https://w3id.org/nsrr/sleep-cde/psq_srbd_score
+    description: Pediatric Sleep Questionnaire SRBD score
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:psq_srbd_score
+    owner: PediatricSleepAssessment
+    domain_of:
+    - PediatricSleepAssessment
+    range: float
+  gestational_age_weeks:
+    name: gestational_age_weeks
+    definition_uri: https://w3id.org/nsrr/sleep-cde/gestational_age_weeks
+    description: Gestational age at birth in weeks
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:gestational_age_weeks
+    owner: PediatricAnthropometry
+    domain_of:
+    - PediatricAnthropometry
+    range: float
+  tonsil_size:
+    name: tonsil_size
+    definition_uri: https://w3id.org/nsrr/sleep-cde/tonsil_size
+    description: Tonsil size grade (0-4)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:tonsil_size
+    owner: PediatricAnthropometry
+    domain_of:
+    - PediatricAnthropometry
+    range: integer
+  adenoid_size:
+    name: adenoid_size
+    definition_uri: https://w3id.org/nsrr/sleep-cde/adenoid_size
+    description: Adenoid size/obstruction percentage
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:adenoid_size
+    owner: PediatricAnthropometry
+    domain_of:
+    - PediatricAnthropometry
+    range: float
   instrument_id:
     name: instrument_id
     definition_uri: https://w3id.org/nsrr/sleep-cde/instrument_id
@@ -2113,6 +2490,318 @@ slots:
     domain_of:
     - SurveyItemResponse
     range: string
+  snoring_frequency:
+    name: snoring_frequency
+    definition_uri: https://w3id.org/nsrr/sleep-cde/snoring_frequency
+    description: Self-reported snoring frequency
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:snoring_frequency
+    owner: SnoringMetric
+    domain_of:
+    - SnoringMetric
+    range: SnoringFrequencyEnum
+  snoring_loudness:
+    name: snoring_loudness
+    definition_uri: https://w3id.org/nsrr/sleep-cde/snoring_loudness
+    description: Self-reported snoring loudness
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:snoring_loudness
+    owner: SnoringMetric
+    domain_of:
+    - SnoringMetric
+    range: SnoringLoudnessEnum
+  snoring_duration_min:
+    name: snoring_duration_min
+    definition_uri: https://w3id.org/nsrr/sleep-cde/snoring_duration_min
+    description: Duration of snoring during sleep (minutes)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:snoring_duration_min
+    owner: SnoringMetric
+    domain_of:
+    - SnoringMetric
+    range: float
+  snoring_percent:
+    name: snoring_percent
+    definition_uri: https://w3id.org/nsrr/sleep-cde/snoring_percent
+    description: Percentage of sleep time with snoring
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:snoring_percent
+    owner: SnoringMetric
+    domain_of:
+    - SnoringMetric
+    range: float
+  snoring_index:
+    name: snoring_index
+    definition_uri: https://w3id.org/nsrr/sleep-cde/snoring_index
+    description: Snoring events per hour of sleep
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:snoring_index
+    owner: SnoringMetric
+    domain_of:
+    - SnoringMetric
+    range: float
+  etco2_mean:
+    name: etco2_mean
+    definition_uri: https://w3id.org/nsrr/sleep-cde/etco2_mean
+    description: Mean end-tidal CO2 during sleep (mmHg)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:etco2_mean
+    owner: CapnographyMetric
+    domain_of:
+    - CapnographyMetric
+    range: float
+  etco2_peak:
+    name: etco2_peak
+    definition_uri: https://w3id.org/nsrr/sleep-cde/etco2_peak
+    description: Peak end-tidal CO2 during sleep (mmHg)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:etco2_peak
+    owner: CapnographyMetric
+    domain_of:
+    - CapnographyMetric
+    range: float
+  etco2_baseline_wake:
+    name: etco2_baseline_wake
+    definition_uri: https://w3id.org/nsrr/sleep-cde/etco2_baseline_wake
+    description: Baseline wake end-tidal CO2 (mmHg)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:etco2_baseline_wake
+    owner: CapnographyMetric
+    domain_of:
+    - CapnographyMetric
+    range: float
+  etco2_baseline_sleep:
+    name: etco2_baseline_sleep
+    definition_uri: https://w3id.org/nsrr/sleep-cde/etco2_baseline_sleep
+    description: Baseline sleep end-tidal CO2 (mmHg)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:etco2_baseline_sleep
+    owner: CapnographyMetric
+    domain_of:
+    - CapnographyMetric
+    range: float
+  time_co2_above_50_pct:
+    name: time_co2_above_50_pct
+    definition_uri: https://w3id.org/nsrr/sleep-cde/time_co2_above_50_pct
+    description: Percentage of sleep time with CO2 > 50 mmHg
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:time_co2_above_50_pct
+    owner: CapnographyMetric
+    domain_of:
+    - CapnographyMetric
+    range: float
+  time_co2_above_45_pct:
+    name: time_co2_above_45_pct
+    definition_uri: https://w3id.org/nsrr/sleep-cde/time_co2_above_45_pct
+    description: Percentage of sleep time with CO2 > 45 mmHg
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:time_co2_above_45_pct
+    owner: CapnographyMetric
+    domain_of:
+    - CapnographyMetric
+    range: float
+  pvt_mean_rt_ms:
+    name: pvt_mean_rt_ms
+    definition_uri: https://w3id.org/nsrr/sleep-cde/pvt_mean_rt_ms
+    description: Psychomotor Vigilance Test mean reaction time (ms)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:pvt_mean_rt_ms
+    owner: PVTResult
+    domain_of:
+    - PVTResult
+    range: float
+  pvt_median_rt_ms:
+    name: pvt_median_rt_ms
+    definition_uri: https://w3id.org/nsrr/sleep-cde/pvt_median_rt_ms
+    description: Psychomotor Vigilance Test median reaction time (ms)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:pvt_median_rt_ms
+    owner: PVTResult
+    domain_of:
+    - PVTResult
+    range: float
+  pvt_lapse_count:
+    name: pvt_lapse_count
+    definition_uri: https://w3id.org/nsrr/sleep-cde/pvt_lapse_count
+    description: PVT number of lapses (RT >= 500ms)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:pvt_lapse_count
+    owner: PVTResult
+    domain_of:
+    - PVTResult
+    range: integer
+  pvt_false_start_count:
+    name: pvt_false_start_count
+    definition_uri: https://w3id.org/nsrr/sleep-cde/pvt_false_start_count
+    description: PVT number of false starts
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:pvt_false_start_count
+    owner: PVTResult
+    domain_of:
+    - PVTResult
+    range: integer
+  pvt_fastest_10pct_rt:
+    name: pvt_fastest_10pct_rt
+    definition_uri: https://w3id.org/nsrr/sleep-cde/pvt_fastest_10pct_rt
+    description: PVT mean of fastest 10% of reaction times (ms)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:pvt_fastest_10pct_rt
+    owner: PVTResult
+    domain_of:
+    - PVTResult
+    range: float
+  pvt_slowest_10pct_rt:
+    name: pvt_slowest_10pct_rt
+    definition_uri: https://w3id.org/nsrr/sleep-cde/pvt_slowest_10pct_rt
+    description: PVT mean of slowest 10% of reaction times (ms)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:pvt_slowest_10pct_rt
+    owner: PVTResult
+    domain_of:
+    - PVTResult
+    range: float
+  kss_score:
+    name: kss_score
+    definition_uri: https://w3id.org/nsrr/sleep-cde/kss_score
+    description: Karolinska Sleepiness Scale score (1-9)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:kss_score
+    owner: SleepinessAssessment
+    domain_of:
+    - SleepinessAssessment
+    range: integer
+  vas_sleepiness:
+    name: vas_sleepiness
+    definition_uri: https://w3id.org/nsrr/sleep-cde/vas_sleepiness
+    description: Visual Analog Scale sleepiness rating
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:vas_sleepiness
+    owner: SleepinessAssessment
+    domain_of:
+    - SleepinessAssessment
+    range: float
+  sleep_fragmentation_index:
+    name: sleep_fragmentation_index
+    definition_uri: https://w3id.org/nsrr/sleep-cde/sleep_fragmentation_index
+    description: Sleep fragmentation index from actigraphy
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:sleep_fragmentation_index
+    owner: ActigraphyRecord
+    domain_of:
+    - ActigraphyRecord
+    range: float
+  sleep_bout_count:
+    name: sleep_bout_count
+    definition_uri: https://w3id.org/nsrr/sleep-cde/sleep_bout_count
+    description: Number of sleep bouts (continuous sleep periods)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:sleep_bout_count
+    owner: ActigraphyRecord
+    domain_of:
+    - ActigraphyRecord
+    range: integer
+  wake_bout_count:
+    name: wake_bout_count
+    definition_uri: https://w3id.org/nsrr/sleep-cde/wake_bout_count
+    description: Number of wake bouts during sleep period
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:wake_bout_count
+    owner: ActigraphyRecord
+    domain_of:
+    - ActigraphyRecord
+    range: integer
+  mean_sleep_bout_duration_min:
+    name: mean_sleep_bout_duration_min
+    definition_uri: https://w3id.org/nsrr/sleep-cde/mean_sleep_bout_duration_min
+    description: Mean duration of sleep bouts (minutes)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:mean_sleep_bout_duration_min
+    owner: ActigraphyRecord
+    domain_of:
+    - ActigraphyRecord
+    range: float
+  mean_wake_bout_duration_min:
+    name: mean_wake_bout_duration_min
+    definition_uri: https://w3id.org/nsrr/sleep-cde/mean_wake_bout_duration_min
+    description: Mean duration of wake bouts (minutes)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:mean_wake_bout_duration_min
+    owner: ActigraphyRecord
+    domain_of:
+    - ActigraphyRecord
+    range: float
+  nap_count:
+    name: nap_count
+    definition_uri: https://w3id.org/nsrr/sleep-cde/nap_count
+    description: Number of daytime naps
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:nap_count
+    owner: ActigraphyRecord
+    domain_of:
+    - ActigraphyRecord
+    range: integer
+  nap_duration_total_min:
+    name: nap_duration_total_min
+    definition_uri: https://w3id.org/nsrr/sleep-cde/nap_duration_total_min
+    description: Total duration of naps (minutes)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:nap_duration_total_min
+    owner: ActigraphyRecord
+    domain_of:
+    - ActigraphyRecord
+    range: float
+  nap_duration_mean_min:
+    name: nap_duration_mean_min
+    definition_uri: https://w3id.org/nsrr/sleep-cde/nap_duration_mean_min
+    description: Mean duration of naps (minutes)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:nap_duration_mean_min
+    owner: ActigraphyRecord
+    domain_of:
+    - ActigraphyRecord
+    range: float
+  central_apnea_index:
+    name: central_apnea_index
+    definition_uri: https://w3id.org/nsrr/sleep-cde/central_apnea_index
+    description: Central apnea index (central apneas per hour)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:central_apnea_index
+    range: float
+  central_apnea_count:
+    name: central_apnea_count
+    definition_uri: https://w3id.org/nsrr/sleep-cde/central_apnea_count
+    description: Total number of central apnea events
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:central_apnea_count
+    range: integer
+  mixed_apnea_index:
+    name: mixed_apnea_index
+    definition_uri: https://w3id.org/nsrr/sleep-cde/mixed_apnea_index
+    description: Mixed apnea index (mixed apneas per hour)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:mixed_apnea_index
+    range: float
+  mixed_apnea_count:
+    name: mixed_apnea_count
+    definition_uri: https://w3id.org/nsrr/sleep-cde/mixed_apnea_count
+    description: Total number of mixed apnea events
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:mixed_apnea_count
+    range: integer
+  obstructive_apnea_index:
+    name: obstructive_apnea_index
+    definition_uri: https://w3id.org/nsrr/sleep-cde/obstructive_apnea_index
+    description: Obstructive apnea index (obstructive apneas per hour)
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:obstructive_apnea_index
+    range: float
+  obstructive_apnea_count:
+    name: obstructive_apnea_count
+    definition_uri: https://w3id.org/nsrr/sleep-cde/obstructive_apnea_count
+    description: Total number of obstructive apnea events
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:obstructive_apnea_count
+    range: integer
   actigraphy_tst_min:
     name: actigraphy_tst_min
     definition_uri: https://w3id.org/nsrr/sleep-cde/actigraphy_tst_min
@@ -2658,6 +3347,116 @@ slots:
     domain_of:
     - SleepStudyRecord
     range: date
+  pVTResult__test_duration_min:
+    name: pVTResult__test_duration_min
+    description: Duration of PVT test in minutes
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:test_duration_min
+    alias: test_duration_min
+    owner: PVTResult
+    domain_of:
+    - PVTResult
+    range: float
+  pVTResult__time_of_day:
+    name: pVTResult__time_of_day
+    description: Time of day when test was administered
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:time_of_day
+    alias: time_of_day
+    owner: PVTResult
+    domain_of:
+    - PVTResult
+    range: string
+  sleepinessAssessment__assessment_time:
+    name: sleepinessAssessment__assessment_time
+    description: Time of sleepiness assessment
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:assessment_time
+    alias: assessment_time
+    owner: SleepinessAssessment
+    domain_of:
+    - SleepinessAssessment
+    range: string
+  sTOPBANGResult__snoring:
+    name: sTOPBANGResult__snoring
+    description: S - Do you snore loudly?
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:snoring
+    alias: snoring
+    owner: STOPBANGResult
+    domain_of:
+    - STOPBANGResult
+    range: YesNoEnum
+  sTOPBANGResult__tiredness:
+    name: sTOPBANGResult__tiredness
+    description: T - Do you often feel tired during the day?
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:tiredness
+    alias: tiredness
+    owner: STOPBANGResult
+    domain_of:
+    - STOPBANGResult
+    range: YesNoEnum
+  sTOPBANGResult__observed_apnea:
+    name: sTOPBANGResult__observed_apnea
+    description: O - Has anyone observed you stop breathing?
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:observed_apnea
+    alias: observed_apnea
+    owner: STOPBANGResult
+    domain_of:
+    - STOPBANGResult
+    range: YesNoEnum
+  sTOPBANGResult__high_bp:
+    name: sTOPBANGResult__high_bp
+    description: P - Do you have high blood pressure?
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:high_bp
+    alias: high_bp
+    owner: STOPBANGResult
+    domain_of:
+    - STOPBANGResult
+    range: YesNoEnum
+  sTOPBANGResult__bmi_over_35:
+    name: sTOPBANGResult__bmi_over_35
+    description: B - Is BMI > 35?
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:bmi_over_35
+    alias: bmi_over_35
+    owner: STOPBANGResult
+    domain_of:
+    - STOPBANGResult
+    range: YesNoEnum
+  sTOPBANGResult__age_over_50:
+    name: sTOPBANGResult__age_over_50
+    description: A - Is age > 50?
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:age_over_50
+    alias: age_over_50
+    owner: STOPBANGResult
+    domain_of:
+    - STOPBANGResult
+    range: YesNoEnum
+  sTOPBANGResult__neck_over_40:
+    name: sTOPBANGResult__neck_over_40
+    description: N - Is neck circumference > 40cm?
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:neck_over_40
+    alias: neck_over_40
+    owner: STOPBANGResult
+    domain_of:
+    - STOPBANGResult
+    range: YesNoEnum
+  sTOPBANGResult__male_gender:
+    name: sTOPBANGResult__male_gender
+    description: G - Is gender male?
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:male_gender
+    alias: male_gender
+    owner: STOPBANGResult
+    domain_of:
+    - STOPBANGResult
+    range: YesNoEnum
   variableMapping__source_label:
     name: variableMapping__source_label
     description: Original variable label
@@ -3202,7 +4001,215 @@ classes:
     - rest_interval_end
     - valid_days
     - time_frame
+    - sleep_fragmentation_index
+    - sleep_bout_count
+    - wake_bout_count
+    - mean_sleep_bout_duration_min
+    - mean_wake_bout_duration_min
+    - nap_count
+    - nap_duration_total_min
+    - nap_duration_mean_min
     class_uri: sleep:ActigraphyRecord
+  SnoringMetric:
+    name: SnoringMetric
+    definition_uri: https://w3id.org/nsrr/sleep-cde/SnoringMetric
+    description: Snoring measurements from PSG or questionnaire
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slots:
+    - id
+    - subject_id
+    - visit_id
+    - snoring_frequency
+    - snoring_loudness
+    - snoring_duration_min
+    - snoring_percent
+    - snoring_index
+    - psg_type
+    class_uri: sleep:SnoringMetric
+  CapnographyMetric:
+    name: CapnographyMetric
+    definition_uri: https://w3id.org/nsrr/sleep-cde/CapnographyMetric
+    description: CO2/capnography measurements during sleep
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slots:
+    - id
+    - subject_id
+    - visit_id
+    - etco2_mean
+    - etco2_peak
+    - etco2_baseline_wake
+    - etco2_baseline_sleep
+    - time_co2_above_50_pct
+    - time_co2_above_45_pct
+    - sleep_stage
+    - psg_type
+    class_uri: sleep:CapnographyMetric
+  PVTResult:
+    name: PVTResult
+    definition_uri: https://w3id.org/nsrr/sleep-cde/PVTResult
+    description: Psychomotor Vigilance Test results
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slots:
+    - id
+    - subject_id
+    - visit_id
+    - pvt_mean_rt_ms
+    - pvt_median_rt_ms
+    - pvt_lapse_count
+    - pvt_false_start_count
+    - pvt_fastest_10pct_rt
+    - pvt_slowest_10pct_rt
+    - pVTResult__test_duration_min
+    - pVTResult__time_of_day
+    attributes:
+      test_duration_min:
+        name: test_duration_min
+        description: Duration of PVT test in minutes
+        range: float
+      time_of_day:
+        name: time_of_day
+        description: Time of day when test was administered
+        range: string
+    class_uri: sleep:PVTResult
+  SleepinessAssessment:
+    name: SleepinessAssessment
+    definition_uri: https://w3id.org/nsrr/sleep-cde/SleepinessAssessment
+    description: Subjective sleepiness assessment
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slots:
+    - id
+    - subject_id
+    - visit_id
+    - kss_score
+    - vas_sleepiness
+    - ess_total_score
+    - sleepinessAssessment__assessment_time
+    attributes:
+      assessment_time:
+        name: assessment_time
+        description: Time of sleepiness assessment
+        range: string
+    class_uri: sleep:SleepinessAssessment
+  BerlinQuestionnaireResult:
+    name: BerlinQuestionnaireResult
+    definition_uri: https://w3id.org/nsrr/sleep-cde/BerlinQuestionnaireResult
+    description: Berlin Questionnaire results for OSA screening
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slots:
+    - id
+    - subject_id
+    - visit_id
+    - berlin_category1_positive
+    - berlin_category2_positive
+    - berlin_category3_positive
+    - berlin_total_positive
+    - berlin_risk
+    class_uri: sleep:BerlinQuestionnaireResult
+  STOPBANGResult:
+    name: STOPBANGResult
+    definition_uri: https://w3id.org/nsrr/sleep-cde/STOPBANGResult
+    description: STOP-BANG questionnaire results for OSA screening
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slots:
+    - id
+    - subject_id
+    - visit_id
+    - stopbang_score
+    - stopbang_risk
+    - sTOPBANGResult__snoring
+    - sTOPBANGResult__tiredness
+    - sTOPBANGResult__observed_apnea
+    - sTOPBANGResult__high_bp
+    - sTOPBANGResult__bmi_over_35
+    - sTOPBANGResult__age_over_50
+    - sTOPBANGResult__neck_over_40
+    - sTOPBANGResult__male_gender
+    attributes:
+      snoring:
+        name: snoring
+        description: S - Do you snore loudly?
+        range: YesNoEnum
+      tiredness:
+        name: tiredness
+        description: T - Do you often feel tired during the day?
+        range: YesNoEnum
+      observed_apnea:
+        name: observed_apnea
+        description: O - Has anyone observed you stop breathing?
+        range: YesNoEnum
+      high_bp:
+        name: high_bp
+        description: P - Do you have high blood pressure?
+        range: YesNoEnum
+      bmi_over_35:
+        name: bmi_over_35
+        description: B - Is BMI > 35?
+        range: YesNoEnum
+      age_over_50:
+        name: age_over_50
+        description: A - Is age > 50?
+        range: YesNoEnum
+      neck_over_40:
+        name: neck_over_40
+        description: N - Is neck circumference > 40cm?
+        range: YesNoEnum
+      male_gender:
+        name: male_gender
+        description: G - Is gender male?
+        range: YesNoEnum
+    class_uri: sleep:STOPBANGResult
+  PROMISSleepScore:
+    name: PROMISSleepScore
+    definition_uri: https://w3id.org/nsrr/sleep-cde/PROMISSleepScore
+    description: PROMIS sleep questionnaire scores
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slots:
+    - id
+    - subject_id
+    - visit_id
+    - promis_sleep_disturbance_tscore
+    - promis_sleep_disturbance_raw
+    - promis_sleep_impairment_tscore
+    - promis_sleep_impairment_raw
+    class_uri: sleep:PROMISSleepScore
+  PediatricSleepAssessment:
+    name: PediatricSleepAssessment
+    definition_uri: https://w3id.org/nsrr/sleep-cde/PediatricSleepAssessment
+    description: Pediatric-specific sleep questionnaire results
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slots:
+    - id
+    - subject_id
+    - visit_id
+    - chq_physical_score
+    - chq_psychosocial_score
+    - osa18_total_score
+    - osa18_sleep_disturbance
+    - osa18_physical_symptoms
+    - osa18_emotional_distress
+    - osa18_daytime_function
+    - osa18_caregiver_concern
+    - psq_srbd_score
+    class_uri: sleep:PediatricSleepAssessment
+  PediatricAnthropometry:
+    name: PediatricAnthropometry
+    definition_uri: https://w3id.org/nsrr/sleep-cde/PediatricAnthropometry
+    description: Pediatric-specific anthropometric measurements
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slots:
+    - id
+    - subject_id
+    - visit_id
+    - age_months
+    - gestational_age_weeks
+    - height_cm
+    - weight_kg
+    - bmi
+    - bmi_percentile
+    - bmi_zscore
+    - tonsil_size
+    - adenoid_size
+    class_uri: sleep:PediatricAnthropometry
   VariableMapping:
     name: VariableMapping
     definition_uri: https://w3id.org/nsrr/sleep-cde/VariableMapping
@@ -3235,7 +4242,7 @@ classes:
     class_uri: sleep:VariableMapping
 metamodel_version: 1.7.0
 source_file: sleep_cde_schema.yaml
-source_file_date: '2026-01-23T13:55:19'
-source_file_size: 43465
-generation_date: '2026-01-23T13:55:29'
+source_file_date: '2026-01-29T15:25:19'
+source_file_size: 58558
+generation_date: '2026-01-29T15:25:31'
 
