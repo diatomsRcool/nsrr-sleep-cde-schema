@@ -51,6 +51,12 @@ imports:
 # 22. Actigraphy Measures
 # 23. Treatment Adherence (CPAP)
 # 24. Administrative/Study Metadata
+# 25. Snoring Metrics
+# 26. CO2/Capnography Metrics
+# 27. Neurobehavioral Performance (PVT, Cognitive Tests)
+# 28. Pediatric-Specific Measures
+# 29. Sleep Apnea Screening Questionnaires (Berlin, STOP-BANG)
+# 30. PROMIS Sleep Measures
 # ==============================================================================
 
 # ==============================================================================
@@ -379,6 +385,78 @@ enums:
         description: More than half the days (2)
       nearly_every_day:
         description: Nearly every day (3)
+
+  PROMISResponseEnum:
+    description: PROMIS 5-point response scale
+    permissible_values:
+      not_at_all:
+        description: Not at all (1)
+      a_little_bit:
+        description: A little bit (2)
+      somewhat:
+        description: Somewhat (3)
+      quite_a_bit:
+        description: Quite a bit (4)
+      very_much:
+        description: Very much (5)
+
+  PROMISQualityEnum:
+    description: PROMIS sleep quality scale
+    permissible_values:
+      very_poor:
+        description: Very poor (1)
+      poor:
+        description: Poor (2)
+      fair:
+        description: Fair (3)
+      good:
+        description: Good (4)
+      very_good:
+        description: Very good (5)
+
+  BerlinRiskEnum:
+    description: Berlin Questionnaire risk categories
+    permissible_values:
+      low_risk:
+        description: Low risk for OSA (0-1 positive categories)
+      high_risk:
+        description: High risk for OSA (2-3 positive categories)
+
+  STOPBANGRiskEnum:
+    description: STOP-BANG risk categories
+    permissible_values:
+      low_risk:
+        description: Low risk (score 0-2)
+      intermediate_risk:
+        description: Intermediate risk (score 3-4)
+      high_risk:
+        description: High risk (score 5-8)
+
+  SnoringFrequencyEnum:
+    description: Snoring frequency response scale
+    permissible_values:
+      never:
+        description: Never or almost never
+      occasionally:
+        description: Occasionally (1-2 nights/week)
+      frequently:
+        description: Frequently (3-4 nights/week)
+      always:
+        description: Always or almost always (5-7 nights/week)
+
+  SnoringLoudnessEnum:
+    description: Snoring loudness scale
+    permissible_values:
+      none:
+        description: No snoring
+      mild:
+        description: Slightly louder than breathing
+      moderate:
+        description: As loud as talking
+      loud:
+        description: Louder than talking
+      very_loud:
+        description: Can be heard in adjacent rooms
 
 
 # ==============================================================================
@@ -974,6 +1052,114 @@ slots:
     range: string
 
   # ============================================================================
+  # PROMIS QUESTIONNAIRE SLOTS (Concept Group 30)
+  # ============================================================================
+
+  promis_sleep_disturbance_tscore:
+    description: PROMIS Sleep Disturbance T-score
+    range: float
+
+  promis_sleep_disturbance_raw:
+    description: PROMIS Sleep Disturbance raw score
+    range: integer
+
+  promis_sleep_impairment_tscore:
+    description: PROMIS Sleep-Related Impairment T-score
+    range: float
+
+  promis_sleep_impairment_raw:
+    description: PROMIS Sleep-Related Impairment raw score
+    range: integer
+
+  # ============================================================================
+  # SCREENING QUESTIONNAIRE SLOTS (Concept Group 29)
+  # ============================================================================
+
+  berlin_category1_positive:
+    description: Berlin Questionnaire Category 1 positive (snoring)
+    range: YesNoEnum
+
+  berlin_category2_positive:
+    description: Berlin Questionnaire Category 2 positive (sleepiness)
+    range: YesNoEnum
+
+  berlin_category3_positive:
+    description: Berlin Questionnaire Category 3 positive (BMI/hypertension)
+    range: YesNoEnum
+
+  berlin_total_positive:
+    description: Number of positive Berlin categories (0-3)
+    range: integer
+
+  berlin_risk:
+    description: Berlin Questionnaire risk classification
+    range: BerlinRiskEnum
+
+  stopbang_score:
+    description: STOP-BANG total score (0-8)
+    range: integer
+
+  stopbang_risk:
+    description: STOP-BANG risk classification
+    range: STOPBANGRiskEnum
+
+  # ============================================================================
+  # PEDIATRIC QUESTIONNAIRE SLOTS (Concept Group 28)
+  # ============================================================================
+
+  chq_physical_score:
+    description: Child Health Questionnaire Physical Summary Score
+    range: float
+
+  chq_psychosocial_score:
+    description: Child Health Questionnaire Psychosocial Summary Score
+    range: float
+
+  osa18_total_score:
+    description: OSA-18 Quality of Life total score
+    range: integer
+
+  osa18_sleep_disturbance:
+    description: OSA-18 Sleep Disturbance domain score
+    range: integer
+
+  osa18_physical_symptoms:
+    description: OSA-18 Physical Symptoms domain score
+    range: integer
+
+  osa18_emotional_distress:
+    description: OSA-18 Emotional Distress domain score
+    range: integer
+
+  osa18_daytime_function:
+    description: OSA-18 Daytime Function domain score
+    range: integer
+
+  osa18_caregiver_concern:
+    description: OSA-18 Caregiver Concern domain score
+    range: integer
+
+  psq_srbd_score:
+    description: Pediatric Sleep Questionnaire SRBD score
+    range: float
+
+  # ============================================================================
+  # PEDIATRIC ANTHROPOMETRY SLOTS
+  # ============================================================================
+
+  gestational_age_weeks:
+    description: Gestational age at birth in weeks
+    range: float
+
+  tonsil_size:
+    description: Tonsil size grade (0-4)
+    range: integer
+
+  adenoid_size:
+    description: Adenoid size/obstruction percentage
+    range: float
+
+  # ============================================================================
   # SURVEY ITEM SLOTS
   # ============================================================================
 
@@ -996,6 +1182,162 @@ slots:
   response_text:
     description: Text representation of response
     range: string
+
+  # ============================================================================
+  # SNORING SLOTS (Concept Group 25)
+  # ============================================================================
+
+  snoring_frequency:
+    description: Self-reported snoring frequency
+    range: SnoringFrequencyEnum
+
+  snoring_loudness:
+    description: Self-reported snoring loudness
+    range: SnoringLoudnessEnum
+
+  snoring_duration_min:
+    description: Duration of snoring during sleep (minutes)
+    range: float
+
+  snoring_percent:
+    description: Percentage of sleep time with snoring
+    range: float
+
+  snoring_index:
+    description: Snoring events per hour of sleep
+    range: float
+
+  # ============================================================================
+  # CO2/CAPNOGRAPHY SLOTS (Concept Group 26)
+  # ============================================================================
+
+  etco2_mean:
+    description: Mean end-tidal CO2 during sleep (mmHg)
+    range: float
+
+  etco2_peak:
+    description: Peak end-tidal CO2 during sleep (mmHg)
+    range: float
+
+  etco2_baseline_wake:
+    description: Baseline wake end-tidal CO2 (mmHg)
+    range: float
+
+  etco2_baseline_sleep:
+    description: Baseline sleep end-tidal CO2 (mmHg)
+    range: float
+
+  time_co2_above_50_pct:
+    description: Percentage of sleep time with CO2 > 50 mmHg
+    range: float
+
+  time_co2_above_45_pct:
+    description: Percentage of sleep time with CO2 > 45 mmHg
+    range: float
+
+  # ============================================================================
+  # NEUROBEHAVIORAL PERFORMANCE SLOTS (Concept Group 27)
+  # ============================================================================
+
+  pvt_mean_rt_ms:
+    description: Psychomotor Vigilance Test mean reaction time (ms)
+    range: float
+
+  pvt_median_rt_ms:
+    description: Psychomotor Vigilance Test median reaction time (ms)
+    range: float
+
+  pvt_lapse_count:
+    description: PVT number of lapses (RT >= 500ms)
+    range: integer
+
+  pvt_false_start_count:
+    description: PVT number of false starts
+    range: integer
+
+  pvt_fastest_10pct_rt:
+    description: PVT mean of fastest 10% of reaction times (ms)
+    range: float
+
+  pvt_slowest_10pct_rt:
+    description: PVT mean of slowest 10% of reaction times (ms)
+    range: float
+
+  kss_score:
+    description: Karolinska Sleepiness Scale score (1-9)
+    range: integer
+
+  vas_sleepiness:
+    description: Visual Analog Scale sleepiness rating
+    range: float
+
+  # ============================================================================
+  # SLEEP FRAGMENTATION SLOTS (extension of Group 4)
+  # ============================================================================
+
+  sleep_fragmentation_index:
+    description: Sleep fragmentation index from actigraphy
+    range: float
+
+  sleep_bout_count:
+    description: Number of sleep bouts (continuous sleep periods)
+    range: integer
+
+  wake_bout_count:
+    description: Number of wake bouts during sleep period
+    range: integer
+
+  mean_sleep_bout_duration_min:
+    description: Mean duration of sleep bouts (minutes)
+    range: float
+
+  mean_wake_bout_duration_min:
+    description: Mean duration of wake bouts (minutes)
+    range: float
+
+  # ============================================================================
+  # NAP/DAYTIME SLEEP SLOTS (extension of Group 22)
+  # ============================================================================
+
+  nap_count:
+    description: Number of daytime naps
+    range: integer
+
+  nap_duration_total_min:
+    description: Total duration of naps (minutes)
+    range: float
+
+  nap_duration_mean_min:
+    description: Mean duration of naps (minutes)
+    range: float
+
+  # ============================================================================
+  # CENTRAL SLEEP APNEA SLOTS (extension of Groups 6-8)
+  # ============================================================================
+
+  central_apnea_index:
+    description: Central apnea index (central apneas per hour)
+    range: float
+
+  central_apnea_count:
+    description: Total number of central apnea events
+    range: integer
+
+  mixed_apnea_index:
+    description: Mixed apnea index (mixed apneas per hour)
+    range: float
+
+  mixed_apnea_count:
+    description: Total number of mixed apnea events
+    range: integer
+
+  obstructive_apnea_index:
+    description: Obstructive apnea index (obstructive apneas per hour)
+    range: float
+
+  obstructive_apnea_count:
+    description: Total number of obstructive apnea events
+    range: integer
 
   # ============================================================================
   # ACTIGRAPHY SLOTS (Concept Group 22)
@@ -1570,6 +1912,191 @@ classes:
       - rest_interval_end
       - valid_days
       - time_frame
+      # Sleep fragmentation from actigraphy
+      - sleep_fragmentation_index
+      - sleep_bout_count
+      - wake_bout_count
+      - mean_sleep_bout_duration_min
+      - mean_wake_bout_duration_min
+      # Nap metrics
+      - nap_count
+      - nap_duration_total_min
+      - nap_duration_mean_min
+
+  # ============================================================================
+  # SNORING MEASUREMENT CLASS
+  # ============================================================================
+
+  SnoringMetric:
+    description: Snoring measurements from PSG or questionnaire
+    slots:
+      - id
+      - subject_id
+      - visit_id
+      - snoring_frequency
+      - snoring_loudness
+      - snoring_duration_min
+      - snoring_percent
+      - snoring_index
+      - psg_type
+
+  # ============================================================================
+  # CO2/CAPNOGRAPHY CLASS
+  # ============================================================================
+
+  CapnographyMetric:
+    description: CO2/capnography measurements during sleep
+    slots:
+      - id
+      - subject_id
+      - visit_id
+      - etco2_mean
+      - etco2_peak
+      - etco2_baseline_wake
+      - etco2_baseline_sleep
+      - time_co2_above_50_pct
+      - time_co2_above_45_pct
+      - sleep_stage
+      - psg_type
+
+  # ============================================================================
+  # NEUROBEHAVIORAL PERFORMANCE CLASSES
+  # ============================================================================
+
+  PVTResult:
+    description: Psychomotor Vigilance Test results
+    slots:
+      - id
+      - subject_id
+      - visit_id
+      - pvt_mean_rt_ms
+      - pvt_median_rt_ms
+      - pvt_lapse_count
+      - pvt_false_start_count
+      - pvt_fastest_10pct_rt
+      - pvt_slowest_10pct_rt
+    attributes:
+      test_duration_min:
+        description: Duration of PVT test in minutes
+        range: float
+      time_of_day:
+        description: Time of day when test was administered
+        range: string
+
+  SleepinessAssessment:
+    description: Subjective sleepiness assessment
+    slots:
+      - id
+      - subject_id
+      - visit_id
+      - kss_score
+      - vas_sleepiness
+      - ess_total_score
+    attributes:
+      assessment_time:
+        description: Time of sleepiness assessment
+        range: string
+
+  # ============================================================================
+  # SCREENING QUESTIONNAIRE CLASSES
+  # ============================================================================
+
+  BerlinQuestionnaireResult:
+    description: Berlin Questionnaire results for OSA screening
+    slots:
+      - id
+      - subject_id
+      - visit_id
+      - berlin_category1_positive
+      - berlin_category2_positive
+      - berlin_category3_positive
+      - berlin_total_positive
+      - berlin_risk
+
+  STOPBANGResult:
+    description: STOP-BANG questionnaire results for OSA screening
+    slots:
+      - id
+      - subject_id
+      - visit_id
+      - stopbang_score
+      - stopbang_risk
+    attributes:
+      snoring:
+        description: S - Do you snore loudly?
+        range: YesNoEnum
+      tiredness:
+        description: T - Do you often feel tired during the day?
+        range: YesNoEnum
+      observed_apnea:
+        description: O - Has anyone observed you stop breathing?
+        range: YesNoEnum
+      high_bp:
+        description: P - Do you have high blood pressure?
+        range: YesNoEnum
+      bmi_over_35:
+        description: B - Is BMI > 35?
+        range: YesNoEnum
+      age_over_50:
+        description: A - Is age > 50?
+        range: YesNoEnum
+      neck_over_40:
+        description: N - Is neck circumference > 40cm?
+        range: YesNoEnum
+      male_gender:
+        description: G - Is gender male?
+        range: YesNoEnum
+
+  # ============================================================================
+  # PROMIS SLEEP SCORES CLASS
+  # ============================================================================
+
+  PROMISSleepScore:
+    description: PROMIS sleep questionnaire scores
+    slots:
+      - id
+      - subject_id
+      - visit_id
+      - promis_sleep_disturbance_tscore
+      - promis_sleep_disturbance_raw
+      - promis_sleep_impairment_tscore
+      - promis_sleep_impairment_raw
+
+  # ============================================================================
+  # PEDIATRIC ASSESSMENT CLASSES
+  # ============================================================================
+
+  PediatricSleepAssessment:
+    description: Pediatric-specific sleep questionnaire results
+    slots:
+      - id
+      - subject_id
+      - visit_id
+      - chq_physical_score
+      - chq_psychosocial_score
+      - osa18_total_score
+      - osa18_sleep_disturbance
+      - osa18_physical_symptoms
+      - osa18_emotional_distress
+      - osa18_daytime_function
+      - osa18_caregiver_concern
+      - psq_srbd_score
+
+  PediatricAnthropometry:
+    description: Pediatric-specific anthropometric measurements
+    slots:
+      - id
+      - subject_id
+      - visit_id
+      - age_months
+      - gestational_age_weeks
+      - height_cm
+      - weight_kg
+      - bmi
+      - bmi_percentile
+      - bmi_zscore
+      - tonsil_size
+      - adenoid_size
 
   # ============================================================================
   # VARIABLE MAPPING CLASS
