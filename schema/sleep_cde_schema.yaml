@@ -4242,7 +4242,7 @@ classes:
     class_uri: sleep:VariableMapping
 metamodel_version: 1.7.0
 source_file: sleep_cde_schema.yaml
-source_file_date: '2026-01-31T15:05:37'
+source_file_date: '2026-01-31T15:32:10'
 source_file_size: 58558
-generation_date: '2026-01-31T15:05:46'
+generation_date: '2026-01-31T15:32:20'
 
