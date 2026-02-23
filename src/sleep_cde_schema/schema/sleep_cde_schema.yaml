@@ -7,6 +7,16 @@ description: >-
   from acquisition/scoring protocol modifiers. Target: 40-120 canonical CDEs organized
   into ~20 concept groups, with explicit modifier axes for sleep stage, body position,
   respiratory event definitions, and PSG type.
+
+  DESIGN PRINCIPLE - Category Collapse:
+  If multiple variables represent the SAME quantitative construct but differ ONLY by
+  a categorical qualifier (e.g., body position, sleep stage, event subtype, oxygen
+  threshold, laterality), we create ONE canonical slot for the quantitative construct
+  and use modifier axis enum slots to represent the categorical dimension. Examples:
+  - body_position_duration_min + body_position modifier (not supine_duration_min, lateral_duration_min)
+  - apnea_index + apnea_type modifier (not central_apnea_index, obstructive_apnea_index)
+  - desaturation_index + desaturation_threshold modifier (not odi3, odi4, odi5)
+  - time_below_spo2_threshold_min + spo2_threshold modifier (not time_below_90_pct_min)
 license: MIT
 version: 2.0.0
 default_prefix: sleep
@@ -221,6 +231,28 @@ enums:
         description: Past month recall period
       past_week:
         description: Past week recall period
+
+  SpO2ThresholdEnum:
+    description: SpO2 threshold for hypoxemia time calculations
+    permissible_values:
+      spo2_90pct:
+        description: SpO2 below 90% threshold
+      spo2_88pct:
+        description: SpO2 below 88% threshold
+      spo2_85pct:
+        description: SpO2 below 85% threshold
+      spo2_80pct:
+        description: SpO2 below 80% threshold
+
+  CO2ThresholdEnum:
+    description: CO2 threshold for hypercapnia time calculations
+    permissible_values:
+      co2_45mmhg:
+        description: CO2 above 45 mmHg threshold
+      co2_50mmhg:
+        description: CO2 above 50 mmHg threshold
+      co2_55mmhg:
+        description: CO2 above 55 mmHg threshold
 
   # ============================================================================
   # VALUE SET ENUMS
@@ -563,6 +595,14 @@ slots:
     description: Time period for aggregation
     range: TimeFrameEnum
 
+  spo2_threshold:
+    description: SpO2 threshold for hypoxemia time calculations
+    range: SpO2ThresholdEnum
+
+  co2_threshold:
+    description: CO2 threshold for hypercapnia time calculations
+    range: CO2ThresholdEnum
+
   # ============================================================================
   # DEMOGRAPHIC SLOTS (Concept Group 1)
   # ============================================================================
@@ -752,7 +792,11 @@ slots:
   # ============================================================================
 
   apnea_index:
-    description: Apnea index (apneas per hour of sleep)
+    description: >-
+      Apnea index (apneas per hour of sleep).
+      Use apnea_type modifier to specify type (all, obstructive, central, mixed).
+      Use body_position modifier for position-specific indices.
+      Use sleep_stage modifier for stage-specific indices.
     range: float
 
   hypopnea_index:
@@ -760,7 +804,12 @@ slots:
     range: float
 
   ahi:
-    description: Apnea-hypopnea index (AHI) - events per hour of sleep
+    description: >-
+      Apnea-hypopnea index (AHI) - events per hour of sleep.
+      Use apnea_type modifier to specify event types included (all, obstructive, central).
+      Use hypopnea_definition modifier for scoring rule.
+      Use desaturation_threshold and arousal_requirement for event criteria.
+      Use body_position and sleep_stage for stratified indices.
     range: float
 
   rdi:
@@ -772,7 +821,11 @@ slots:
     range: float
 
   apnea_count:
-    description: Total number of apnea events
+    description: >-
+      Total number of apnea events.
+      Use apnea_type modifier to specify type (all, obstructive, central, mixed).
+      Use body_position modifier for position-specific counts.
+      Use sleep_stage modifier for stage-specific counts.
     range: integer
 
   hypopnea_count:
@@ -816,19 +869,25 @@ slots:
     range: float
 
   desaturation_index:
-    description: Oxygen desaturation index (events per hour)
+    description: >-
+      Oxygen desaturation index (ODI) - desaturation events per hour.
+      Use desaturation_threshold modifier to specify threshold (desat_3pct, desat_4pct, desat_5pct).
+      Use sleep_stage modifier for stage-specific indices.
+      Use body_position modifier for position-specific indices.
     range: float
 
-  time_below_90_pct_min:
-    description: Time with SpO2 below 90% in minutes
+  time_below_spo2_threshold_min:
+    description: >-
+      Time with SpO2 below specified threshold (minutes).
+      Use spo2_threshold modifier to specify threshold (spo2_90pct, spo2_88pct, spo2_85pct, spo2_80pct).
+      Use sleep_stage modifier for stage-specific calculations.
     range: float
 
-  time_below_90_pct_percent:
-    description: Percentage of sleep time with SpO2 below 90%
-    range: float
-
-  time_below_88_pct_min:
-    description: Time with SpO2 below 88% in minutes
+  time_below_spo2_threshold_percent:
+    description: >-
+      Percentage of sleep time with SpO2 below specified threshold.
+      Use spo2_threshold modifier to specify threshold (spo2_90pct, spo2_88pct, spo2_85pct, spo2_80pct).
+      Use sleep_stage modifier for stage-specific calculations.
     range: float
 
   mean_desaturation_pct:
@@ -840,7 +899,10 @@ slots:
   # ============================================================================
 
   arousal_index:
-    description: Arousal index (arousals per hour of sleep)
+    description: >-
+      Arousal index (arousals per hour of sleep).
+      Use sleep_stage modifier for stage-specific indices.
+      Use body_position modifier for position-specific indices.
     range: float
 
   arousal_count:
@@ -868,7 +930,10 @@ slots:
   # ============================================================================
 
   plm_index:
-    description: Periodic limb movement index (PLMs per hour of sleep)
+    description: >-
+      Periodic limb movement index (PLMs per hour of sleep).
+      Use sleep_stage modifier for stage-specific indices (e.g., REM, NREM).
+      Use body_position modifier for position-specific indices.
     range: float
 
   plm_count:
@@ -889,30 +954,19 @@ slots:
 
   # ============================================================================
   # BODY POSITION DURATION SLOTS (Concept Group 12)
+  # Use body_position modifier axis to specify: supine, non_supine, lateral, prone
   # ============================================================================
 
-  supine_duration_min:
-    description: Time in supine position during sleep (minutes)
+  body_position_duration_min:
+    description: >-
+      Duration in specified body position during sleep (minutes).
+      Use body_position modifier to specify position (supine, non_supine, lateral, prone).
     range: float
 
-  supine_percent:
-    description: Percentage of sleep in supine position
-    range: float
-
-  non_supine_duration_min:
-    description: Time in non-supine position during sleep (minutes)
-    range: float
-
-  non_supine_percent:
-    description: Percentage of sleep in non-supine position
-    range: float
-
-  lateral_duration_min:
-    description: Time in lateral position during sleep (minutes)
-    range: float
-
-  prone_duration_min:
-    description: Time in prone position during sleep (minutes)
+  body_position_percent:
+    description: >-
+      Percentage of sleep time in specified body position.
+      Use body_position modifier to specify position (supine, non_supine, lateral, prone).
     range: float
 
   # ============================================================================
@@ -1227,12 +1281,11 @@ slots:
     description: Baseline sleep end-tidal CO2 (mmHg)
     range: float
 
-  time_co2_above_50_pct:
-    description: Percentage of sleep time with CO2 > 50 mmHg
-    range: float
-
-  time_co2_above_45_pct:
-    description: Percentage of sleep time with CO2 > 45 mmHg
+  time_above_co2_threshold_percent:
+    description: >-
+      Percentage of sleep time with CO2 above specified threshold.
+      Use co2_threshold modifier to specify threshold (co2_45mmhg, co2_50mmhg, co2_55mmhg).
+      Use sleep_stage modifier for stage-specific calculations.
     range: float
 
   # ============================================================================
@@ -1312,32 +1365,10 @@ slots:
     range: float
 
   # ============================================================================
-  # CENTRAL SLEEP APNEA SLOTS (extension of Groups 6-8)
+  # NOTE: Apnea type-specific indices (central, obstructive, mixed) are now
+  # represented using the canonical apnea_index and apnea_count slots with the
+  # apnea_type modifier axis (ApneaTypeEnum: all, obstructive, central, mixed).
   # ============================================================================
-
-  central_apnea_index:
-    description: Central apnea index (central apneas per hour)
-    range: float
-
-  central_apnea_count:
-    description: Total number of central apnea events
-    range: integer
-
-  mixed_apnea_index:
-    description: Mixed apnea index (mixed apneas per hour)
-    range: float
-
-  mixed_apnea_count:
-    description: Total number of mixed apnea events
-    range: integer
-
-  obstructive_apnea_index:
-    description: Obstructive apnea index (obstructive apneas per hour)
-    range: float
-
-  obstructive_apnea_count:
-    description: Total number of obstructive apnea events
-    range: integer
 
   # ============================================================================
   # ACTIGRAPHY SLOTS (Concept Group 22)
@@ -1735,10 +1766,11 @@ classes:
       - spo2_nadir_pct
       - spo2_baseline_pct
       - desaturation_index
-      - time_below_90_pct_min
-      - time_below_90_pct_percent
+      - time_below_spo2_threshold_min
+      - time_below_spo2_threshold_percent
       # Modifiers
       - desaturation_threshold
+      - spo2_threshold
       - sleep_stage
       - body_position
       - psg_type
@@ -1775,17 +1807,18 @@ classes:
       - psg_type
 
   BodyPositionMetric:
-    description: Body position duration measurement
+    description: >-
+      Body position duration measurement.
+      Use body_position modifier to specify the position (supine, non_supine, lateral, prone).
     slots:
       - id
       - subject_id
       - visit_id
-      - supine_duration_min
-      - supine_percent
-      - non_supine_duration_min
-      - non_supine_percent
-      - lateral_duration_min
-      - prone_duration_min
+      - body_position_duration_min
+      - body_position_percent
+      # Modifiers
+      - body_position
+      - sleep_stage
       - psg_type
 
   HeartRateMetric:
@@ -1945,7 +1978,9 @@ classes:
   # ============================================================================
 
   CapnographyMetric:
-    description: CO2/capnography measurements during sleep
+    description: >-
+      CO2/capnography measurements during sleep.
+      Use co2_threshold modifier to specify hypercapnia thresholds.
     slots:
       - id
       - subject_id
@@ -1954,8 +1989,9 @@ classes:
       - etco2_peak
       - etco2_baseline_wake
       - etco2_baseline_sleep
-      - time_co2_above_50_pct
-      - time_co2_above_45_pct
+      - time_above_co2_threshold_percent
+      # Modifiers
+      - co2_threshold
       - sleep_stage
       - psg_type
 
