@@ -337,7 +337,8 @@
 
 
 <h1 id="sleep-cde-schema">sleep-cde-schema</h1>
-<p>A compact, reusable LinkML schema for sleep research common data elements (CDEs). Designed to support cross-dataset harmonization by separating measurement semantics from acquisition/scoring protocol modifiers. Target: 40-120 canonical CDEs organized into ~20 concept groups, with explicit modifier axes for sleep stage, body position, respiratory event definitions, and PSG type.</p>
+<p>A compact, reusable LinkML schema for sleep research common data elements (CDEs). Designed to support cross-dataset harmonization by separating measurement semantics from acquisition/scoring protocol modifiers. Target: 40-120 canonical CDEs organized into ~20 concept groups, with explicit modifier axes for sleep stage, body position, respiratory event definitions, and PSG type.
+DESIGN PRINCIPLE - Category Collapse: If multiple variables represent the SAME quantitative construct but differ ONLY by a categorical qualifier (e.g., body position, sleep stage, event subtype, oxygen threshold, laterality), we create ONE canonical slot for the quantitative construct and use modifier axis enum slots to represent the categorical dimension. Examples: - body_position_duration_min + body_position modifier (not supine_duration_min, lateral_duration_min) - apnea_index + apnea_type modifier (not central_apnea_index, obstructive_apnea_index) - desaturation_index + desaturation_threshold modifier (not odi3, odi4, odi5) - time_below_spo2_threshold_min + spo2_threshold modifier (not time_below_90_pct_min)</p>
 <p>URI: https://w3id.org/nsrr/sleep-cde</p>
 
 

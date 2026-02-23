@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://diatomsRcool.github.io/sleep-cde-schema/elements/prone_duration_min/">
+        <link rel="canonical" href="https://diatomsRcool.github.io/sleep-cde-schema/elements/time_below_spo2_threshold_min/">
       
       
       
@@ -21,7 +21,7 @@
     
     
       
-        <title>Slot: prone_duration_min - sleep-cde-schema</title>
+        <title>Slot: time_below_spo2_threshold_min - sleep-cde-schema</title>
       
     
     
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-prone_duration_min" class="md-skip">
+        <a href="#slot-time_below_spo2_threshold_min" class="md-skip">
           Skip to content
         </a>
       
@@ -104,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: prone_duration_min
+              Slot: time_below_spo2_threshold_min
             
           </span>
         </div>
@@ -416,10 +416,10 @@
   
 
 
-<h1 id="slot-prone_duration_min">Slot: prone_duration_min</h1>
-<p><em>Time in prone position during sleep (minutes)</em></p>
-<p>URI: <a href="https://w3id.org/nsrr/sleep-cde/prone_duration_min">sleep:prone_duration_min</a>
-Alias: prone_duration_min</p>
+<h1 id="slot-time_below_spo2_threshold_min">Slot: time_below_spo2_threshold_min</h1>
+<p><em>Time with SpO2 below specified threshold (minutes). Use spo2_threshold modifier to specify threshold (spo2_90pct, spo2_88pct, spo2_85pct, spo2_80pct). Use sleep_stage modifier for stage-specific calculations.</em></p>
+<p>URI: <a href="https://w3id.org/nsrr/sleep-cde/time_below_spo2_threshold_min">sleep:time_below_spo2_threshold_min</a>
+Alias: time_below_spo2_threshold_min</p>
 <!-- no inheritance hierarchy -->
 
 <h2 id="applicable-classes">Applicable Classes</h2>
@@ -433,8 +433,8 @@ Alias: prone_duration_min</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../BodyPositionMetric/">BodyPositionMetric</a></td>
-<td>Body position duration measurement</td>
+<td><a href="../OxygenSaturationMetric/">OxygenSaturationMetric</a></td>
+<td>Oxygen saturation measurement with context</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -459,24 +459,26 @@ Alias: prone_duration_min</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>sleep:prone_duration_min</td>
+<td>sleep:time_below_spo2_threshold_min</td>
 </tr>
 <tr>
 <td>native</td>
-<td>sleep:prone_duration_min</td>
+<td>sleep:time_below_spo2_threshold_min</td>
 </tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: prone_duration_min
-description: Time in prone position during sleep (minutes)
+<pre><code class="language-yaml">name: time_below_spo2_threshold_min
+description: Time with SpO2 below specified threshold (minutes). Use spo2_threshold
+  modifier to specify threshold (spo2_90pct, spo2_88pct, spo2_85pct, spo2_80pct).
+  Use sleep_stage modifier for stage-specific calculations.
 from_schema: https://w3id.org/nsrr/sleep-cde
 rank: 1000
-alias: prone_duration_min
+alias: time_below_spo2_threshold_min
 domain_of:
-- BodyPositionMetric
+- OxygenSaturationMetric
 range: float
 
 </code></pre>

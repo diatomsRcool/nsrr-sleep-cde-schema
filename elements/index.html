@@ -506,7 +506,8 @@
 
 
 <h1 id="sleep-common-data-elements-schema">Sleep Common Data Elements Schema</h1>
-<p>A compact, reusable LinkML schema for sleep research common data elements (CDEs). Designed to support cross-dataset harmonization by separating measurement semantics from acquisition/scoring protocol modifiers. Target: 40-120 canonical CDEs organized into ~20 concept groups, with explicit modifier axes for sleep stage, body position, respiratory event definitions, and PSG type.</p>
+<p>A compact, reusable LinkML schema for sleep research common data elements (CDEs). Designed to support cross-dataset harmonization by separating measurement semantics from acquisition/scoring protocol modifiers. Target: 40-120 canonical CDEs organized into ~20 concept groups, with explicit modifier axes for sleep stage, body position, respiratory event definitions, and PSG type.
+DESIGN PRINCIPLE - Category Collapse: If multiple variables represent the SAME quantitative construct but differ ONLY by a categorical qualifier (e.g., body position, sleep stage, event subtype, oxygen threshold, laterality), we create ONE canonical slot for the quantitative construct and use modifier axis enum slots to represent the categorical dimension. Examples: - body_position_duration_min + body_position modifier (not supine_duration_min, lateral_duration_min) - apnea_index + apnea_type modifier (not central_apnea_index, obstructive_apnea_index) - desaturation_index + desaturation_threshold modifier (not odi3, odi4, odi5) - time_below_spo2_threshold_min + spo2_threshold modifier (not time_below_90_pct_min)</p>
 <p>URI: https://w3id.org/nsrr/sleep-cde</p>
 <p>Name: sleep-cde-schema</p>
 <h2 id="classes">Classes</h2>
@@ -786,16 +787,16 @@
 <td>Body position context for measurement</td>
 </tr>
 <tr>
+<td><a href="body_position_duration_min/">body_position_duration_min</a></td>
+<td>Duration in specified body position during sleep (minutes)</td>
+</tr>
+<tr>
+<td><a href="body_position_percent/">body_position_percent</a></td>
+<td>Percentage of sleep time in specified body position</td>
+</tr>
+<tr>
 <td><a href="canonical_slot/">canonical_slot</a></td>
 <td>Reference to canonical CDE slot this variable maps to</td>
-</tr>
-<tr>
-<td><a href="central_apnea_count/">central_apnea_count</a></td>
-<td>Total number of central apnea events</td>
-</tr>
-<tr>
-<td><a href="central_apnea_index/">central_apnea_index</a></td>
-<td>Central apnea index (central apneas per hour)</td>
 </tr>
 <tr>
 <td><a href="cesd_total_score/">cesd_total_score</a></td>
@@ -816,6 +817,10 @@
 <tr>
 <td><a href="citation/">citation</a></td>
 <td>Citation for the instrument</td>
+</tr>
+<tr>
+<td><a href="co2_threshold/">co2_threshold</a></td>
+<td>CO2 threshold for hypercapnia time calculations</td>
 </tr>
 <tr>
 <td><a href="code/">code</a></td>
@@ -859,7 +864,7 @@
 </tr>
 <tr>
 <td><a href="desaturation_index/">desaturation_index</a></td>
-<td>Oxygen desaturation index (events per hour)</td>
+<td>Oxygen desaturation index (ODI) - desaturation events per hour</td>
 </tr>
 <tr>
 <td><a href="desaturation_threshold/">desaturation_threshold</a></td>
@@ -1082,10 +1087,6 @@
 <td>Display label for variable</td>
 </tr>
 <tr>
-<td><a href="lateral_duration_min/">lateral_duration_min</a></td>
-<td>Time in lateral position during sleep (minutes)</td>
-</tr>
-<tr>
 <td><a href="lights_off_time/">lights_off_time</a></td>
 <td>Lights off / bedtime (HH:MM or decimal hours)</td>
 </tr>
@@ -1158,14 +1159,6 @@
 <td>Minimum heart rate during sleep (bpm)</td>
 </tr>
 <tr>
-<td><a href="mixed_apnea_count/">mixed_apnea_count</a></td>
-<td>Total number of mixed apnea events</td>
-</tr>
-<tr>
-<td><a href="mixed_apnea_index/">mixed_apnea_index</a></td>
-<td>Mixed apnea index (mixed apneas per hour)</td>
-</tr>
-<tr>
 <td><a href="modifiers/">modifiers</a></td>
 <td>List of modifier values applied to canonical slot</td>
 </tr>
@@ -1194,14 +1187,6 @@
 <td>N - Is neck circumference &gt; 40cm?</td>
 </tr>
 <tr>
-<td><a href="non_supine_duration_min/">non_supine_duration_min</a></td>
-<td>Time in non-supine position during sleep (minutes)</td>
-</tr>
-<tr>
-<td><a href="non_supine_percent/">non_supine_percent</a></td>
-<td>Percentage of sleep in non-supine position</td>
-</tr>
-<tr>
 <td><a href="num_awakenings/">num_awakenings</a></td>
 <td>Number of awakenings during sleep period</td>
 </tr>
@@ -1216,14 +1201,6 @@
 <tr>
 <td><a href="observed_apnea/">observed_apnea</a></td>
 <td>O - Has anyone observed you stop breathing?</td>
-</tr>
-<tr>
-<td><a href="obstructive_apnea_count/">obstructive_apnea_count</a></td>
-<td>Total number of obstructive apnea events</td>
-</tr>
-<tr>
-<td><a href="obstructive_apnea_index/">obstructive_apnea_index</a></td>
-<td>Obstructive apnea index (obstructive apneas per hour)</td>
 </tr>
 <tr>
 <td><a href="osa18_caregiver_concern/">osa18_caregiver_concern</a></td>
@@ -1304,10 +1281,6 @@
 <tr>
 <td><a href="promis_sleep_impairment_tscore/">promis_sleep_impairment_tscore</a></td>
 <td>PROMIS Sleep-Related Impairment T-score</td>
-</tr>
-<tr>
-<td><a href="prone_duration_min/">prone_duration_min</a></td>
-<td>Time in prone position during sleep (minutes)</td>
 </tr>
 <tr>
 <td><a href="psg_type/">psg_type</a></td>
@@ -1542,6 +1515,10 @@
 <td>SpO2 nadir (lowest value) during sleep (%)</td>
 </tr>
 <tr>
+<td><a href="spo2_threshold/">spo2_threshold</a></td>
+<td>SpO2 threshold for hypoxemia time calculations</td>
+</tr>
+<tr>
 <td><a href="spontaneous_arousal_index/">spontaneous_arousal_index</a></td>
 <td>Spontaneous arousal index</td>
 </tr>
@@ -1570,14 +1547,6 @@
 <td>Type of summary statistic</td>
 </tr>
 <tr>
-<td><a href="supine_duration_min/">supine_duration_min</a></td>
-<td>Time in supine position during sleep (minutes)</td>
-</tr>
-<tr>
-<td><a href="supine_percent/">supine_percent</a></td>
-<td>Percentage of sleep in supine position</td>
-</tr>
-<tr>
 <td><a href="system/">system</a></td>
 <td>Code system (e</td>
 </tr>
@@ -1598,24 +1567,16 @@
 <td>Duration of PVT test in minutes</td>
 </tr>
 <tr>
-<td><a href="time_below_88_pct_min/">time_below_88_pct_min</a></td>
-<td>Time with SpO2 below 88% in minutes</td>
+<td><a href="time_above_co2_threshold_percent/">time_above_co2_threshold_percent</a></td>
+<td>Percentage of sleep time with CO2 above specified threshold</td>
 </tr>
 <tr>
-<td><a href="time_below_90_pct_min/">time_below_90_pct_min</a></td>
-<td>Time with SpO2 below 90% in minutes</td>
+<td><a href="time_below_spo2_threshold_min/">time_below_spo2_threshold_min</a></td>
+<td>Time with SpO2 below specified threshold (minutes)</td>
 </tr>
 <tr>
-<td><a href="time_below_90_pct_percent/">time_below_90_pct_percent</a></td>
-<td>Percentage of sleep time with SpO2 below 90%</td>
-</tr>
-<tr>
-<td><a href="time_co2_above_45_pct/">time_co2_above_45_pct</a></td>
-<td>Percentage of sleep time with CO2 &gt; 45 mmHg</td>
-</tr>
-<tr>
-<td><a href="time_co2_above_50_pct/">time_co2_above_50_pct</a></td>
-<td>Percentage of sleep time with CO2 &gt; 50 mmHg</td>
+<td><a href="time_below_spo2_threshold_percent/">time_below_spo2_threshold_percent</a></td>
+<td>Percentage of sleep time with SpO2 below specified threshold</td>
 </tr>
 <tr>
 <td><a href="time_frame/">time_frame</a></td>
@@ -1729,6 +1690,10 @@
 <td>CES-D frequency response scale</td>
 </tr>
 <tr>
+<td><a href="CO2ThresholdEnum/">CO2ThresholdEnum</a></td>
+<td>CO2 threshold for hypercapnia time calculations</td>
+</tr>
+<tr>
 <td><a href="DesaturationThresholdEnum/">DesaturationThresholdEnum</a></td>
 <td>Oxygen desaturation threshold for event scoring</td>
 </tr>
@@ -1799,6 +1764,10 @@
 <tr>
 <td><a href="SnoringLoudnessEnum/">SnoringLoudnessEnum</a></td>
 <td>Snoring loudness scale</td>
+</tr>
+<tr>
+<td><a href="SpO2ThresholdEnum/">SpO2ThresholdEnum</a></td>
+<td>SpO2 threshold for hypoxemia time calculations</td>
 </tr>
 <tr>
 <td><a href="STOPBANGRiskEnum/">STOPBANGRiskEnum</a></td>

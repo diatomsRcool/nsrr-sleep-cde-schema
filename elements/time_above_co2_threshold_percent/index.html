@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://diatomsRcool.github.io/sleep-cde-schema/elements/supine_duration_min/">
+        <link rel="canonical" href="https://diatomsRcool.github.io/sleep-cde-schema/elements/time_above_co2_threshold_percent/">
       
       
       
@@ -21,7 +21,7 @@
     
     
       
-        <title>Slot: supine_duration_min - sleep-cde-schema</title>
+        <title>Slot: time_above_co2_threshold_percent - sleep-cde-schema</title>
       
     
     
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-supine_duration_min" class="md-skip">
+        <a href="#slot-time_above_co2_threshold_percent" class="md-skip">
           Skip to content
         </a>
       
@@ -104,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: supine_duration_min
+              Slot: time_above_co2_threshold_percent
             
           </span>
         </div>
@@ -416,10 +416,10 @@
   
 
 
-<h1 id="slot-supine_duration_min">Slot: supine_duration_min</h1>
-<p><em>Time in supine position during sleep (minutes)</em></p>
-<p>URI: <a href="https://w3id.org/nsrr/sleep-cde/supine_duration_min">sleep:supine_duration_min</a>
-Alias: supine_duration_min</p>
+<h1 id="slot-time_above_co2_threshold_percent">Slot: time_above_co2_threshold_percent</h1>
+<p><em>Percentage of sleep time with CO2 above specified threshold. Use co2_threshold modifier to specify threshold (co2_45mmhg, co2_50mmhg, co2_55mmhg). Use sleep_stage modifier for stage-specific calculations.</em></p>
+<p>URI: <a href="https://w3id.org/nsrr/sleep-cde/time_above_co2_threshold_percent">sleep:time_above_co2_threshold_percent</a>
+Alias: time_above_co2_threshold_percent</p>
 <!-- no inheritance hierarchy -->
 
 <h2 id="applicable-classes">Applicable Classes</h2>
@@ -433,8 +433,8 @@ Alias: supine_duration_min</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../BodyPositionMetric/">BodyPositionMetric</a></td>
-<td>Body position duration measurement</td>
+<td><a href="../CapnographyMetric/">CapnographyMetric</a></td>
+<td>CO2/capnography measurements during sleep</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -459,24 +459,26 @@ Alias: supine_duration_min</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>sleep:supine_duration_min</td>
+<td>sleep:time_above_co2_threshold_percent</td>
 </tr>
 <tr>
 <td>native</td>
-<td>sleep:supine_duration_min</td>
+<td>sleep:time_above_co2_threshold_percent</td>
 </tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: supine_duration_min
-description: Time in supine position during sleep (minutes)
+<pre><code class="language-yaml">name: time_above_co2_threshold_percent
+description: Percentage of sleep time with CO2 above specified threshold. Use co2_threshold
+  modifier to specify threshold (co2_45mmhg, co2_50mmhg, co2_55mmhg). Use sleep_stage
+  modifier for stage-specific calculations.
 from_schema: https://w3id.org/nsrr/sleep-cde
 rank: 1000
-alias: supine_duration_min
+alias: time_above_co2_threshold_percent
 domain_of:
-- BodyPositionMetric
+- CapnographyMetric
 range: float
 
 </code></pre>

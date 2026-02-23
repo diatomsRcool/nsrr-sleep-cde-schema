@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://diatomsRcool.github.io/sleep-cde-schema/elements/lateral_duration_min/">
+        <link rel="canonical" href="https://diatomsRcool.github.io/sleep-cde-schema/elements/CO2ThresholdEnum/">
       
       
       
@@ -21,7 +21,7 @@
     
     
       
-        <title>Slot: lateral_duration_min - sleep-cde-schema</title>
+        <title>Enum: CO2ThresholdEnum - sleep-cde-schema</title>
       
     
     
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-lateral_duration_min" class="md-skip">
+        <a href="#enum-co2thresholdenum" class="md-skip">
           Skip to content
         </a>
       
@@ -104,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: lateral_duration_min
+              Enum: CO2ThresholdEnum
             
           </span>
         </div>
@@ -325,10 +325,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#applicable-classes" class="md-nav__link">
+  <a href="#permissible-values" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Applicable Classes
+        Permissible Values
       
     </span>
   </a>
@@ -336,10 +336,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#properties" class="md-nav__link">
+  <a href="#slots" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Properties
+        Slots
       
     </span>
   </a>
@@ -375,17 +375,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#mappings" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Mappings
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#linkml-source" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -416,68 +405,73 @@
   
 
 
-<h1 id="slot-lateral_duration_min">Slot: lateral_duration_min</h1>
-<p><em>Time in lateral position during sleep (minutes)</em></p>
-<p>URI: <a href="https://w3id.org/nsrr/sleep-cde/lateral_duration_min">sleep:lateral_duration_min</a>
-Alias: lateral_duration_min</p>
-<!-- no inheritance hierarchy -->
-
-<h2 id="applicable-classes">Applicable Classes</h2>
+<h1 id="enum-co2thresholdenum">Enum: CO2ThresholdEnum</h1>
+<p><em>CO2 threshold for hypercapnia time calculations</em></p>
+<p>URI: <a href="https://w3id.org/nsrr/sleep-cde/CO2ThresholdEnum">sleep:CO2ThresholdEnum</a></p>
+<h2 id="permissible-values">Permissible Values</h2>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Meaning</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>co2_45mmhg</td>
+<td>None</td>
+<td>CO2 above 45 mmHg threshold</td>
+</tr>
+<tr>
+<td>co2_50mmhg</td>
+<td>None</td>
+<td>CO2 above 50 mmHg threshold</td>
+</tr>
+<tr>
+<td>co2_55mmhg</td>
+<td>None</td>
+<td>CO2 above 55 mmHg threshold</td>
+</tr>
+</tbody>
+</table>
+<h2 id="slots">Slots</h2>
 <table>
 <thead>
 <tr>
 <th>Name</th>
 <th>Description</th>
-<th>Modifies Slot</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><a href="../BodyPositionMetric/">BodyPositionMetric</a></td>
-<td>Body position duration measurement</td>
-<td>no</td>
+<td><a href="../co2_threshold/">co2_threshold</a></td>
+<td>CO2 threshold for hypercapnia time calculations</td>
 </tr>
 </tbody>
 </table>
-<h2 id="properties">Properties</h2>
-<ul>
-<li>Range: <a href="../Float/">Float</a></li>
-</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
 <li>from schema: https://w3id.org/nsrr/sleep-cde</li>
 </ul>
-<h2 id="mappings">Mappings</h2>
-<table>
-<thead>
-<tr>
-<th>Mapping Type</th>
-<th>Mapped Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>self</td>
-<td>sleep:lateral_duration_min</td>
-</tr>
-<tr>
-<td>native</td>
-<td>sleep:lateral_duration_min</td>
-</tr>
-</tbody>
-</table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: lateral_duration_min
-description: Time in lateral position during sleep (minutes)
+<pre><code class="language-yaml">name: CO2ThresholdEnum
+description: CO2 threshold for hypercapnia time calculations
 from_schema: https://w3id.org/nsrr/sleep-cde
 rank: 1000
-alias: lateral_duration_min
-domain_of:
-- BodyPositionMetric
-range: float
+permissible_values:
+  co2_45mmhg:
+    text: co2_45mmhg
+    description: CO2 above 45 mmHg threshold
+  co2_50mmhg:
+    text: co2_50mmhg
+    description: CO2 above 50 mmHg threshold
+  co2_55mmhg:
+    text: co2_55mmhg
+    description: CO2 above 55 mmHg threshold
 
 </code></pre>
 

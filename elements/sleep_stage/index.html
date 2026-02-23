@@ -433,13 +433,13 @@ Alias: sleep_stage</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../LimbMovementMetric/">LimbMovementMetric</a></td>
-<td>Limb movement measurement with context</td>
+<td><a href="../HeartRateMetric/">HeartRateMetric</a></td>
+<td>Heart rate and HRV measurement</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../SleepStageMetric/">SleepStageMetric</a></td>
-<td>Sleep staging metric stratified by stage</td>
+<td><a href="../BodyPositionMetric/">BodyPositionMetric</a></td>
+<td>Body position duration measurement</td>
 <td>no</td>
 </tr>
 <tr>
@@ -448,8 +448,13 @@ Alias: sleep_stage</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../HeartRateMetric/">HeartRateMetric</a></td>
-<td>Heart rate and HRV measurement</td>
+<td><a href="../LimbMovementMetric/">LimbMovementMetric</a></td>
+<td>Limb movement measurement with context</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../SleepStageMetric/">SleepStageMetric</a></td>
+<td>Sleep staging metric stratified by stage</td>
 <td>no</td>
 </tr>
 <tr>
@@ -511,6 +516,7 @@ domain_of:
 - OxygenSaturationMetric
 - ArousalMetric
 - LimbMovementMetric
+- BodyPositionMetric
 - HeartRateMetric
 - CapnographyMetric
 range: SleepStageEnum

@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://diatomsRcool.github.io/sleep-cde-schema/elements/non_supine_percent/">
+        <link rel="canonical" href="https://diatomsRcool.github.io/sleep-cde-schema/elements/co2_threshold/">
       
       
       
@@ -21,7 +21,7 @@
     
     
       
-        <title>Slot: non_supine_percent - sleep-cde-schema</title>
+        <title>Slot: co2_threshold - sleep-cde-schema</title>
       
     
     
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-non_supine_percent" class="md-skip">
+        <a href="#slot-co2_threshold" class="md-skip">
           Skip to content
         </a>
       
@@ -104,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: non_supine_percent
+              Slot: co2_threshold
             
           </span>
         </div>
@@ -416,10 +416,10 @@
   
 
 
-<h1 id="slot-non_supine_percent">Slot: non_supine_percent</h1>
-<p><em>Percentage of sleep in non-supine position</em></p>
-<p>URI: <a href="https://w3id.org/nsrr/sleep-cde/non_supine_percent">sleep:non_supine_percent</a>
-Alias: non_supine_percent</p>
+<h1 id="slot-co2_threshold">Slot: co2_threshold</h1>
+<p><em>CO2 threshold for hypercapnia time calculations</em></p>
+<p>URI: <a href="https://w3id.org/nsrr/sleep-cde/co2_threshold">sleep:co2_threshold</a>
+Alias: co2_threshold</p>
 <!-- no inheritance hierarchy -->
 
 <h2 id="applicable-classes">Applicable Classes</h2>
@@ -433,15 +433,15 @@ Alias: non_supine_percent</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../BodyPositionMetric/">BodyPositionMetric</a></td>
-<td>Body position duration measurement</td>
+<td><a href="../CapnographyMetric/">CapnographyMetric</a></td>
+<td>CO2/capnography measurements during sleep</td>
 <td>no</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Float/">Float</a></li>
+<li>Range: <a href="../CO2ThresholdEnum/">CO2ThresholdEnum</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -459,25 +459,25 @@ Alias: non_supine_percent</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>sleep:non_supine_percent</td>
+<td>sleep:co2_threshold</td>
 </tr>
 <tr>
 <td>native</td>
-<td>sleep:non_supine_percent</td>
+<td>sleep:co2_threshold</td>
 </tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: non_supine_percent
-description: Percentage of sleep in non-supine position
+<pre><code class="language-yaml">name: co2_threshold
+description: CO2 threshold for hypercapnia time calculations
 from_schema: https://w3id.org/nsrr/sleep-cde
 rank: 1000
-alias: non_supine_percent
+alias: co2_threshold
 domain_of:
-- BodyPositionMetric
-range: float
+- CapnographyMetric
+range: CO2ThresholdEnum
 
 </code></pre>
 

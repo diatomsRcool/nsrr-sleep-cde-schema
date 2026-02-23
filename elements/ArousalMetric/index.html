@@ -552,7 +552,9 @@ attributes:
     range: string
   arousal_index:
     name: arousal_index
-    description: Arousal index (arousals per hour of sleep)
+    description: Arousal index (arousals per hour of sleep). Use sleep_stage modifier
+      for stage-specific indices. Use body_position modifier for position-specific
+      indices.
     from_schema: https://w3id.org/nsrr/sleep-cde
     rank: 1000
     alias: arousal_index
@@ -613,6 +615,7 @@ attributes:
     - OxygenSaturationMetric
     - ArousalMetric
     - LimbMovementMetric
+    - BodyPositionMetric
     - HeartRateMetric
     - CapnographyMetric
     range: SleepStageEnum
@@ -627,6 +630,7 @@ attributes:
     - RespiratoryEventMetric
     - OxygenSaturationMetric
     - ArousalMetric
+    - BodyPositionMetric
     - HeartRateMetric
     range: BodyPositionEnum
   psg_type:

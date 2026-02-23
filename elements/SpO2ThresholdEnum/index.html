@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://diatomsRcool.github.io/sleep-cde-schema/elements/time_below_90_pct_percent/">
+        <link rel="canonical" href="https://diatomsRcool.github.io/sleep-cde-schema/elements/SpO2ThresholdEnum/">
       
       
       
@@ -21,7 +21,7 @@
     
     
       
-        <title>Slot: time_below_90_pct_percent - sleep-cde-schema</title>
+        <title>Enum: SpO2ThresholdEnum - sleep-cde-schema</title>
       
     
     
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-time_below_90_pct_percent" class="md-skip">
+        <a href="#enum-spo2thresholdenum" class="md-skip">
           Skip to content
         </a>
       
@@ -104,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: time_below_90_pct_percent
+              Enum: SpO2ThresholdEnum
             
           </span>
         </div>
@@ -325,10 +325,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#applicable-classes" class="md-nav__link">
+  <a href="#permissible-values" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Applicable Classes
+        Permissible Values
       
     </span>
   </a>
@@ -336,10 +336,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#properties" class="md-nav__link">
+  <a href="#slots" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Properties
+        Slots
       
     </span>
   </a>
@@ -375,17 +375,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#mappings" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Mappings
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#linkml-source" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -416,68 +405,81 @@
   
 
 
-<h1 id="slot-time_below_90_pct_percent">Slot: time_below_90_pct_percent</h1>
-<p><em>Percentage of sleep time with SpO2 below 90%</em></p>
-<p>URI: <a href="https://w3id.org/nsrr/sleep-cde/time_below_90_pct_percent">sleep:time_below_90_pct_percent</a>
-Alias: time_below_90_pct_percent</p>
-<!-- no inheritance hierarchy -->
-
-<h2 id="applicable-classes">Applicable Classes</h2>
+<h1 id="enum-spo2thresholdenum">Enum: SpO2ThresholdEnum</h1>
+<p><em>SpO2 threshold for hypoxemia time calculations</em></p>
+<p>URI: <a href="https://w3id.org/nsrr/sleep-cde/SpO2ThresholdEnum">sleep:SpO2ThresholdEnum</a></p>
+<h2 id="permissible-values">Permissible Values</h2>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Meaning</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>spo2_90pct</td>
+<td>None</td>
+<td>SpO2 below 90% threshold</td>
+</tr>
+<tr>
+<td>spo2_88pct</td>
+<td>None</td>
+<td>SpO2 below 88% threshold</td>
+</tr>
+<tr>
+<td>spo2_85pct</td>
+<td>None</td>
+<td>SpO2 below 85% threshold</td>
+</tr>
+<tr>
+<td>spo2_80pct</td>
+<td>None</td>
+<td>SpO2 below 80% threshold</td>
+</tr>
+</tbody>
+</table>
+<h2 id="slots">Slots</h2>
 <table>
 <thead>
 <tr>
 <th>Name</th>
 <th>Description</th>
-<th>Modifies Slot</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><a href="../OxygenSaturationMetric/">OxygenSaturationMetric</a></td>
-<td>Oxygen saturation measurement with context</td>
-<td>no</td>
+<td><a href="../spo2_threshold/">spo2_threshold</a></td>
+<td>SpO2 threshold for hypoxemia time calculations</td>
 </tr>
 </tbody>
 </table>
-<h2 id="properties">Properties</h2>
-<ul>
-<li>Range: <a href="../Float/">Float</a></li>
-</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
 <li>from schema: https://w3id.org/nsrr/sleep-cde</li>
 </ul>
-<h2 id="mappings">Mappings</h2>
-<table>
-<thead>
-<tr>
-<th>Mapping Type</th>
-<th>Mapped Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>self</td>
-<td>sleep:time_below_90_pct_percent</td>
-</tr>
-<tr>
-<td>native</td>
-<td>sleep:time_below_90_pct_percent</td>
-</tr>
-</tbody>
-</table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: time_below_90_pct_percent
-description: Percentage of sleep time with SpO2 below 90%
+<pre><code class="language-yaml">name: SpO2ThresholdEnum
+description: SpO2 threshold for hypoxemia time calculations
 from_schema: https://w3id.org/nsrr/sleep-cde
 rank: 1000
-alias: time_below_90_pct_percent
-domain_of:
-- OxygenSaturationMetric
-range: float
+permissible_values:
+  spo2_90pct:
+    text: spo2_90pct
+    description: SpO2 below 90% threshold
+  spo2_88pct:
+    text: spo2_88pct
+    description: SpO2 below 88% threshold
+  spo2_85pct:
+    text: spo2_85pct
+    description: SpO2 below 85% threshold
+  spo2_80pct:
+    text: spo2_80pct
+    description: SpO2 below 80% threshold
 
 </code></pre>
 

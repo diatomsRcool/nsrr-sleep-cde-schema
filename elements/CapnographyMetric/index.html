@@ -249,11 +249,22 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="class-capnographymetric">Class: CapnographyMetric</h1>
-<p><em>CO2/capnography measurements during sleep</em></p>
+<p><em>CO2/capnography measurements during sleep. Use co2_threshold modifier to specify hypercapnia thresholds.</em></p>
 <p>URI: <a href="https://w3id.org/nsrr/sleep-cde/CapnographyMetric">sleep:CapnographyMetric</a></p>
 <div class="mermaid"> classDiagram
     class CapnographyMetric
     click CapnographyMetric href "../CapnographyMetric/"
+      CapnographyMetric : co2_threshold
+
+
+
+
+
+        CapnographyMetric --&gt; "0..1" CO2ThresholdEnum : co2_threshold
+        click CO2ThresholdEnum href "../CO2ThresholdEnum/"
+
+
+
       CapnographyMetric : etco2_baseline_sleep
 
       CapnographyMetric : etco2_baseline_wake
@@ -288,9 +299,7 @@
 
       CapnographyMetric : subject_id
 
-      CapnographyMetric : time_co2_above_45_pct
-
-      CapnographyMetric : time_co2_above_50_pct
+      CapnographyMetric : time_above_co2_threshold_percent
 
       CapnographyMetric : visit_id
 
@@ -351,15 +360,15 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../time_co2_above_50_pct/">time_co2_above_50_pct</a></td>
+<td><a href="../time_above_co2_threshold_percent/">time_above_co2_threshold_percent</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Percentage of sleep time with CO2 &gt; 50 mmHg</td>
+<td>Percentage of sleep time with CO2 above specified threshold</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../time_co2_above_45_pct/">time_co2_above_45_pct</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Percentage of sleep time with CO2 &gt; 45 mmHg</td>
+<td><a href="../co2_threshold/">co2_threshold</a></td>
+<td>0..1 <br/> <a href="../CO2ThresholdEnum/">CO2ThresholdEnum</a></td>
+<td>CO2 threshold for hypercapnia time calculations</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -405,7 +414,8 @@
 <h3 id="direct">Direct</h3>
 <details>
 <pre><code class="language-yaml">name: CapnographyMetric
-description: CO2/capnography measurements during sleep
+description: CO2/capnography measurements during sleep. Use co2_threshold modifier
+  to specify hypercapnia thresholds.
 from_schema: https://w3id.org/nsrr/sleep-cde
 slots:
 - id
@@ -415,8 +425,8 @@ slots:
 - etco2_peak
 - etco2_baseline_wake
 - etco2_baseline_sleep
-- time_co2_above_50_pct
-- time_co2_above_45_pct
+- time_above_co2_threshold_percent
+- co2_threshold
 - sleep_stage
 - psg_type
 
@@ -425,7 +435,8 @@ slots:
 <h3 id="induced">Induced</h3>
 <details>
 <pre><code class="language-yaml">name: CapnographyMetric
-description: CO2/capnography measurements during sleep
+description: CO2/capnography measurements during sleep. Use co2_threshold modifier
+  to specify hypercapnia thresholds.
 from_schema: https://w3id.org/nsrr/sleep-cde
 attributes:
   id:
@@ -581,26 +592,28 @@ attributes:
     domain_of:
     - CapnographyMetric
     range: float
-  time_co2_above_50_pct:
-    name: time_co2_above_50_pct
-    description: Percentage of sleep time with CO2 &gt; 50 mmHg
+  time_above_co2_threshold_percent:
+    name: time_above_co2_threshold_percent
+    description: Percentage of sleep time with CO2 above specified threshold. Use
+      co2_threshold modifier to specify threshold (co2_45mmhg, co2_50mmhg, co2_55mmhg).
+      Use sleep_stage modifier for stage-specific calculations.
     from_schema: https://w3id.org/nsrr/sleep-cde
     rank: 1000
-    alias: time_co2_above_50_pct
+    alias: time_above_co2_threshold_percent
     owner: CapnographyMetric
     domain_of:
     - CapnographyMetric
     range: float
-  time_co2_above_45_pct:
-    name: time_co2_above_45_pct
-    description: Percentage of sleep time with CO2 &gt; 45 mmHg
+  co2_threshold:
+    name: co2_threshold
+    description: CO2 threshold for hypercapnia time calculations
     from_schema: https://w3id.org/nsrr/sleep-cde
     rank: 1000
-    alias: time_co2_above_45_pct
+    alias: co2_threshold
     owner: CapnographyMetric
     domain_of:
     - CapnographyMetric
-    range: float
+    range: CO2ThresholdEnum
   sleep_stage:
     name: sleep_stage
     description: Sleep stage context for measurement
@@ -614,6 +627,7 @@ attributes:
     - OxygenSaturationMetric
     - ArousalMetric
     - LimbMovementMetric
+    - BodyPositionMetric
     - HeartRateMetric
     - CapnographyMetric
     range: SleepStageEnum

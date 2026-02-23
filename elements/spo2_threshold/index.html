@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://diatomsRcool.github.io/sleep-cde-schema/elements/central_apnea_count/">
+        <link rel="canonical" href="https://diatomsRcool.github.io/sleep-cde-schema/elements/spo2_threshold/">
       
       
       
@@ -21,7 +21,7 @@
     
     
       
-        <title>Slot: central_apnea_count - sleep-cde-schema</title>
+        <title>Slot: spo2_threshold - sleep-cde-schema</title>
       
     
     
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-central_apnea_count" class="md-skip">
+        <a href="#slot-spo2_threshold" class="md-skip">
           Skip to content
         </a>
       
@@ -104,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: central_apnea_count
+              Slot: spo2_threshold
             
           </span>
         </div>
@@ -325,6 +325,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#applicable-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Applicable Classes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#properties" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -405,15 +416,32 @@
   
 
 
-<h1 id="slot-central_apnea_count">Slot: central_apnea_count</h1>
-<p><em>Total number of central apnea events</em></p>
-<p>URI: <a href="https://w3id.org/nsrr/sleep-cde/central_apnea_count">sleep:central_apnea_count</a>
-Alias: central_apnea_count</p>
+<h1 id="slot-spo2_threshold">Slot: spo2_threshold</h1>
+<p><em>SpO2 threshold for hypoxemia time calculations</em></p>
+<p>URI: <a href="https://w3id.org/nsrr/sleep-cde/spo2_threshold">sleep:spo2_threshold</a>
+Alias: spo2_threshold</p>
 <!-- no inheritance hierarchy -->
 
+<h2 id="applicable-classes">Applicable Classes</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Modifies Slot</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../OxygenSaturationMetric/">OxygenSaturationMetric</a></td>
+<td>Oxygen saturation measurement with context</td>
+<td>no</td>
+</tr>
+</tbody>
+</table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Integer/">Integer</a></li>
+<li>Range: <a href="../SpO2ThresholdEnum/">SpO2ThresholdEnum</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -431,23 +459,25 @@ Alias: central_apnea_count</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>sleep:central_apnea_count</td>
+<td>sleep:spo2_threshold</td>
 </tr>
 <tr>
 <td>native</td>
-<td>sleep:central_apnea_count</td>
+<td>sleep:spo2_threshold</td>
 </tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: central_apnea_count
-description: Total number of central apnea events
+<pre><code class="language-yaml">name: spo2_threshold
+description: SpO2 threshold for hypoxemia time calculations
 from_schema: https://w3id.org/nsrr/sleep-cde
 rank: 1000
-alias: central_apnea_count
-range: integer
+alias: spo2_threshold
+domain_of:
+- OxygenSaturationMetric
+range: SpO2ThresholdEnum
 
 </code></pre>
 

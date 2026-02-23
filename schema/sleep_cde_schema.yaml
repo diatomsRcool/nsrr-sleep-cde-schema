@@ -3,7 +3,17 @@ description: 'A compact, reusable LinkML schema for sleep research common data e
   (CDEs). Designed to support cross-dataset harmonization by separating measurement
   semantics from acquisition/scoring protocol modifiers. Target: 40-120 canonical
   CDEs organized into ~20 concept groups, with explicit modifier axes for sleep stage,
-  body position, respiratory event definitions, and PSG type.'
+  body position, respiratory event definitions, and PSG type.
+
+  DESIGN PRINCIPLE - Category Collapse: If multiple variables represent the SAME quantitative
+  construct but differ ONLY by a categorical qualifier (e.g., body position, sleep
+  stage, event subtype, oxygen threshold, laterality), we create ONE canonical slot
+  for the quantitative construct and use modifier axis enum slots to represent the
+  categorical dimension. Examples: - body_position_duration_min + body_position modifier
+  (not supine_duration_min, lateral_duration_min) - apnea_index + apnea_type modifier
+  (not central_apnea_index, obstructive_apnea_index) - desaturation_index + desaturation_threshold
+  modifier (not odi3, odi4, odi5) - time_below_spo2_threshold_min + spo2_threshold
+  modifier (not time_below_90_pct_min)'
 title: Sleep Common Data Elements Schema
 id: https://w3id.org/nsrr/sleep-cde
 version: 2.0.0
@@ -535,6 +545,39 @@ enums:
       past_week:
         text: past_week
         description: Past week recall period
+  SpO2ThresholdEnum:
+    name: SpO2ThresholdEnum
+    definition_uri: https://w3id.org/nsrr/sleep-cde/SpO2ThresholdEnum
+    description: SpO2 threshold for hypoxemia time calculations
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    permissible_values:
+      spo2_90pct:
+        text: spo2_90pct
+        description: SpO2 below 90% threshold
+      spo2_88pct:
+        text: spo2_88pct
+        description: SpO2 below 88% threshold
+      spo2_85pct:
+        text: spo2_85pct
+        description: SpO2 below 85% threshold
+      spo2_80pct:
+        text: spo2_80pct
+        description: SpO2 below 80% threshold
+  CO2ThresholdEnum:
+    name: CO2ThresholdEnum
+    definition_uri: https://w3id.org/nsrr/sleep-cde/CO2ThresholdEnum
+    description: CO2 threshold for hypercapnia time calculations
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    permissible_values:
+      co2_45mmhg:
+        text: co2_45mmhg
+        description: CO2 above 45 mmHg threshold
+      co2_50mmhg:
+        text: co2_50mmhg
+        description: CO2 above 50 mmHg threshold
+      co2_55mmhg:
+        text: co2_55mmhg
+        description: CO2 above 55 mmHg threshold
   SexEnum:
     name: SexEnum
     definition_uri: https://w3id.org/nsrr/sleep-cde/SexEnum
@@ -1112,6 +1155,7 @@ slots:
     - OxygenSaturationMetric
     - ArousalMetric
     - LimbMovementMetric
+    - BodyPositionMetric
     - HeartRateMetric
     - CapnographyMetric
     range: SleepStageEnum
@@ -1126,6 +1170,7 @@ slots:
     - RespiratoryEventMetric
     - OxygenSaturationMetric
     - ArousalMetric
+    - BodyPositionMetric
     - HeartRateMetric
     range: BodyPositionEnum
   psg_type:
@@ -1215,6 +1260,26 @@ slots:
     - CPAPAdherence
     - ActigraphyRecord
     range: TimeFrameEnum
+  spo2_threshold:
+    name: spo2_threshold
+    definition_uri: https://w3id.org/nsrr/sleep-cde/spo2_threshold
+    description: SpO2 threshold for hypoxemia time calculations
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:spo2_threshold
+    owner: OxygenSaturationMetric
+    domain_of:
+    - OxygenSaturationMetric
+    range: SpO2ThresholdEnum
+  co2_threshold:
+    name: co2_threshold
+    definition_uri: https://w3id.org/nsrr/sleep-cde/co2_threshold
+    description: CO2 threshold for hypercapnia time calculations
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:co2_threshold
+    owner: CapnographyMetric
+    domain_of:
+    - CapnographyMetric
+    range: CO2ThresholdEnum
   age_years:
     name: age_years
     definition_uri: https://w3id.org/nsrr/sleep-cde/age_years
@@ -1625,7 +1690,9 @@ slots:
   apnea_index:
     name: apnea_index
     definition_uri: https://w3id.org/nsrr/sleep-cde/apnea_index
-    description: Apnea index (apneas per hour of sleep)
+    description: Apnea index (apneas per hour of sleep). Use apnea_type modifier to
+      specify type (all, obstructive, central, mixed). Use body_position modifier
+      for position-specific indices. Use sleep_stage modifier for stage-specific indices.
     from_schema: https://w3id.org/nsrr/sleep-cde
     slot_uri: sleep:apnea_index
     owner: RespiratoryEventMetric
@@ -1645,7 +1712,10 @@ slots:
   ahi:
     name: ahi
     definition_uri: https://w3id.org/nsrr/sleep-cde/ahi
-    description: Apnea-hypopnea index (AHI) - events per hour of sleep
+    description: Apnea-hypopnea index (AHI) - events per hour of sleep. Use apnea_type
+      modifier to specify event types included (all, obstructive, central). Use hypopnea_definition
+      modifier for scoring rule. Use desaturation_threshold and arousal_requirement
+      for event criteria. Use body_position and sleep_stage for stratified indices.
     from_schema: https://w3id.org/nsrr/sleep-cde
     slot_uri: sleep:ahi
     owner: RespiratoryEventMetric
@@ -1669,7 +1739,9 @@ slots:
   apnea_count:
     name: apnea_count
     definition_uri: https://w3id.org/nsrr/sleep-cde/apnea_count
-    description: Total number of apnea events
+    description: Total number of apnea events. Use apnea_type modifier to specify
+      type (all, obstructive, central, mixed). Use body_position modifier for position-specific
+      counts. Use sleep_stage modifier for stage-specific counts.
     from_schema: https://w3id.org/nsrr/sleep-cde
     slot_uri: sleep:apnea_count
     owner: RespiratoryEventMetric
@@ -1757,39 +1829,39 @@ slots:
   desaturation_index:
     name: desaturation_index
     definition_uri: https://w3id.org/nsrr/sleep-cde/desaturation_index
-    description: Oxygen desaturation index (events per hour)
+    description: Oxygen desaturation index (ODI) - desaturation events per hour. Use
+      desaturation_threshold modifier to specify threshold (desat_3pct, desat_4pct,
+      desat_5pct). Use sleep_stage modifier for stage-specific indices. Use body_position
+      modifier for position-specific indices.
     from_schema: https://w3id.org/nsrr/sleep-cde
     slot_uri: sleep:desaturation_index
     owner: OxygenSaturationMetric
     domain_of:
     - OxygenSaturationMetric
     range: float
-  time_below_90_pct_min:
-    name: time_below_90_pct_min
-    definition_uri: https://w3id.org/nsrr/sleep-cde/time_below_90_pct_min
-    description: Time with SpO2 below 90% in minutes
+  time_below_spo2_threshold_min:
+    name: time_below_spo2_threshold_min
+    definition_uri: https://w3id.org/nsrr/sleep-cde/time_below_spo2_threshold_min
+    description: Time with SpO2 below specified threshold (minutes). Use spo2_threshold
+      modifier to specify threshold (spo2_90pct, spo2_88pct, spo2_85pct, spo2_80pct).
+      Use sleep_stage modifier for stage-specific calculations.
     from_schema: https://w3id.org/nsrr/sleep-cde
-    slot_uri: sleep:time_below_90_pct_min
+    slot_uri: sleep:time_below_spo2_threshold_min
     owner: OxygenSaturationMetric
     domain_of:
     - OxygenSaturationMetric
     range: float
-  time_below_90_pct_percent:
-    name: time_below_90_pct_percent
-    definition_uri: https://w3id.org/nsrr/sleep-cde/time_below_90_pct_percent
-    description: Percentage of sleep time with SpO2 below 90%
+  time_below_spo2_threshold_percent:
+    name: time_below_spo2_threshold_percent
+    definition_uri: https://w3id.org/nsrr/sleep-cde/time_below_spo2_threshold_percent
+    description: Percentage of sleep time with SpO2 below specified threshold. Use
+      spo2_threshold modifier to specify threshold (spo2_90pct, spo2_88pct, spo2_85pct,
+      spo2_80pct). Use sleep_stage modifier for stage-specific calculations.
     from_schema: https://w3id.org/nsrr/sleep-cde
-    slot_uri: sleep:time_below_90_pct_percent
+    slot_uri: sleep:time_below_spo2_threshold_percent
     owner: OxygenSaturationMetric
     domain_of:
     - OxygenSaturationMetric
-    range: float
-  time_below_88_pct_min:
-    name: time_below_88_pct_min
-    definition_uri: https://w3id.org/nsrr/sleep-cde/time_below_88_pct_min
-    description: Time with SpO2 below 88% in minutes
-    from_schema: https://w3id.org/nsrr/sleep-cde
-    slot_uri: sleep:time_below_88_pct_min
     range: float
   mean_desaturation_pct:
     name: mean_desaturation_pct
@@ -1801,7 +1873,9 @@ slots:
   arousal_index:
     name: arousal_index
     definition_uri: https://w3id.org/nsrr/sleep-cde/arousal_index
-    description: Arousal index (arousals per hour of sleep)
+    description: Arousal index (arousals per hour of sleep). Use sleep_stage modifier
+      for stage-specific indices. Use body_position modifier for position-specific
+      indices.
     from_schema: https://w3id.org/nsrr/sleep-cde
     slot_uri: sleep:arousal_index
     owner: ArousalMetric
@@ -1858,7 +1932,9 @@ slots:
   plm_index:
     name: plm_index
     definition_uri: https://w3id.org/nsrr/sleep-cde/plm_index
-    description: Periodic limb movement index (PLMs per hour of sleep)
+    description: Periodic limb movement index (PLMs per hour of sleep). Use sleep_stage
+      modifier for stage-specific indices (e.g., REM, NREM). Use body_position modifier
+      for position-specific indices.
     from_schema: https://w3id.org/nsrr/sleep-cde
     slot_uri: sleep:plm_index
     owner: LimbMovementMetric
@@ -1902,62 +1978,24 @@ slots:
     from_schema: https://w3id.org/nsrr/sleep-cde
     slot_uri: sleep:limb_movement_index
     range: float
-  supine_duration_min:
-    name: supine_duration_min
-    definition_uri: https://w3id.org/nsrr/sleep-cde/supine_duration_min
-    description: Time in supine position during sleep (minutes)
+  body_position_duration_min:
+    name: body_position_duration_min
+    definition_uri: https://w3id.org/nsrr/sleep-cde/body_position_duration_min
+    description: Duration in specified body position during sleep (minutes). Use body_position
+      modifier to specify position (supine, non_supine, lateral, prone).
     from_schema: https://w3id.org/nsrr/sleep-cde
-    slot_uri: sleep:supine_duration_min
+    slot_uri: sleep:body_position_duration_min
     owner: BodyPositionMetric
     domain_of:
     - BodyPositionMetric
     range: float
-  supine_percent:
-    name: supine_percent
-    definition_uri: https://w3id.org/nsrr/sleep-cde/supine_percent
-    description: Percentage of sleep in supine position
+  body_position_percent:
+    name: body_position_percent
+    definition_uri: https://w3id.org/nsrr/sleep-cde/body_position_percent
+    description: Percentage of sleep time in specified body position. Use body_position
+      modifier to specify position (supine, non_supine, lateral, prone).
     from_schema: https://w3id.org/nsrr/sleep-cde
-    slot_uri: sleep:supine_percent
-    owner: BodyPositionMetric
-    domain_of:
-    - BodyPositionMetric
-    range: float
-  non_supine_duration_min:
-    name: non_supine_duration_min
-    definition_uri: https://w3id.org/nsrr/sleep-cde/non_supine_duration_min
-    description: Time in non-supine position during sleep (minutes)
-    from_schema: https://w3id.org/nsrr/sleep-cde
-    slot_uri: sleep:non_supine_duration_min
-    owner: BodyPositionMetric
-    domain_of:
-    - BodyPositionMetric
-    range: float
-  non_supine_percent:
-    name: non_supine_percent
-    definition_uri: https://w3id.org/nsrr/sleep-cde/non_supine_percent
-    description: Percentage of sleep in non-supine position
-    from_schema: https://w3id.org/nsrr/sleep-cde
-    slot_uri: sleep:non_supine_percent
-    owner: BodyPositionMetric
-    domain_of:
-    - BodyPositionMetric
-    range: float
-  lateral_duration_min:
-    name: lateral_duration_min
-    definition_uri: https://w3id.org/nsrr/sleep-cde/lateral_duration_min
-    description: Time in lateral position during sleep (minutes)
-    from_schema: https://w3id.org/nsrr/sleep-cde
-    slot_uri: sleep:lateral_duration_min
-    owner: BodyPositionMetric
-    domain_of:
-    - BodyPositionMetric
-    range: float
-  prone_duration_min:
-    name: prone_duration_min
-    definition_uri: https://w3id.org/nsrr/sleep-cde/prone_duration_min
-    description: Time in prone position during sleep (minutes)
-    from_schema: https://w3id.org/nsrr/sleep-cde
-    slot_uri: sleep:prone_duration_min
+    slot_uri: sleep:body_position_percent
     owner: BodyPositionMetric
     domain_of:
     - BodyPositionMetric
@@ -2580,22 +2618,14 @@ slots:
     domain_of:
     - CapnographyMetric
     range: float
-  time_co2_above_50_pct:
-    name: time_co2_above_50_pct
-    definition_uri: https://w3id.org/nsrr/sleep-cde/time_co2_above_50_pct
-    description: Percentage of sleep time with CO2 > 50 mmHg
+  time_above_co2_threshold_percent:
+    name: time_above_co2_threshold_percent
+    definition_uri: https://w3id.org/nsrr/sleep-cde/time_above_co2_threshold_percent
+    description: Percentage of sleep time with CO2 above specified threshold. Use
+      co2_threshold modifier to specify threshold (co2_45mmhg, co2_50mmhg, co2_55mmhg).
+      Use sleep_stage modifier for stage-specific calculations.
     from_schema: https://w3id.org/nsrr/sleep-cde
-    slot_uri: sleep:time_co2_above_50_pct
-    owner: CapnographyMetric
-    domain_of:
-    - CapnographyMetric
-    range: float
-  time_co2_above_45_pct:
-    name: time_co2_above_45_pct
-    definition_uri: https://w3id.org/nsrr/sleep-cde/time_co2_above_45_pct
-    description: Percentage of sleep time with CO2 > 45 mmHg
-    from_schema: https://w3id.org/nsrr/sleep-cde
-    slot_uri: sleep:time_co2_above_45_pct
+    slot_uri: sleep:time_above_co2_threshold_percent
     owner: CapnographyMetric
     domain_of:
     - CapnographyMetric
@@ -2760,48 +2790,6 @@ slots:
     domain_of:
     - ActigraphyRecord
     range: float
-  central_apnea_index:
-    name: central_apnea_index
-    definition_uri: https://w3id.org/nsrr/sleep-cde/central_apnea_index
-    description: Central apnea index (central apneas per hour)
-    from_schema: https://w3id.org/nsrr/sleep-cde
-    slot_uri: sleep:central_apnea_index
-    range: float
-  central_apnea_count:
-    name: central_apnea_count
-    definition_uri: https://w3id.org/nsrr/sleep-cde/central_apnea_count
-    description: Total number of central apnea events
-    from_schema: https://w3id.org/nsrr/sleep-cde
-    slot_uri: sleep:central_apnea_count
-    range: integer
-  mixed_apnea_index:
-    name: mixed_apnea_index
-    definition_uri: https://w3id.org/nsrr/sleep-cde/mixed_apnea_index
-    description: Mixed apnea index (mixed apneas per hour)
-    from_schema: https://w3id.org/nsrr/sleep-cde
-    slot_uri: sleep:mixed_apnea_index
-    range: float
-  mixed_apnea_count:
-    name: mixed_apnea_count
-    definition_uri: https://w3id.org/nsrr/sleep-cde/mixed_apnea_count
-    description: Total number of mixed apnea events
-    from_schema: https://w3id.org/nsrr/sleep-cde
-    slot_uri: sleep:mixed_apnea_count
-    range: integer
-  obstructive_apnea_index:
-    name: obstructive_apnea_index
-    definition_uri: https://w3id.org/nsrr/sleep-cde/obstructive_apnea_index
-    description: Obstructive apnea index (obstructive apneas per hour)
-    from_schema: https://w3id.org/nsrr/sleep-cde
-    slot_uri: sleep:obstructive_apnea_index
-    range: float
-  obstructive_apnea_count:
-    name: obstructive_apnea_count
-    definition_uri: https://w3id.org/nsrr/sleep-cde/obstructive_apnea_count
-    description: Total number of obstructive apnea events
-    from_schema: https://w3id.org/nsrr/sleep-cde
-    slot_uri: sleep:obstructive_apnea_count
-    range: integer
   actigraphy_tst_min:
     name: actigraphy_tst_min
     definition_uri: https://w3id.org/nsrr/sleep-cde/actigraphy_tst_min
@@ -3810,9 +3798,10 @@ classes:
     - spo2_nadir_pct
     - spo2_baseline_pct
     - desaturation_index
-    - time_below_90_pct_min
-    - time_below_90_pct_percent
+    - time_below_spo2_threshold_min
+    - time_below_spo2_threshold_percent
     - desaturation_threshold
+    - spo2_threshold
     - sleep_stage
     - body_position
     - psg_type
@@ -3855,18 +3844,17 @@ classes:
   BodyPositionMetric:
     name: BodyPositionMetric
     definition_uri: https://w3id.org/nsrr/sleep-cde/BodyPositionMetric
-    description: Body position duration measurement
+    description: Body position duration measurement. Use body_position modifier to
+      specify the position (supine, non_supine, lateral, prone).
     from_schema: https://w3id.org/nsrr/sleep-cde
     slots:
     - id
     - subject_id
     - visit_id
-    - supine_duration_min
-    - supine_percent
-    - non_supine_duration_min
-    - non_supine_percent
-    - lateral_duration_min
-    - prone_duration_min
+    - body_position_duration_min
+    - body_position_percent
+    - body_position
+    - sleep_stage
     - psg_type
     class_uri: sleep:BodyPositionMetric
   HeartRateMetric:
@@ -4029,7 +4017,8 @@ classes:
   CapnographyMetric:
     name: CapnographyMetric
     definition_uri: https://w3id.org/nsrr/sleep-cde/CapnographyMetric
-    description: CO2/capnography measurements during sleep
+    description: CO2/capnography measurements during sleep. Use co2_threshold modifier
+      to specify hypercapnia thresholds.
     from_schema: https://w3id.org/nsrr/sleep-cde
     slots:
     - id
@@ -4039,8 +4028,8 @@ classes:
     - etco2_peak
     - etco2_baseline_wake
     - etco2_baseline_sleep
-    - time_co2_above_50_pct
-    - time_co2_above_45_pct
+    - time_above_co2_threshold_percent
+    - co2_threshold
     - sleep_stage
     - psg_type
     class_uri: sleep:CapnographyMetric
@@ -4242,7 +4231,7 @@ classes:
     class_uri: sleep:VariableMapping
 metamodel_version: 1.7.0
 source_file: sleep_cde_schema.yaml
-source_file_date: '2026-01-31T17:51:39'
-source_file_size: 58558
-generation_date: '2026-01-31T17:51:48'
+source_file_date: '2026-02-23T16:14:38'
+source_file_size: 61530
+generation_date: '2026-02-23T16:14:47'
 

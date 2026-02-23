@@ -249,20 +249,27 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="class-bodypositionmetric">Class: BodyPositionMetric</h1>
-<p><em>Body position duration measurement</em></p>
+<p><em>Body position duration measurement. Use body_position modifier to specify the position (supine, non_supine, lateral, prone).</em></p>
 <p>URI: <a href="https://w3id.org/nsrr/sleep-cde/BodyPositionMetric">sleep:BodyPositionMetric</a></p>
 <div class="mermaid"> classDiagram
     class BodyPositionMetric
     click BodyPositionMetric href "../BodyPositionMetric/"
+      BodyPositionMetric : body_position
+
+
+
+
+
+        BodyPositionMetric --&gt; "0..1" BodyPositionEnum : body_position
+        click BodyPositionEnum href "../BodyPositionEnum/"
+
+
+
+      BodyPositionMetric : body_position_duration_min
+
+      BodyPositionMetric : body_position_percent
+
       BodyPositionMetric : id
-
-      BodyPositionMetric : lateral_duration_min
-
-      BodyPositionMetric : non_supine_duration_min
-
-      BodyPositionMetric : non_supine_percent
-
-      BodyPositionMetric : prone_duration_min
 
       BodyPositionMetric : psg_type
 
@@ -275,11 +282,18 @@
 
 
 
+      BodyPositionMetric : sleep_stage
+
+
+
+
+
+        BodyPositionMetric --&gt; "0..1" SleepStageEnum : sleep_stage
+        click SleepStageEnum href "../SleepStageEnum/"
+
+
+
       BodyPositionMetric : subject_id
-
-      BodyPositionMetric : supine_duration_min
-
-      BodyPositionMetric : supine_percent
 
       BodyPositionMetric : visit_id
 
@@ -316,39 +330,27 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../supine_duration_min/">supine_duration_min</a></td>
+<td><a href="../body_position_duration_min/">body_position_duration_min</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Time in supine position during sleep (minutes)</td>
+<td>Duration in specified body position during sleep (minutes)</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../supine_percent/">supine_percent</a></td>
+<td><a href="../body_position_percent/">body_position_percent</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Percentage of sleep in supine position</td>
+<td>Percentage of sleep time in specified body position</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../non_supine_duration_min/">non_supine_duration_min</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Time in non-supine position during sleep (minutes)</td>
+<td><a href="../body_position/">body_position</a></td>
+<td>0..1 <br/> <a href="../BodyPositionEnum/">BodyPositionEnum</a></td>
+<td>Body position context for measurement</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../non_supine_percent/">non_supine_percent</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Percentage of sleep in non-supine position</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../lateral_duration_min/">lateral_duration_min</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Time in lateral position during sleep (minutes)</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../prone_duration_min/">prone_duration_min</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Time in prone position during sleep (minutes)</td>
+<td><a href="../sleep_stage/">sleep_stage</a></td>
+<td>0..1 <br/> <a href="../SleepStageEnum/">SleepStageEnum</a></td>
+<td>Sleep stage context for measurement</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -388,18 +390,17 @@
 <h3 id="direct">Direct</h3>
 <details>
 <pre><code class="language-yaml">name: BodyPositionMetric
-description: Body position duration measurement
+description: Body position duration measurement. Use body_position modifier to specify
+  the position (supine, non_supine, lateral, prone).
 from_schema: https://w3id.org/nsrr/sleep-cde
 slots:
 - id
 - subject_id
 - visit_id
-- supine_duration_min
-- supine_percent
-- non_supine_duration_min
-- non_supine_percent
-- lateral_duration_min
-- prone_duration_min
+- body_position_duration_min
+- body_position_percent
+- body_position
+- sleep_stage
 - psg_type
 
 </code></pre>
@@ -407,7 +408,8 @@ slots:
 <h3 id="induced">Induced</h3>
 <details>
 <pre><code class="language-yaml">name: BodyPositionMetric
-description: Body position duration measurement
+description: Body position duration measurement. Use body_position modifier to specify
+  the position (supine, non_supine, lateral, prone).
 from_schema: https://w3id.org/nsrr/sleep-cde
 attributes:
   id:
@@ -523,66 +525,59 @@ attributes:
     - PediatricSleepAssessment
     - PediatricAnthropometry
     range: string
-  supine_duration_min:
-    name: supine_duration_min
-    description: Time in supine position during sleep (minutes)
+  body_position_duration_min:
+    name: body_position_duration_min
+    description: Duration in specified body position during sleep (minutes). Use body_position
+      modifier to specify position (supine, non_supine, lateral, prone).
     from_schema: https://w3id.org/nsrr/sleep-cde
     rank: 1000
-    alias: supine_duration_min
+    alias: body_position_duration_min
     owner: BodyPositionMetric
     domain_of:
     - BodyPositionMetric
     range: float
-  supine_percent:
-    name: supine_percent
-    description: Percentage of sleep in supine position
+  body_position_percent:
+    name: body_position_percent
+    description: Percentage of sleep time in specified body position. Use body_position
+      modifier to specify position (supine, non_supine, lateral, prone).
     from_schema: https://w3id.org/nsrr/sleep-cde
     rank: 1000
-    alias: supine_percent
+    alias: body_position_percent
     owner: BodyPositionMetric
     domain_of:
     - BodyPositionMetric
     range: float
-  non_supine_duration_min:
-    name: non_supine_duration_min
-    description: Time in non-supine position during sleep (minutes)
+  body_position:
+    name: body_position
+    description: Body position context for measurement
     from_schema: https://w3id.org/nsrr/sleep-cde
     rank: 1000
-    alias: non_supine_duration_min
+    alias: body_position
     owner: BodyPositionMetric
     domain_of:
+    - RespiratoryEventMetric
+    - OxygenSaturationMetric
+    - ArousalMetric
     - BodyPositionMetric
-    range: float
-  non_supine_percent:
-    name: non_supine_percent
-    description: Percentage of sleep in non-supine position
+    - HeartRateMetric
+    range: BodyPositionEnum
+  sleep_stage:
+    name: sleep_stage
+    description: Sleep stage context for measurement
     from_schema: https://w3id.org/nsrr/sleep-cde
     rank: 1000
-    alias: non_supine_percent
+    alias: sleep_stage
     owner: BodyPositionMetric
     domain_of:
+    - SleepStageMetric
+    - RespiratoryEventMetric
+    - OxygenSaturationMetric
+    - ArousalMetric
+    - LimbMovementMetric
     - BodyPositionMetric
-    range: float
-  lateral_duration_min:
-    name: lateral_duration_min
-    description: Time in lateral position during sleep (minutes)
-    from_schema: https://w3id.org/nsrr/sleep-cde
-    rank: 1000
-    alias: lateral_duration_min
-    owner: BodyPositionMetric
-    domain_of:
-    - BodyPositionMetric
-    range: float
-  prone_duration_min:
-    name: prone_duration_min
-    description: Time in prone position during sleep (minutes)
-    from_schema: https://w3id.org/nsrr/sleep-cde
-    rank: 1000
-    alias: prone_duration_min
-    owner: BodyPositionMetric
-    domain_of:
-    - BodyPositionMetric
-    range: float
+    - HeartRateMetric
+    - CapnographyMetric
+    range: SleepStageEnum
   psg_type:
     name: psg_type
     description: Type of polysomnography study

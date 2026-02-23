@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://diatomsRcool.github.io/sleep-cde-schema/elements/obstructive_apnea_index/">
+        <link rel="canonical" href="https://diatomsRcool.github.io/sleep-cde-schema/elements/body_position_duration_min/">
       
       
       
@@ -21,7 +21,7 @@
     
     
       
-        <title>Slot: obstructive_apnea_index - sleep-cde-schema</title>
+        <title>Slot: body_position_duration_min - sleep-cde-schema</title>
       
     
     
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-obstructive_apnea_index" class="md-skip">
+        <a href="#slot-body_position_duration_min" class="md-skip">
           Skip to content
         </a>
       
@@ -104,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: obstructive_apnea_index
+              Slot: body_position_duration_min
             
           </span>
         </div>
@@ -325,6 +325,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#applicable-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Applicable Classes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#properties" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -405,12 +416,29 @@
   
 
 
-<h1 id="slot-obstructive_apnea_index">Slot: obstructive_apnea_index</h1>
-<p><em>Obstructive apnea index (obstructive apneas per hour)</em></p>
-<p>URI: <a href="https://w3id.org/nsrr/sleep-cde/obstructive_apnea_index">sleep:obstructive_apnea_index</a>
-Alias: obstructive_apnea_index</p>
+<h1 id="slot-body_position_duration_min">Slot: body_position_duration_min</h1>
+<p><em>Duration in specified body position during sleep (minutes). Use body_position modifier to specify position (supine, non_supine, lateral, prone).</em></p>
+<p>URI: <a href="https://w3id.org/nsrr/sleep-cde/body_position_duration_min">sleep:body_position_duration_min</a>
+Alias: body_position_duration_min</p>
 <!-- no inheritance hierarchy -->
 
+<h2 id="applicable-classes">Applicable Classes</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Modifies Slot</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../BodyPositionMetric/">BodyPositionMetric</a></td>
+<td>Body position duration measurement</td>
+<td>no</td>
+</tr>
+</tbody>
+</table>
 <h2 id="properties">Properties</h2>
 <ul>
 <li>Range: <a href="../Float/">Float</a></li>
@@ -431,22 +459,25 @@ Alias: obstructive_apnea_index</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>sleep:obstructive_apnea_index</td>
+<td>sleep:body_position_duration_min</td>
 </tr>
 <tr>
 <td>native</td>
-<td>sleep:obstructive_apnea_index</td>
+<td>sleep:body_position_duration_min</td>
 </tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: obstructive_apnea_index
-description: Obstructive apnea index (obstructive apneas per hour)
+<pre><code class="language-yaml">name: body_position_duration_min
+description: Duration in specified body position during sleep (minutes). Use body_position
+  modifier to specify position (supine, non_supine, lateral, prone).
 from_schema: https://w3id.org/nsrr/sleep-cde
 rank: 1000
-alias: obstructive_apnea_index
+alias: body_position_duration_min
+domain_of:
+- BodyPositionMetric
 range: float
 
 </code></pre>

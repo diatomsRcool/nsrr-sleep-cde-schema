@@ -525,7 +525,9 @@ attributes:
     range: string
   plm_index:
     name: plm_index
-    description: Periodic limb movement index (PLMs per hour of sleep)
+    description: Periodic limb movement index (PLMs per hour of sleep). Use sleep_stage
+      modifier for stage-specific indices (e.g., REM, NREM). Use body_position modifier
+      for position-specific indices.
     from_schema: https://w3id.org/nsrr/sleep-cde
     rank: 1000
     alias: plm_index
@@ -576,6 +578,7 @@ attributes:
     - OxygenSaturationMetric
     - ArousalMetric
     - LimbMovementMetric
+    - BodyPositionMetric
     - HeartRateMetric
     - CapnographyMetric
     range: SleepStageEnum

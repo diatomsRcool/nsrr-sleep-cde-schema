@@ -642,7 +642,10 @@ attributes:
     range: string
   ahi:
     name: ahi
-    description: Apnea-hypopnea index (AHI) - events per hour of sleep
+    description: Apnea-hypopnea index (AHI) - events per hour of sleep. Use apnea_type
+      modifier to specify event types included (all, obstructive, central). Use hypopnea_definition
+      modifier for scoring rule. Use desaturation_threshold and arousal_requirement
+      for event criteria. Use body_position and sleep_stage for stratified indices.
     from_schema: https://w3id.org/nsrr/sleep-cde
     rank: 1000
     alias: ahi
@@ -652,7 +655,9 @@ attributes:
     range: float
   apnea_index:
     name: apnea_index
-    description: Apnea index (apneas per hour of sleep)
+    description: Apnea index (apneas per hour of sleep). Use apnea_type modifier to
+      specify type (all, obstructive, central, mixed). Use body_position modifier
+      for position-specific indices. Use sleep_stage modifier for stage-specific indices.
     from_schema: https://w3id.org/nsrr/sleep-cde
     rank: 1000
     alias: apnea_index
@@ -672,7 +677,9 @@ attributes:
     range: float
   apnea_count:
     name: apnea_count
-    description: Total number of apnea events
+    description: Total number of apnea events. Use apnea_type modifier to specify
+      type (all, obstructive, central, mixed). Use body_position modifier for position-specific
+      counts. Use sleep_stage modifier for stage-specific counts.
     from_schema: https://w3id.org/nsrr/sleep-cde
     rank: 1000
     alias: apnea_count
@@ -747,6 +754,7 @@ attributes:
     - OxygenSaturationMetric
     - ArousalMetric
     - LimbMovementMetric
+    - BodyPositionMetric
     - HeartRateMetric
     - CapnographyMetric
     range: SleepStageEnum
@@ -761,6 +769,7 @@ attributes:
     - RespiratoryEventMetric
     - OxygenSaturationMetric
     - ArousalMetric
+    - BodyPositionMetric
     - HeartRateMetric
     range: BodyPositionEnum
   psg_type:

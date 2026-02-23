@@ -310,6 +310,17 @@
 
       OxygenSaturationMetric : spo2_nadir_pct
 
+      OxygenSaturationMetric : spo2_threshold
+
+
+
+
+
+        OxygenSaturationMetric --&gt; "0..1" SpO2ThresholdEnum : spo2_threshold
+        click SpO2ThresholdEnum href "../SpO2ThresholdEnum/"
+
+
+
       OxygenSaturationMetric : subject_id
 
       OxygenSaturationMetric : summary_statistic
@@ -323,9 +334,9 @@
 
 
 
-      OxygenSaturationMetric : time_below_90_pct_min
+      OxygenSaturationMetric : time_below_spo2_threshold_min
 
-      OxygenSaturationMetric : time_below_90_pct_percent
+      OxygenSaturationMetric : time_below_spo2_threshold_percent
 
       OxygenSaturationMetric : visit_id
 
@@ -388,25 +399,31 @@
 <tr>
 <td><a href="../desaturation_index/">desaturation_index</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Oxygen desaturation index (events per hour)</td>
+<td>Oxygen desaturation index (ODI) - desaturation events per hour</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../time_below_90_pct_min/">time_below_90_pct_min</a></td>
+<td><a href="../time_below_spo2_threshold_min/">time_below_spo2_threshold_min</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Time with SpO2 below 90% in minutes</td>
+<td>Time with SpO2 below specified threshold (minutes)</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../time_below_90_pct_percent/">time_below_90_pct_percent</a></td>
+<td><a href="../time_below_spo2_threshold_percent/">time_below_spo2_threshold_percent</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Percentage of sleep time with SpO2 below 90%</td>
+<td>Percentage of sleep time with SpO2 below specified threshold</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../desaturation_threshold/">desaturation_threshold</a></td>
 <td>0..1 <br/> <a href="../DesaturationThresholdEnum/">DesaturationThresholdEnum</a></td>
 <td>Oxygen desaturation threshold for event scoring</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../spo2_threshold/">spo2_threshold</a></td>
+<td>0..1 <br/> <a href="../SpO2ThresholdEnum/">SpO2ThresholdEnum</a></td>
+<td>SpO2 threshold for hypoxemia time calculations</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -475,9 +492,10 @@ slots:
 - spo2_nadir_pct
 - spo2_baseline_pct
 - desaturation_index
-- time_below_90_pct_min
-- time_below_90_pct_percent
+- time_below_spo2_threshold_min
+- time_below_spo2_threshold_percent
 - desaturation_threshold
+- spo2_threshold
 - sleep_stage
 - body_position
 - psg_type
@@ -646,7 +664,10 @@ attributes:
     range: float
   desaturation_index:
     name: desaturation_index
-    description: Oxygen desaturation index (events per hour)
+    description: Oxygen desaturation index (ODI) - desaturation events per hour. Use
+      desaturation_threshold modifier to specify threshold (desat_3pct, desat_4pct,
+      desat_5pct). Use sleep_stage modifier for stage-specific indices. Use body_position
+      modifier for position-specific indices.
     from_schema: https://w3id.org/nsrr/sleep-cde
     rank: 1000
     alias: desaturation_index
@@ -654,22 +675,26 @@ attributes:
     domain_of:
     - OxygenSaturationMetric
     range: float
-  time_below_90_pct_min:
-    name: time_below_90_pct_min
-    description: Time with SpO2 below 90% in minutes
+  time_below_spo2_threshold_min:
+    name: time_below_spo2_threshold_min
+    description: Time with SpO2 below specified threshold (minutes). Use spo2_threshold
+      modifier to specify threshold (spo2_90pct, spo2_88pct, spo2_85pct, spo2_80pct).
+      Use sleep_stage modifier for stage-specific calculations.
     from_schema: https://w3id.org/nsrr/sleep-cde
     rank: 1000
-    alias: time_below_90_pct_min
+    alias: time_below_spo2_threshold_min
     owner: OxygenSaturationMetric
     domain_of:
     - OxygenSaturationMetric
     range: float
-  time_below_90_pct_percent:
-    name: time_below_90_pct_percent
-    description: Percentage of sleep time with SpO2 below 90%
+  time_below_spo2_threshold_percent:
+    name: time_below_spo2_threshold_percent
+    description: Percentage of sleep time with SpO2 below specified threshold. Use
+      spo2_threshold modifier to specify threshold (spo2_90pct, spo2_88pct, spo2_85pct,
+      spo2_80pct). Use sleep_stage modifier for stage-specific calculations.
     from_schema: https://w3id.org/nsrr/sleep-cde
     rank: 1000
-    alias: time_below_90_pct_percent
+    alias: time_below_spo2_threshold_percent
     owner: OxygenSaturationMetric
     domain_of:
     - OxygenSaturationMetric
@@ -686,6 +711,16 @@ attributes:
     - RespiratoryEventMetric
     - OxygenSaturationMetric
     range: DesaturationThresholdEnum
+  spo2_threshold:
+    name: spo2_threshold
+    description: SpO2 threshold for hypoxemia time calculations
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    rank: 1000
+    alias: spo2_threshold
+    owner: OxygenSaturationMetric
+    domain_of:
+    - OxygenSaturationMetric
+    range: SpO2ThresholdEnum
   sleep_stage:
     name: sleep_stage
     description: Sleep stage context for measurement
@@ -699,6 +734,7 @@ attributes:
     - OxygenSaturationMetric
     - ArousalMetric
     - LimbMovementMetric
+    - BodyPositionMetric
     - HeartRateMetric
     - CapnographyMetric
     range: SleepStageEnum
@@ -713,6 +749,7 @@ attributes:
     - RespiratoryEventMetric
     - OxygenSaturationMetric
     - ArousalMetric
+    - BodyPositionMetric
     - HeartRateMetric
     range: BodyPositionEnum
   psg_type:
