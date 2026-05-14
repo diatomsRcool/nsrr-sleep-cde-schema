@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://diatomsRcool.github.io/sleep-cde-schema/elements/spontaneous_arousal_index/">
+        <link rel="canonical" href="https://diatomsRcool.github.io/sleep-cde-schema/elements/ArousalTypeEnum/">
       
       
       
@@ -21,7 +21,7 @@
     
     
       
-        <title>Slot: spontaneous_arousal_index - sleep-cde-schema</title>
+        <title>Enum: ArousalTypeEnum - sleep-cde-schema</title>
       
     
     
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-spontaneous_arousal_index" class="md-skip">
+        <a href="#enum-arousaltypeenum" class="md-skip">
           Skip to content
         </a>
       
@@ -104,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: spontaneous_arousal_index
+              Enum: ArousalTypeEnum
             
           </span>
         </div>
@@ -325,10 +325,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#applicable-classes" class="md-nav__link">
+  <a href="#permissible-values" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Applicable Classes
+        Permissible Values
       
     </span>
   </a>
@@ -336,10 +336,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#properties" class="md-nav__link">
+  <a href="#slots" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Properties
+        Slots
       
     </span>
   </a>
@@ -375,17 +375,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#mappings" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Mappings
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#linkml-source" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -416,68 +405,81 @@
   
 
 
-<h1 id="slot-spontaneous_arousal_index">Slot: spontaneous_arousal_index</h1>
-<p><em>Spontaneous arousal index</em></p>
-<p>URI: <a href="https://w3id.org/nsrr/sleep-cde/spontaneous_arousal_index">sleep:spontaneous_arousal_index</a>
-Alias: spontaneous_arousal_index</p>
-<!-- no inheritance hierarchy -->
-
-<h2 id="applicable-classes">Applicable Classes</h2>
+<h1 id="enum-arousaltypeenum">Enum: ArousalTypeEnum</h1>
+<p><em>Classification of arousal events by cause</em></p>
+<p>URI: <a href="https://w3id.org/nsrr/sleep-cde/ArousalTypeEnum">sleep:ArousalTypeEnum</a></p>
+<h2 id="permissible-values">Permissible Values</h2>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Meaning</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>all</td>
+<td>None</td>
+<td>All arousal types combined</td>
+</tr>
+<tr>
+<td>respiratory</td>
+<td>None</td>
+<td>Respiratory-related arousals (due to apneas, hypopneas, RERAs)</td>
+</tr>
+<tr>
+<td>spontaneous</td>
+<td>None</td>
+<td>Spontaneous arousals (no identifiable cause)</td>
+</tr>
+<tr>
+<td>plm</td>
+<td>None</td>
+<td>PLM-related arousals (due to periodic limb movements)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="slots">Slots</h2>
 <table>
 <thead>
 <tr>
 <th>Name</th>
 <th>Description</th>
-<th>Modifies Slot</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><a href="../ArousalMetric/">ArousalMetric</a></td>
-<td>Arousal measurement with context</td>
-<td>no</td>
+<td><a href="../arousal_type/">arousal_type</a></td>
+<td>Type/cause of arousal events</td>
 </tr>
 </tbody>
 </table>
-<h2 id="properties">Properties</h2>
-<ul>
-<li>Range: <a href="../Float/">Float</a></li>
-</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
 <li>from schema: https://w3id.org/nsrr/sleep-cde</li>
 </ul>
-<h2 id="mappings">Mappings</h2>
-<table>
-<thead>
-<tr>
-<th>Mapping Type</th>
-<th>Mapped Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>self</td>
-<td>sleep:spontaneous_arousal_index</td>
-</tr>
-<tr>
-<td>native</td>
-<td>sleep:spontaneous_arousal_index</td>
-</tr>
-</tbody>
-</table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: spontaneous_arousal_index
-description: Spontaneous arousal index
+<pre><code class="language-yaml">name: ArousalTypeEnum
+description: Classification of arousal events by cause
 from_schema: https://w3id.org/nsrr/sleep-cde
 rank: 1000
-alias: spontaneous_arousal_index
-domain_of:
-- ArousalMetric
-range: float
+permissible_values:
+  all:
+    text: all
+    description: All arousal types combined
+  respiratory:
+    text: respiratory
+    description: Respiratory-related arousals (due to apneas, hypopneas, RERAs)
+  spontaneous:
+    text: spontaneous
+    description: Spontaneous arousals (no identifiable cause)
+  plm:
+    text: plm
+    description: PLM-related arousals (due to periodic limb movements)
 
 </code></pre>
 

@@ -407,6 +407,24 @@ enums:
       mixed:
         text: mixed
         description: Mixed apneas only
+  ArousalTypeEnum:
+    name: ArousalTypeEnum
+    definition_uri: https://w3id.org/nsrr/sleep-cde/ArousalTypeEnum
+    description: Classification of arousal events by cause
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    permissible_values:
+      all:
+        text: all
+        description: All arousal types combined
+      respiratory:
+        text: respiratory
+        description: Respiratory-related arousals (due to apneas, hypopneas, RERAs)
+      spontaneous:
+        text: spontaneous
+        description: Spontaneous arousals (no identifiable cause)
+      plm:
+        text: plm
+        description: PLM-related arousals (due to periodic limb movements)
   HypopneaDefinitionEnum:
     name: HypopneaDefinitionEnum
     definition_uri: https://w3id.org/nsrr/sleep-cde/HypopneaDefinitionEnum
@@ -1203,6 +1221,16 @@ slots:
     domain_of:
     - RespiratoryEventMetric
     range: ApneaTypeEnum
+  arousal_type:
+    name: arousal_type
+    definition_uri: https://w3id.org/nsrr/sleep-cde/arousal_type
+    description: Type/cause of arousal events
+    from_schema: https://w3id.org/nsrr/sleep-cde
+    slot_uri: sleep:arousal_type
+    owner: ArousalMetric
+    domain_of:
+    - ArousalMetric
+    range: ArousalTypeEnum
   hypopnea_definition:
     name: hypopnea_definition
     definition_uri: https://w3id.org/nsrr/sleep-cde/hypopnea_definition
@@ -1873,7 +1901,8 @@ slots:
   arousal_index:
     name: arousal_index
     definition_uri: https://w3id.org/nsrr/sleep-cde/arousal_index
-    description: Arousal index (arousals per hour of sleep). Use sleep_stage modifier
+    description: Arousal index (arousals per hour of sleep). Use arousal_type modifier
+      to specify type (all, respiratory, spontaneous, plm). Use sleep_stage modifier
       for stage-specific indices. Use body_position modifier for position-specific
       indices.
     from_schema: https://w3id.org/nsrr/sleep-cde
@@ -1885,49 +1914,24 @@ slots:
   arousal_count:
     name: arousal_count
     definition_uri: https://w3id.org/nsrr/sleep-cde/arousal_count
-    description: Total number of arousals
+    description: Total number of arousal events. Use arousal_type modifier to specify
+      type (all, respiratory, spontaneous, plm). Use sleep_stage modifier for stage-specific
+      counts. Use body_position modifier for position-specific counts.
     from_schema: https://w3id.org/nsrr/sleep-cde
     slot_uri: sleep:arousal_count
     owner: ArousalMetric
     domain_of:
     - ArousalMetric
     range: integer
-  respiratory_arousal_index:
-    name: respiratory_arousal_index
-    definition_uri: https://w3id.org/nsrr/sleep-cde/respiratory_arousal_index
-    description: Respiratory-related arousal index
-    from_schema: https://w3id.org/nsrr/sleep-cde
-    slot_uri: sleep:respiratory_arousal_index
-    owner: ArousalMetric
-    domain_of:
-    - ArousalMetric
-    range: float
-  spontaneous_arousal_index:
-    name: spontaneous_arousal_index
-    definition_uri: https://w3id.org/nsrr/sleep-cde/spontaneous_arousal_index
-    description: Spontaneous arousal index
-    from_schema: https://w3id.org/nsrr/sleep-cde
-    slot_uri: sleep:spontaneous_arousal_index
-    owner: ArousalMetric
-    domain_of:
-    - ArousalMetric
-    range: float
-  plm_arousal_index:
-    name: plm_arousal_index
-    definition_uri: https://w3id.org/nsrr/sleep-cde/plm_arousal_index
-    description: PLM-related arousal index
-    from_schema: https://w3id.org/nsrr/sleep-cde
-    slot_uri: sleep:plm_arousal_index
-    owner: ArousalMetric
-    domain_of:
-    - ArousalMetric
-    range: float
   mean_arousal_duration_sec:
     name: mean_arousal_duration_sec
     definition_uri: https://w3id.org/nsrr/sleep-cde/mean_arousal_duration_sec
     description: Mean arousal duration in seconds
     from_schema: https://w3id.org/nsrr/sleep-cde
     slot_uri: sleep:mean_arousal_duration_sec
+    owner: ArousalMetric
+    domain_of:
+    - ArousalMetric
     range: float
   plm_index:
     name: plm_index
@@ -3810,7 +3814,8 @@ classes:
   ArousalMetric:
     name: ArousalMetric
     definition_uri: https://w3id.org/nsrr/sleep-cde/ArousalMetric
-    description: Arousal measurement with context
+    description: Arousal measurement with context. Use arousal_type modifier to specify
+      arousal cause (all, respiratory, spontaneous, plm).
     from_schema: https://w3id.org/nsrr/sleep-cde
     slots:
     - id
@@ -3818,9 +3823,8 @@ classes:
     - visit_id
     - arousal_index
     - arousal_count
-    - respiratory_arousal_index
-    - spontaneous_arousal_index
-    - plm_arousal_index
+    - mean_arousal_duration_sec
+    - arousal_type
     - sleep_stage
     - body_position
     - psg_type
@@ -4231,7 +4235,7 @@ classes:
     class_uri: sleep:VariableMapping
 metamodel_version: 1.7.0
 source_file: sleep_cde_schema.yaml
-source_file_date: '2026-02-23T16:14:38'
-source_file_size: 61530
-generation_date: '2026-02-23T16:14:47'
+source_file_date: '2026-05-14T19:49:19'
+source_file_size: 62161
+generation_date: '2026-05-14T19:49:32'
 

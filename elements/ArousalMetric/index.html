@@ -249,7 +249,7 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="class-arousalmetric">Class: ArousalMetric</h1>
-<p><em>Arousal measurement with context</em></p>
+<p><em>Arousal measurement with context. Use arousal_type modifier to specify arousal cause (all, respiratory, spontaneous, plm).</em></p>
 <p>URI: <a href="https://w3id.org/nsrr/sleep-cde/ArousalMetric">sleep:ArousalMetric</a></p>
 <div class="mermaid"> classDiagram
     class ArousalMetric
@@ -257,6 +257,17 @@
       ArousalMetric : arousal_count
 
       ArousalMetric : arousal_index
+
+      ArousalMetric : arousal_type
+
+
+
+
+
+        ArousalMetric --&gt; "0..1" ArousalTypeEnum : arousal_type
+        click ArousalTypeEnum href "../ArousalTypeEnum/"
+
+
 
       ArousalMetric : body_position
 
@@ -271,7 +282,7 @@
 
       ArousalMetric : id
 
-      ArousalMetric : plm_arousal_index
+      ArousalMetric : mean_arousal_duration_sec
 
       ArousalMetric : psg_type
 
@@ -284,8 +295,6 @@
 
 
 
-      ArousalMetric : respiratory_arousal_index
-
       ArousalMetric : sleep_stage
 
 
@@ -296,8 +305,6 @@
         click SleepStageEnum href "../SleepStageEnum/"
 
 
-
-      ArousalMetric : spontaneous_arousal_index
 
       ArousalMetric : subject_id
 
@@ -344,25 +351,19 @@
 <tr>
 <td><a href="../arousal_count/">arousal_count</a></td>
 <td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>Total number of arousals</td>
+<td>Total number of arousal events</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../respiratory_arousal_index/">respiratory_arousal_index</a></td>
+<td><a href="../mean_arousal_duration_sec/">mean_arousal_duration_sec</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Respiratory-related arousal index</td>
+<td>Mean arousal duration in seconds</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../spontaneous_arousal_index/">spontaneous_arousal_index</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Spontaneous arousal index</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../plm_arousal_index/">plm_arousal_index</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>PLM-related arousal index</td>
+<td><a href="../arousal_type/">arousal_type</a></td>
+<td>0..1 <br/> <a href="../ArousalTypeEnum/">ArousalTypeEnum</a></td>
+<td>Type/cause of arousal events</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -414,7 +415,8 @@
 <h3 id="direct">Direct</h3>
 <details>
 <pre><code class="language-yaml">name: ArousalMetric
-description: Arousal measurement with context
+description: Arousal measurement with context. Use arousal_type modifier to specify
+  arousal cause (all, respiratory, spontaneous, plm).
 from_schema: https://w3id.org/nsrr/sleep-cde
 slots:
 - id
@@ -422,9 +424,8 @@ slots:
 - visit_id
 - arousal_index
 - arousal_count
-- respiratory_arousal_index
-- spontaneous_arousal_index
-- plm_arousal_index
+- mean_arousal_duration_sec
+- arousal_type
 - sleep_stage
 - body_position
 - psg_type
@@ -434,7 +435,8 @@ slots:
 <h3 id="induced">Induced</h3>
 <details>
 <pre><code class="language-yaml">name: ArousalMetric
-description: Arousal measurement with context
+description: Arousal measurement with context. Use arousal_type modifier to specify
+  arousal cause (all, respiratory, spontaneous, plm).
 from_schema: https://w3id.org/nsrr/sleep-cde
 attributes:
   id:
@@ -552,7 +554,8 @@ attributes:
     range: string
   arousal_index:
     name: arousal_index
-    description: Arousal index (arousals per hour of sleep). Use sleep_stage modifier
+    description: Arousal index (arousals per hour of sleep). Use arousal_type modifier
+      to specify type (all, respiratory, spontaneous, plm). Use sleep_stage modifier
       for stage-specific indices. Use body_position modifier for position-specific
       indices.
     from_schema: https://w3id.org/nsrr/sleep-cde
@@ -564,7 +567,9 @@ attributes:
     range: float
   arousal_count:
     name: arousal_count
-    description: Total number of arousals
+    description: Total number of arousal events. Use arousal_type modifier to specify
+      type (all, respiratory, spontaneous, plm). Use sleep_stage modifier for stage-specific
+      counts. Use body_position modifier for position-specific counts.
     from_schema: https://w3id.org/nsrr/sleep-cde
     rank: 1000
     alias: arousal_count
@@ -572,36 +577,26 @@ attributes:
     domain_of:
     - ArousalMetric
     range: integer
-  respiratory_arousal_index:
-    name: respiratory_arousal_index
-    description: Respiratory-related arousal index
+  mean_arousal_duration_sec:
+    name: mean_arousal_duration_sec
+    description: Mean arousal duration in seconds
     from_schema: https://w3id.org/nsrr/sleep-cde
     rank: 1000
-    alias: respiratory_arousal_index
+    alias: mean_arousal_duration_sec
     owner: ArousalMetric
     domain_of:
     - ArousalMetric
     range: float
-  spontaneous_arousal_index:
-    name: spontaneous_arousal_index
-    description: Spontaneous arousal index
+  arousal_type:
+    name: arousal_type
+    description: Type/cause of arousal events
     from_schema: https://w3id.org/nsrr/sleep-cde
     rank: 1000
-    alias: spontaneous_arousal_index
+    alias: arousal_type
     owner: ArousalMetric
     domain_of:
     - ArousalMetric
-    range: float
-  plm_arousal_index:
-    name: plm_arousal_index
-    description: PLM-related arousal index
-    from_schema: https://w3id.org/nsrr/sleep-cde
-    rank: 1000
-    alias: plm_arousal_index
-    owner: ArousalMetric
-    domain_of:
-    - ArousalMetric
-    range: float
+    range: ArousalTypeEnum
   sleep_stage:
     name: sleep_stage
     description: Sleep stage context for measurement
