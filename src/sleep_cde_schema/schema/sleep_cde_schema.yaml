@@ -140,6 +140,18 @@ enums:
       mixed:
         description: Mixed apneas only
 
+  ArousalTypeEnum:
+    description: Classification of arousal events by cause
+    permissible_values:
+      all:
+        description: All arousal types combined
+      respiratory:
+        description: Respiratory-related arousals (due to apneas, hypopneas, RERAs)
+      spontaneous:
+        description: Spontaneous arousals (no identifiable cause)
+      plm:
+        description: PLM-related arousals (due to periodic limb movements)
+
   HypopneaDefinitionEnum:
     description: Hypopnea scoring rule definition
     permissible_values:
@@ -575,6 +587,10 @@ slots:
     description: Type of apnea events included
     range: ApneaTypeEnum
 
+  arousal_type:
+    description: Type/cause of arousal events
+    range: ArousalTypeEnum
+
   hypopnea_definition:
     description: Hypopnea scoring rule used
     range: HypopneaDefinitionEnum
@@ -901,25 +917,18 @@ slots:
   arousal_index:
     description: >-
       Arousal index (arousals per hour of sleep).
+      Use arousal_type modifier to specify type (all, respiratory, spontaneous, plm).
       Use sleep_stage modifier for stage-specific indices.
       Use body_position modifier for position-specific indices.
     range: float
 
   arousal_count:
-    description: Total number of arousals
+    description: >-
+      Total number of arousal events.
+      Use arousal_type modifier to specify type (all, respiratory, spontaneous, plm).
+      Use sleep_stage modifier for stage-specific counts.
+      Use body_position modifier for position-specific counts.
     range: integer
-
-  respiratory_arousal_index:
-    description: Respiratory-related arousal index
-    range: float
-
-  spontaneous_arousal_index:
-    description: Spontaneous arousal index
-    range: float
-
-  plm_arousal_index:
-    description: PLM-related arousal index
-    range: float
 
   mean_arousal_duration_sec:
     description: Mean arousal duration in seconds
@@ -1777,17 +1786,18 @@ classes:
       - summary_statistic
 
   ArousalMetric:
-    description: Arousal measurement with context
+    description: >-
+      Arousal measurement with context.
+      Use arousal_type modifier to specify arousal cause (all, respiratory, spontaneous, plm).
     slots:
       - id
       - subject_id
       - visit_id
       - arousal_index
       - arousal_count
-      - respiratory_arousal_index
-      - spontaneous_arousal_index
-      - plm_arousal_index
+      - mean_arousal_duration_sec
       # Modifiers
+      - arousal_type
       - sleep_stage
       - body_position
       - psg_type
